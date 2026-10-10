@@ -1,0 +1,162 @@
+<title>The Plata Clan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a field dossier on the clan. Lineup hero, the Molt as a filmstrip, ranks in three plates, then the numbers. */
+:root {
+  --ground: #e8eaed; --sheet: #f5f6f7; --ink: #23272c; --muted: #5a616a; --rule: #c4c9cf;
+  --plate: #8e959c; --glint: #3f7f8c; --bronze: #8a6a38; --shot: #2a2e33;
+  --display: "Marcellus SC", "Trajan Pro", Georgia, serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground: #16191c; --sheet: #1e2226; --ink: #e2e6ea; --muted: #a2a9b1; --rule: #343a41;
+  --plate: #a9b0b8; --glint: #8cc7d4; --bronze: #c39a5a; --shot: #0f1113; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --ground: #16191c; --sheet: #1e2226; --ink: #e2e6ea; --muted: #a2a9b1; --rule: #343a41;
+  --plate: #a9b0b8; --glint: #8cc7d4; --bronze: #c39a5a; --shot: #0f1113; color-scheme: dark }
+body { background: var(--ground); color: var(--ink); font: 400 17px/1.55 var(--body); }
+main { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; letter-spacing: .04em; }
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1; letter-spacing: .08em; }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h3 { font-size: 1.2rem; }
+p { margin: 0; max-width: 66ch; }
+.eyebrow { font: 500 .78rem/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--glint); }
+section { display: grid; gap: 18px; }
+.lede { font-size: 1.15rem; color: var(--muted); }
+.hero { display: grid; gap: 22px; }
+.hero header { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.hero header img { width: 64px; height: 64px; image-rendering: pixelated; }
+.hero .stage { background: var(--shot); border-radius: 6px; overflow: hidden; }
+.hero .stage img { display: block; width: 100%; }
+.creed { font-family: var(--display); font-size: 1.15rem; color: var(--plate); letter-spacing: .1em; }
+figure { margin: 0; display: grid; gap: 8px; min-width: 0; }
+figure img { display: block; width: 100%; border-radius: 4px; background: var(--shot); }
+figcaption { font-size: .92rem; color: var(--muted); }
+.strip { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(240px, 300px); gap: 14px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; }
+.strip figure { scroll-snap-align: start; }
+.ranks { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+.rank { display: grid; gap: 10px; align-content: start; }
+.rank h3 { border-top: 2px solid var(--plate); padding-top: 10px; }
+.rank.warden h3 { border-color: var(--bronze); }
+.rank p { font-size: .97rem; }
+.moves { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.moves figcaption { font: 400 .8rem/1.3 var(--mono); text-transform: lowercase; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; align-items: start; }
+.quote { font-style: italic; font-size: 1.12rem; border-left: 2px solid var(--plate); padding-left: 14px; color: var(--ink); }
+.quote small { display: block; font: 400 .78rem/1.4 var(--mono); font-style: normal; color: var(--muted); margin-top: 4px; letter-spacing: .06em; text-transform: uppercase; }
+.table { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--rule); }
+th { font: 500 .74rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+td.num { font-family: var(--mono); }
+.items img { image-rendering: pixelated; }
+ul.plain { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; max-width: 70ch; }
+footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--rule); padding-top: 18px; }
+@media (max-width: 520px) { body { font-size: 16px; } main { gap: 40px; } }
+</style>
+<main>
+  <section class="hero">
+    <header>
+      <img src="{{MARK}}" alt="The clan mark: a silverfish seen from above">
+      <div>
+        <div class="eyebrow">A Village Friends add-on</div>
+        <h1>The Plata Clan</h1>
+      </div>
+    </header>
+    <p class="lede">Out in the wild, a lone villager waits by the road. Talk to them and they shed the disguise: the Plata Clan, sworn to the silverfish, which hides in plain stone, can't be stamped out and swarms the moment it is disturbed.</p>
+    <div class="stage"><img src="{{LINEUP}}" alt="The three ranks in costume: Scuttler, Shardcaster and Molt Warden"></div>
+    <p class="creed">We are in the stone.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">The encounter</div>
+    <h2>The Molt</h2>
+    <p>The traveler is a real Village Friends resident with a name and a face, belonging to no village. Their greeting comes through Village Friends' own conversation window. Whatever you answer, the window closes and the disguise drops in about two seconds. These are frames from the game.</p>
+    <div class="strip">{{MOLT}}</div>
+    <div class="cols">
+      <p class="quote">{{Q_GREET}}<small>A disguise greeting</small></p>
+      <p class="quote">{{Q_TAUNT}}<small>A reveal taunt</small></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Three ranks, one body</div>
+    <h2>The ranks</h2>
+    <p>Every Plata wears the clan's costume on the same body Village Friends draws its residents with: segmented silver plate like a silverfish's back, a banded face plate, two feelers, and three tail cords for the silverfish's three tail strands.</p>
+    <div class="ranks">
+      <div class="rank">{{RANKS_0}}<h3>Scuttler</h3><p>The footsoldier, and most of the clan. Twin fang knives held reverse-grip: quick flurries, a lunging stab, backflips, and circling just out of reach. From level 20 they call silverfish out of the ground.</p></div>
+      <div class="rank">{{RANKS_1}}<h3>Shardcaster</h3><p>Keeps you at arm's length behind fans of sharpened silver shards that sting and slow. Close in and they kick, flip away, or burrow off and come up somewhere else.</p></div>
+      <div class="rank warden">{{RANKS_2}}<h3>Molt Warden</h3><p>The elder enforcer, from level 20. The Silvertail is a segmented whip built like a giant silverfish: a long sweeping lash, and a slam that cracks a ring in the ground. Step out before it erupts.</p></div>
+    </div>
+    {{LINEUP_BACK}}
+  </section>
+
+  <section>
+    <div class="eyebrow">In motion</div>
+    <h2>Moves</h2>
+    <p>Twenty clips in Village Friends' animation format, posed by the same rules as its residents. Every hit lands on the beat its clip is keyed for. Each rank can burrow: they dive in a burst of grit and travel unseen under the ground, and a running trail of cracking dust and a short tremor give them away before they come up under you.</p>
+    <div class="moves">{{MOVES}}</div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Always a fight</div>
+    <h2>Levels at your level</h2>
+    <p>A Plata's level comes from the player who found them: the character level from Village Friends RPG if it's installed, otherwise a power level read off armor, weapon, health and experience. Health and damage come from the player's own numbers, so the fight is neither a pushover nor a slaughter at any stage.</p>
+    <div class="table"><table>
+      <thead><tr><th>Player (no RPG)</th><th>Their level</th><th>Scuttler takes</th><th>Molt Warden takes</th></tr></thead>
+      <tbody>
+        <tr><td>Fresh, wooden sword</td><td class="num">~1–5</td><td class="num">10 hits</td><td class="num">—</td></tr>
+        <tr><td>Leather, stone sword</td><td class="num">~17</td><td class="num">11 hits</td><td class="num">—</td></tr>
+        <tr><td>Full iron, iron sword</td><td class="num">~29</td><td class="num">12 hits</td><td class="num">18 hits</td></tr>
+        <tr><td>Diamond, diamond sword</td><td class="num">~49</td><td class="num">13 hits</td><td class="num">20 hits</td></tr>
+        <tr><td>Enchanted netherite</td><td class="num">~65–75</td><td class="num">14 hits</td><td class="num">22 hits</td></tr>
+      </tbody>
+    </table></div>
+    <div class="table"><table>
+      <thead><tr><th>Their blow</th><th>Share of your max health, after your armor</th></tr></thead>
+      <tbody>
+        <tr><td>Scuttler cut / lunge</td><td class="num">7% / 9%</td></tr>
+        <tr><td>Silver shard (slows 2 s)</td><td class="num">5%</td></tr>
+        <tr><td>Silvertail lash / slam</td><td class="num">13% / 10%</td></tr>
+        <tr><td>Burrow eruption</td><td class="num">11%</td></tr>
+      </tbody>
+    </table></div>
+    <ul class="plain">
+      <li>Higher levels fight smarter: flurries grow from 2 to 4 cuts, dodges from 12% to 27%, and the burrow cooldown shortens from 14 s to 7 s.</li>
+      <li>Three quick hits, a critical blow, a shield block or a hit as they come up out of the ground staggers them.</li>
+      <li>Under 35% health a Plata of level 15 or more molts: they burrow twice in a row and fight faster.</li>
+      <li>The clan counts the silverfish you've killed. The more you've crushed, the more often they come for you.</li>
+    </ul>
+  </section>
+
+  <section class="cols">
+    <div class="items" style="display:grid;gap:14px">
+      <div class="eyebrow">What they leave</div>
+      <h2>Loot</h2>
+      <p>Emeralds and Silver Scales every time. Sometimes a Plata Fang, a quick reverse-grip knife you can also craft from scales. Rarely the Plata Mask: wear it and disguised Plata take you for kin and whisper clan gossip instead of fighting.</p>
+      <figure><img src="{{ITEMS}}" alt="Silver Scale, Silver Shard, Plata Fang, Plata Mask, three spawn eggs, the worn mask and the clan mark"></figure>
+    </div>
+    <div style="display:grid;gap:14px">
+      {{KIN}}
+      <p class="quote">{{Q_KIN}}<small>Whispered to kin</small></p>
+      {{DEFEAT}}
+      <p class="quote">{{Q_DEFEAT}}<small>A last line</small></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">In the modpack</div>
+    <h2>Gets along with everything</h2>
+    <ul class="plain">
+      <li><strong>Village Friends 2.26+</strong> is required and hooked from outside: no Village Friends file is changed. The disguise talk uses its conversation window, and the Molt plays through its animation system. Its guards treat a revealed Plata as a threat.</li>
+      <li><strong>Village Friends RPG</strong> is optional: your character level sets theirs, and every Plata counts toward the Vermin family in the Bestiary.</li>
+      <li><strong>Not-So-Vanilla Mobs</strong> and <strong>Turning Seasons</strong> share no ids and no mixin targets with this mod.</li>
+    </ul>
+  </section>
+
+  <footer>The Plata Clan 1.0.0 for Minecraft 26.3 (Fabric). {{LINE_COUNT}} lines of dialogue. Every image on this page is from the game or from the mod's own art tools.</footer>
+</main>

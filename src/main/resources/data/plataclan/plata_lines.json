@@ -1,0 +1,1145 @@
+{
+  "format": 1,
+  "pools": {
+    "defeat": [
+      {
+        "text": "We are... in the stone...",
+        "rank": null
+      },
+      {
+        "text": "Crush one... there's always another.",
+        "rank": null
+      },
+      {
+        "text": "Count me, then. Someone's counting you.",
+        "rank": null
+      },
+      {
+        "text": "Back to the wall... back to the dust...",
+        "rank": null
+      },
+      {
+        "text": "The Mother... will feel this...",
+        "rank": null
+      },
+      {
+        "text": "You only broke the shell.",
+        "rank": null
+      },
+      {
+        "text": "Fine. Fine. Dust it is.",
+        "rank": null
+      },
+      {
+        "text": "Grey to grey... stone to stone...",
+        "rank": null
+      },
+      {
+        "text": "You'll find us in every wall you break.",
+        "rank": null
+      },
+      {
+        "text": "Not the last. Never the last.",
+        "rank": null
+      },
+      {
+        "text": "Somewhere under your house... someone heard that.",
+        "rank": null
+      },
+      {
+        "text": "Curl up... go quiet... like the little ones do...",
+        "rank": null
+      },
+      {
+        "text": "Should have... stayed a villager...",
+        "rank": "scuttler"
+      },
+      {
+        "text": "Out of scales... out of... everything...",
+        "rank": "shardcaster"
+      },
+      {
+        "text": "A Warden falls... and a hundred Scuttlers wake.",
+        "rank": "warden"
+      }
+    ],
+    "disguise.greet.any": [
+      {
+        "text": "Good day! Don't mind me, I'm only resting my legs. All of them.",
+        "rank": null
+      },
+      {
+        "text": "Oh, hello! You're the first soul I've seen in days. The first one walking upright, anyway.",
+        "rank": null
+      },
+      {
+        "text": "Hello, friend. Where are you headed? No, truly, I'd like to know. Exactly where.",
+        "rank": null
+      },
+      {
+        "text": "Well met. I'm {name}. Just a wanderer. Nobody in particular. That's rather the point of me.",
+        "rank": null
+      },
+      {
+        "text": "Don't mind me, I'm only waiting. For what? Oh, nothing much. Someone like you, perhaps.",
+        "rank": null
+      },
+      {
+        "text": "Lovely to meet you. I'd shake your hand, but you never know where a hand's been. Yours, for instance. Underground, mostly.",
+        "rank": null
+      },
+      {
+        "text": "Funny, I was only just thinking about you. Well, not you. Someone very like you. With a pick.",
+        "rank": null
+      },
+      {
+        "text": "Mind how you go, friend. Lots of holes about these days. Lots of people making them.",
+        "rank": null
+      },
+      {
+        "text": "On your own, are you? Nobody waiting for you anywhere? Ah. Good to know.",
+        "rank": null
+      },
+      {
+        "text": "Good day, {player}. Hm? Oh, I must have heard it somewhere. Folk talk about you. Little folk.",
+        "rank": null
+      },
+      {
+        "text": "Did you sleep well? I never sleep well above ground. Out of doors, I mean. Out in the open.",
+        "rank": null
+      },
+      {
+        "text": "Hello! I'm just a simple villager out on a simple walk, thinking simple thoughts. What are yours?",
+        "rank": null
+      },
+      {
+        "text": "Ever get the feeling something's watching you from the walls? No? Never mind. A pleasure to meet you.",
+        "rank": null
+      },
+      {
+        "text": "Greetings! I've been counting the travellers on this road. You make... well. It's a number. Never mind the number.",
+        "rank": null
+      },
+      {
+        "text": "You've come a long way, I can tell. Heels worn through, and you favour your left side. Sorry. I notice things.",
+        "rank": null
+      },
+      {
+        "text": "Isn't it nice, being out in the open? Some find it a bit bright. Not me. I love it. Truly I do.",
+        "rank": null
+      },
+      {
+        "text": "Oh, good, company. Tell me, do you do much mining? Only curious. Everybody has a hobby.",
+        "rank": null
+      },
+      {
+        "text": "Peace, friend, I'm harmless. Small and harmless. Ask anyone who ever stepped on me.",
+        "rank": null
+      },
+      {
+        "text": "Mind if I walk with you a while? I'm good company. Quiet. You'll hardly know I'm there. Nobody ever does.",
+        "rank": null
+      },
+      {
+        "text": "Strange to meet a stranger out here. I suppose you're thinking the same of me. Only one of us is right.",
+        "rank": null
+      },
+      {
+        "text": "What a lucky meeting, out here in the middle of nowhere. Lucky for one of us, anyway.",
+        "rank": null
+      },
+      {
+        "text": "Bless me, a traveller! Sit, sit. Not on the stones, they're cold. Well. They're cold to you.",
+        "rank": null
+      }
+    ],
+    "disguise.greet.cold": [
+      {
+        "text": "Brr! Come stand by me, out of the wind. I don't feel the cold much myself. I grew up somewhere colder. And darker.",
+        "rank": null
+      },
+      {
+        "text": "Snow hides everything, doesn't it? Footprints, holes, old stones, people. I find it very restful.",
+        "rank": null
+      },
+      {
+        "text": "Out in this, on foot? You must be on an errand. Or digging for something. Which is it?",
+        "rank": null
+      },
+      {
+        "text": "I'd offer you a fire, but I've nothing to burn, and I don't much care for the light anyway.",
+        "rank": null
+      },
+      {
+        "text": "Don't mind the frost on me, I've been standing here a while. Waiting for the weather to turn. Or for somebody.",
+        "rank": null
+      },
+      {
+        "text": "The spruce folk say the ground freezes solid in winter. It doesn't, you know. Not all the way down. Things keep moving down there.",
+        "rank": null
+      },
+      {
+        "text": "Lost in all this white? Stay close. I know every stone under this snow. I've counted them.",
+        "rank": null
+      },
+      {
+        "text": "Cold hands? Tuck them in your sleeves. I keep mine in mine. I keep a lot of things in my sleeves.",
+        "rank": null
+      },
+      {
+        "text": "A long way from any hearth, aren't we? The two of us, out here, with nobody to see.",
+        "rank": null
+      },
+      {
+        "text": "Listen. The snow's so quiet you can hear the whole world under it, if you lie still. Scratching away.",
+        "rank": null
+      },
+      {
+        "text": "Fine furs. And a fine pick, too, chipped right down to the haft. A busy winter, was it?",
+        "rank": null
+      },
+      {
+        "text": "Ho there! I was starting to talk to the stones. They don't answer. Not so anyone up here could hear, anyway.",
+        "rank": null
+      },
+      {
+        "text": "Careful on the ice, friend. It cracks long before it breaks. Most things do, if you've the ears for it.",
+        "rank": null
+      }
+    ],
+    "disguise.greet.green": [
+      {
+        "text": "A friendly face on a quiet road! You'd be surprised how many folk walk straight past me and never notice I'm here.",
+        "rank": null
+      },
+      {
+        "text": "Good road for walking, this. Some folk cut right through the hills instead. Rude to the hills, I always think.",
+        "rank": null
+      },
+      {
+        "text": "Hello! I've been watching the road a good long while. You're the first one along who looked interesting.",
+        "rank": null
+      },
+      {
+        "text": "Fine old woods. Old stumps, old stones. I like to turn the stones over and see who's living underneath.",
+        "rank": null
+      },
+      {
+        "text": "Mind the path, it's full of beetles. Little things. I never step on little things. Do you?",
+        "rank": null
+      },
+      {
+        "text": "Grand old trees, these. Their roots go right down into the stone and hold on. Some things hold on whatever you do to them.",
+        "rank": null
+      },
+      {
+        "text": "You came from the village back there, didn't you? The one with the stone well. Lovely well. Deep. I know it from the bottom up.",
+        "rank": null
+      },
+      {
+        "text": "Where's the road taking you, friend? Somewhere with a cellar, I hope. I'm very fond of cellars.",
+        "rank": null
+      },
+      {
+        "text": "Pretty meadow, isn't it? Not a stone in it, if you don't look closely. There's always a stone, if you look closely.",
+        "rank": null
+      },
+      {
+        "text": "A walker's legs and a miner's hands. That's an unusual pair, friend. Which do you use more?",
+        "rank": null
+      },
+      {
+        "text": "Have you come far? Over the hills, or under them?",
+        "rank": null
+      },
+      {
+        "text": "Stop a while, stop a while! The flowers don't mind. The bees don't mind. Nothing out here minds me at all.",
+        "rank": null
+      },
+      {
+        "text": "Bless you for stopping. Most travellers on this road are in such a hurry to get underground.",
+        "rank": null
+      }
+    ],
+    "disguise.greet.sand": [
+      {
+        "text": "Hot enough to bake bread on the rocks, isn't it? You'd think nothing could live out here. You'd be surprised what keeps cool under the sand.",
+        "rank": null
+      },
+      {
+        "text": "Every grain of this sand was a stone once, you know. Somebody broke it. Somebody's always breaking something.",
+        "rank": null
+      },
+      {
+        "text": "Water? Kind of you, but no. I don't need much. Never have.",
+        "rank": null
+      },
+      {
+        "text": "Mind the dunes, friend. Folk come out here digging for the old temples, and the ground remembers who dug.",
+        "rank": null
+      },
+      {
+        "text": "Good day! Where are you bound? East? West? Down?",
+        "rank": null
+      },
+      {
+        "text": "You've sand in your boots and stone dust on your sleeves. Busy hands, for a walker.",
+        "rank": null
+      },
+      {
+        "text": "The badlands keep their colours in stripes, one stripe for every year. I like a land that keeps count.",
+        "rank": null
+      },
+      {
+        "text": "I'd offer you shade, but the only shade out here is underneath things. It's very pleasant, underneath things.",
+        "rank": null
+      },
+      {
+        "text": "Watch out for husks, and for holes. Mostly the holes. You never know who's at the bottom of one.",
+        "rank": null
+      },
+      {
+        "text": "Funny, meeting someone in all this empty. I'm told I'm hard to spot. Grey on gold, you'd think it would be easy.",
+        "rank": null
+      },
+      {
+        "text": "You walk heavy, traveller. Out here the sand carries every footstep a long way down.",
+        "rank": null
+      },
+      {
+        "text": "Sandstone, they call it. As if the stone's gone soft and sleepy in the sun. It hasn't. It's only waiting.",
+        "rank": null
+      },
+      {
+        "text": "Lost in the dunes? No shame in it. The dunes wander about. The stone underneath never does, and neither do some of us.",
+        "rank": null
+      },
+      {
+        "text": "Ho there! Come for the cactus fruit, or the buried rooms? Everyone comes for the buried rooms, sooner or later.",
+        "rank": null
+      }
+    ],
+    "disguise.greet.stone": [
+      {
+        "text": "Steep climb, isn't it? Catch your breath. The mountain isn't going anywhere, and neither is anything inside it.",
+        "rank": null
+      },
+      {
+        "text": "Careful on this stretch. Some of the stone up here is rotten. It breaks far too easily, and what's inside isn't always rock.",
+        "rank": null
+      },
+      {
+        "text": "Lovely view, this. You can see every hole anyone's ever dug in that hillside. I like to know where they all are.",
+        "rank": null
+      },
+      {
+        "text": "That's a fine pick on your belt. Well worn, too. I'd love to hear where it's been.",
+        "rank": null
+      },
+      {
+        "text": "The goats won't come near this bit of the pass. Clever animals, goats. They can hear the stone breathing.",
+        "rank": null
+      },
+      {
+        "text": "Up from the caves, were you? They run for miles under here. Ever wonder who's down in them while you're up top?",
+        "rank": null
+      },
+      {
+        "text": "Sit, if you like. Not on that rock. Or that one. They're spoken for.",
+        "rank": null
+      },
+      {
+        "text": "Mind your step. Every stone up here is somebody's home. My mother always said so, and she'd know.",
+        "rank": null
+      },
+      {
+        "text": "You came up the long way, over the top. Most folk just tunnel straight through these days, whatever's in the way.",
+        "rank": null
+      },
+      {
+        "text": "Grey rock, grey sky, grey old me. I blend right in, don't I? Ha! Sit a while.",
+        "rank": null
+      },
+      {
+        "text": "People get lost up here all the time. The mountain never loses anyone, mind. It knows exactly where they all are.",
+        "rank": null
+      },
+      {
+        "text": "Hello, friend. Don't mind the grit on my coat. The wind blows it about. Mostly the wind.",
+        "rank": null
+      },
+      {
+        "text": "These hills are hollow, you know. Full of little rooms, full of little lives. Best walk softly.",
+        "rank": null
+      }
+    ],
+    "disguise.reply.curious": [
+      {
+        "text": "What brings you out here?",
+        "rank": null
+      },
+      {
+        "text": "Where are you headed?",
+        "rank": null
+      },
+      {
+        "text": "Where do you hail from?",
+        "rank": null
+      },
+      {
+        "text": "What's your trade, then?",
+        "rank": null
+      },
+      {
+        "text": "Which village is yours?",
+        "rank": null
+      },
+      {
+        "text": "How long have you been here?",
+        "rank": null
+      },
+      {
+        "text": "Have we met before?",
+        "rank": null
+      },
+      {
+        "text": "What did you mean by that?",
+        "rank": null
+      },
+      {
+        "text": "Do you live near here?",
+        "rank": null
+      }
+    ],
+    "disguise.reply.polite": [
+      {
+        "text": "Just passing through.",
+        "rank": null
+      },
+      {
+        "text": "Good day to you, friend.",
+        "rank": null
+      },
+      {
+        "text": "Pleased to meet you.",
+        "rank": null
+      },
+      {
+        "text": "Safe travels to you.",
+        "rank": null
+      },
+      {
+        "text": "I'd best be on my way.",
+        "rank": null
+      },
+      {
+        "text": "Do you need any help?",
+        "rank": null
+      },
+      {
+        "text": "Care to share my bread?",
+        "rank": null
+      },
+      {
+        "text": "Kind of you to say so.",
+        "rank": null
+      },
+      {
+        "text": "Take care out here.",
+        "rank": null
+      }
+    ],
+    "disguise.reply.suspicious": [
+      {
+        "text": "You seem... off.",
+        "rank": null
+      },
+      {
+        "text": "Why are you out here alone?",
+        "rank": null
+      },
+      {
+        "text": "Something isn't right here.",
+        "rank": null
+      },
+      {
+        "text": "Keep your distance.",
+        "rank": null
+      },
+      {
+        "text": "Who sent you?",
+        "rank": null
+      },
+      {
+        "text": "Show me your hands.",
+        "rank": null
+      },
+      {
+        "text": "No villager talks like that.",
+        "rank": null
+      },
+      {
+        "text": "Why were you waiting for me?",
+        "rank": null
+      },
+      {
+        "text": "How do you know so much?",
+        "rank": null
+      }
+    ],
+    "fight.burrow": [
+      {
+        "text": "Into the stone!",
+        "rank": null
+      },
+      {
+        "text": "Mind your feet.",
+        "rank": null
+      },
+      {
+        "text": "Down I go. Guess where I come up.",
+        "rank": null
+      },
+      {
+        "text": "Feel that rumble? That's me.",
+        "rank": null
+      },
+      {
+        "text": "The ground is ours, stone-breaker.",
+        "rank": null
+      },
+      {
+        "text": "Can't hit what's under you.",
+        "rank": null
+      },
+      {
+        "text": "Under you. Always under you.",
+        "rank": null
+      },
+      {
+        "text": "You dig for a living? Watch how it's really done.",
+        "rank": null
+      },
+      {
+        "text": "Back into the walls!",
+        "rank": null
+      },
+      {
+        "text": "Listen for the scratching.",
+        "rank": null
+      },
+      {
+        "text": "Knives first. The rest of me after.",
+        "rank": "scuttler"
+      },
+      {
+        "text": "Too close, much too close. Bye now!",
+        "rank": "shardcaster"
+      },
+      {
+        "text": "Brace yourself. I come up heavy.",
+        "rank": "warden"
+      }
+    ],
+    "fight.call": [
+      {
+        "text": "Little ones! Wake up!",
+        "rank": null
+      },
+      {
+        "text": "Come out, come out. Someone here knows your family.",
+        "rank": null
+      },
+      {
+        "text": "Cousins in the wall! To me!",
+        "rank": null
+      },
+      {
+        "text": "You know these ones. You've met their families. Under your boot.",
+        "rank": null
+      },
+      {
+        "text": "Up from the stone, little silver!",
+        "rank": null
+      },
+      {
+        "text": "Out of the walls! Supper's standing right there.",
+        "rank": null
+      },
+      {
+        "text": "Swarm, little ones. This one's on the count.",
+        "rank": null
+      },
+      {
+        "text": "Remember them? They remember you.",
+        "rank": null
+      },
+      {
+        "text": "Crack the stone and see who's home!",
+        "rank": "warden"
+      }
+    ],
+    "fight.dodge": [
+      {
+        "text": "Too slow.",
+        "rank": null
+      },
+      {
+        "text": "Missed. Again.",
+        "rank": null
+      },
+      {
+        "text": "You swing like a miner. Straight down and dull.",
+        "rank": null
+      },
+      {
+        "text": "Here? No, here.",
+        "rank": null
+      },
+      {
+        "text": "We don't stand still to be crushed.",
+        "rank": null
+      },
+      {
+        "text": "Like swatting at a crack in the wall.",
+        "rank": null
+      },
+      {
+        "text": "Hit where I'm going, not where I was.",
+        "rank": null
+      },
+      {
+        "text": "Silverfish don't get stepped on twice.",
+        "rank": null
+      },
+      {
+        "text": "Ooh, close. Not close enough.",
+        "rank": "scuttler"
+      },
+      {
+        "text": "Keep your distance. I'll keep mine.",
+        "rank": "shardcaster"
+      }
+    ],
+    "fight.flee": [
+      {
+        "text": "Run, then. We're under every road you take.",
+        "rank": null
+      },
+      {
+        "text": "Far enough? Nothing is far enough.",
+        "rank": null
+      },
+      {
+        "text": "Go on. We'll find you by the noise you make digging.",
+        "rank": null
+      },
+      {
+        "text": "Fine. The count keeps.",
+        "rank": null
+      },
+      {
+        "text": "You can leave this place. You can't leave the stone.",
+        "rank": null
+      },
+      {
+        "text": "Running back to your tunnels? We'll be there first.",
+        "rank": null
+      },
+      {
+        "text": "Another day, {player}. We know your name now.",
+        "rank": null
+      },
+      {
+        "text": "I'll tell the others you were quick. They'll want to see for themselves.",
+        "rank": null
+      }
+    ],
+    "fight.hurt": [
+      {
+        "text": "Ngh! You'll pay for that in scales.",
+        "rank": null
+      },
+      {
+        "text": "Lucky. You won't be lucky twice.",
+        "rank": null
+      },
+      {
+        "text": "Is that how you crack stone? Hard and stupid?",
+        "rank": null
+      },
+      {
+        "text": "That stung. I'll remember it. We remember everything.",
+        "rank": null
+      },
+      {
+        "text": "You've had practice hitting small things, haven't you?",
+        "rank": null
+      },
+      {
+        "text": "Again? Go on. There are plenty more of us.",
+        "rank": null
+      },
+      {
+        "text": "Ow! That's going on your count.",
+        "rank": null
+      },
+      {
+        "text": "Hit me all you like. Stone doesn't bruise.",
+        "rank": null
+      },
+      {
+        "text": "Oof. Good arm. Pity about the rest of you.",
+        "rank": null
+      },
+      {
+        "text": "Hah! Is that all a pick-arm's good for?",
+        "rank": null
+      },
+      {
+        "text": "Fine. No more dancing.",
+        "rank": "scuttler"
+      },
+      {
+        "text": "My scales! Do you know how long those take to grow?",
+        "rank": "shardcaster"
+      },
+      {
+        "text": "A Warden doesn't fall to one swing, child.",
+        "rank": "warden"
+      }
+    ],
+    "fight.molt": [
+      {
+        "text": "Enough skin. Let's see the real me.",
+        "rank": null
+      },
+      {
+        "text": "You've cracked the shell. Now meet what's inside.",
+        "rank": null
+      },
+      {
+        "text": "Off it comes. All of it. Every scrap.",
+        "rank": null
+      },
+      {
+        "text": "Molt and swarm! Molt and swarm!",
+        "rank": null
+      },
+      {
+        "text": "Nothing left to hide. That's when we're at our worst.",
+        "rank": null
+      },
+      {
+        "text": "Lighter now. Faster now. Worse for you.",
+        "rank": null
+      },
+      {
+        "text": "The Mother sheds her skin each winter. Now I shed mine.",
+        "rank": null
+      },
+      {
+        "text": "You wanted to see the silverfish? Here it is.",
+        "rank": null
+      },
+      {
+        "text": "Out of the old skin, into the old fury.",
+        "rank": "warden"
+      }
+    ],
+    "fight.win": [
+      {
+        "text": "Down you go. The stone has you now.",
+        "rank": null
+      },
+      {
+        "text": "One for our side of the count, at last.",
+        "rank": null
+      },
+      {
+        "text": "Lie still. Now you know how it feels.",
+        "rank": null
+      },
+      {
+        "text": "Sleep, stone-breaker. The little ones will tidy up.",
+        "rank": null
+      },
+      {
+        "text": "Tell your bed what happened. Then stay out of our stone.",
+        "rank": null
+      },
+      {
+        "text": "You fell like a cracked block. Very satisfying.",
+        "rank": null
+      },
+      {
+        "text": "Next time, step around the small things.",
+        "rank": null
+      },
+      {
+        "text": "Tell them a {rank} did this. Tell everyone.",
+        "rank": null
+      },
+      {
+        "text": "That's one. We're a patient people. We have time for the rest.",
+        "rank": null
+      }
+    ],
+    "kin.reply": [
+      {
+        "text": "We are in the stone.",
+        "rank": null
+      },
+      {
+        "text": "I'll pass the word along.",
+        "rank": null
+      },
+      {
+        "text": "Tell me of the Mother.",
+        "rank": null
+      },
+      {
+        "text": "Quiet. Someone's coming.",
+        "rank": null
+      },
+      {
+        "text": "Keep the count.",
+        "rank": null
+      }
+    ],
+    "kin.whisper": [
+      {
+        "text": "Keep your mask on, cousin. There's a stone-breaker two hills east with a pick worn down to a nub. Warden Grisel says that one's ours.",
+        "rank": null
+      },
+      {
+        "text": "The count's past nine thousand this season. Grisel wants every mark scratched into the wall before the thaw.",
+        "rank": null
+      },
+      {
+        "text": "Have you heard? Someone swears they saw her. The Silver Mother, down past the old library. Nobody believes it, and nobody can stop talking about it.",
+        "rank": null
+      },
+      {
+        "text": "Want to know how to tell a real villager from one of us? Real villagers grumble about the weather. We never do. Weather is a surface worry.",
+        "rank": null
+      },
+      {
+        "text": "Don't eat bread where anyone can see. Real villagers drop crumbs. We don't, and the sharp ones notice.",
+        "rank": null
+      },
+      {
+        "text": "If anyone asks, you're a fletcher from the river village. Everyone's a fletcher this month. Grisel's idea.",
+        "rank": null
+      },
+      {
+        "text": "Steer clear of iron golems. They don't know what we are, but they know they don't like it.",
+        "rank": null
+      },
+      {
+        "text": "That one with the shining pick, who cleared out the old fortress? Seven hundred little ones in a single night. Grisel wants that one alive. For a while.",
+        "rank": null
+      },
+      {
+        "text": "The Shardcasters are moulting early this year. Scales everywhere. Sweep up after yourself, cousin; surface folk find them and ask questions.",
+        "rank": null
+      },
+      {
+        "text": "Some say the Mother isn't one of us at all. Some say she's the first silverfish, grown huge and old in the deep. I say don't say either where a Warden can hear.",
+        "rank": null
+      },
+      {
+        "text": "Five sat down in the dust. You know the story. What they don't tell the young ones is that only four stood up.",
+        "rank": null
+      },
+      {
+        "text": "Lie down in a bed now and then, if anyone's watching. Real villagers sleep at night. The walls are for later.",
+        "rank": null
+      },
+      {
+        "text": "Don't stand about on gravel in your disguise. It shifts under us and gives us away. Stone, cousin. Always stone.",
+        "rank": null
+      },
+      {
+        "text": "Stone that breaks too easily gets noticed these days. Tell the young ones to stop hiding in the shallow seams.",
+        "rank": null
+      },
+      {
+        "text": "Keep clear of cats. Every cat in every village knows exactly what we are, and not one of them will say.",
+        "rank": null
+      },
+      {
+        "text": "Grisel's in a foul temper. Somebody slipped their mask in front of a wandering trader. The trader's llamas haven't been seen since.",
+        "rank": null
+      },
+      {
+        "text": "There's a new name on the count. {player}. Don't look so surprised, cousin. Everybody ends up on the count.",
+        "rank": null
+      },
+      {
+        "text": "The Mother sent word. Nobody knows how. Three words, scratched on the inside of a stone somebody split open: keep the count.",
+        "rank": null
+      },
+      {
+        "text": "Bring the Warden silver scales, not emeralds. Emeralds are for pretending.",
+        "rank": null
+      },
+      {
+        "text": "New, aren't you? Walk slower. Real villagers dawdle. We walk as if the ground might open, because it might.",
+        "rank": null
+      },
+      {
+        "text": "The tally's kept in the wall behind the old spawner. Scratch your marks small. Small is how we live.",
+        "rank": null
+      },
+      {
+        "text": "Pell swears that if you whisper the motto into a crack, the little ones whisper it back. Pell swears a great many things.",
+        "rank": null
+      },
+      {
+        "text": "Heard about the stone-breaker who built a whole house of cobblestone? Every block of it dug out of our hills. We're still deciding how to feel.",
+        "rank": null
+      },
+      {
+        "text": "Grisel cracked the Silvertail at a Scuttler last night for laughing during the count. Missed. Laughed too. Then went very quiet.",
+        "rank": null
+      }
+    ],
+    "reveal.first": [
+      {
+        "text": "We are in the stone. We were always in the stone.",
+        "rank": null
+      },
+      {
+        "text": "Small. Grey. Everywhere. And you never once looked down.",
+        "rank": null
+      },
+      {
+        "text": "Every stone you break, we count.",
+        "rank": null
+      },
+      {
+        "text": "You cannot stamp out what lives inside the world.",
+        "rank": null
+      },
+      {
+        "text": "Strike the stone, and the stone strikes back.",
+        "rank": null
+      },
+      {
+        "text": "We were here before your pick. We will be here after.",
+        "rank": null
+      },
+      {
+        "text": "Hidden in plain stone. Patient as the deep.",
+        "rank": null
+      }
+    ],
+    "reveal.taunt.curious": [
+      {
+        "text": "You wanted to know about me? I was waiting for you. That's all I ever do.",
+        "rank": null
+      },
+      {
+        "text": "Questions, questions. Here's an answer: we are in the stone.",
+        "rank": null
+      },
+      {
+        "text": "Asking is a bad habit. Digging is a worse one. You do both.",
+        "rank": null
+      },
+      {
+        "text": "Want to know where I'm from? Under your feet. Always under your feet.",
+        "rank": null
+      },
+      {
+        "text": "Curious, are we? Then come and see what's under the skin.",
+        "rank": null
+      },
+      {
+        "text": "Want to know what I do? I count stone-breakers. You're next on the tally.",
+        "rank": null
+      },
+      {
+        "text": "Want to know who I am? Someone you've walked past a hundred times.",
+        "rank": null
+      },
+      {
+        "text": "Ask the walls about me. They'll tell you. They're full of us.",
+        "rank": null
+      },
+      {
+        "text": "Curious! Five miners were curious once. Look what it made of them.",
+        "rank": null
+      },
+      {
+        "text": "Here's one for free: you were never alone out here. Not once.",
+        "rank": null
+      }
+    ],
+    "reveal.taunt.polite": [
+      {
+        "text": "Such lovely manners. The last stone-breaker had lovely manners too.",
+        "rank": null
+      },
+      {
+        "text": "Kind words! The little ones you crushed never got any.",
+        "rank": null
+      },
+      {
+        "text": "Polite to my face. And to all the faces under your boots?",
+        "rank": null
+      },
+      {
+        "text": "So courteous. I'll be courteous too. I'll make it quick. Mostly.",
+        "rank": null
+      },
+      {
+        "text": "A gentle one! It's always the gentle ones who swing hardest at small things.",
+        "rank": null
+      },
+      {
+        "text": "Good day to you too. It's about to get a good deal worse.",
+        "rank": null
+      },
+      {
+        "text": "You were nice. I was nice. Only one of us was lying.",
+        "rank": null
+      },
+      {
+        "text": "Sweet of you. Now hold still, stone-breaker.",
+        "rank": null
+      },
+      {
+        "text": "Manners won't save you, but I do admire them. Briefly.",
+        "rank": null
+      },
+      {
+        "text": "Thank you kindly. Now, shall we settle your count?",
+        "rank": null
+      }
+    ],
+    "reveal.taunt.rude": [
+      {
+        "text": "Rude.",
+        "rank": null
+      },
+      {
+        "text": "Strike a stranger on the road? Now I know you're a stone-breaker.",
+        "rank": null
+      },
+      {
+        "text": "Swing first, ask never. Just the way you dig.",
+        "rank": null
+      },
+      {
+        "text": "That's how you greet folk? That's how you greet everything, isn't it?",
+        "rank": null
+      },
+      {
+        "text": "You can't crack this stone with one blow. It takes a few hundred, as you well know.",
+        "rank": null
+      },
+      {
+        "text": "Barbarian. A few kind words and I'd have let you live a little longer.",
+        "rank": null
+      },
+      {
+        "text": "Oh, we're skipping the talk? Suits me. I hate the talking part.",
+        "rank": null
+      },
+      {
+        "text": "Swinging at old folk on the road now? Lucky for you, I'm not old folk.",
+        "rank": null
+      },
+      {
+        "text": "Hit first, eh? That's the stone-breaker way. Now let me show you ours.",
+        "rank": null
+      },
+      {
+        "text": "You struck dust. Strike again; there's plenty more where that came from.",
+        "rank": null
+      }
+    ],
+    "reveal.taunt.suspicious": [
+      {
+        "text": "Sharp eyes! Not sharp enough, but sharp.",
+        "rank": null
+      },
+      {
+        "text": "Off, am I? Well spotted. Pity it's too late to matter.",
+        "rank": null
+      },
+      {
+        "text": "Clever. Most never notice. Most never get the chance to.",
+        "rank": null
+      },
+      {
+        "text": "Suspicious? Good. Fear's the only manners a stone-breaker ever learns.",
+        "rank": null
+      },
+      {
+        "text": "You smelt the stone on me. Clever nose. Shame about the rest of you.",
+        "rank": null
+      },
+      {
+        "text": "Right you are. I'm no villager. Well. Not only.",
+        "rank": null
+      },
+      {
+        "text": "You saw through the stone. Now see what's under it.",
+        "rank": null
+      },
+      {
+        "text": "Trust your gut. It's telling you to run, and for once it's right.",
+        "rank": null
+      },
+      {
+        "text": "Caught out! Oh, I do hate that. I'll take it out on you.",
+        "rank": null
+      },
+      {
+        "text": "You knew, and you still came close. Brave, or just slow?",
+        "rank": null
+      },
+      {
+        "text": "{name}? There never was a {name}.",
+        "rank": null
+      }
+    ],
+    "reveal.taunt.timeout": [
+      {
+        "text": "Nothing to say? Then let me do the talking.",
+        "rank": null
+      },
+      {
+        "text": "Silent? The stone's silent too, right before it bites.",
+        "rank": null
+      },
+      {
+        "text": "Leaving so soon? We were only getting to know you.",
+        "rank": null
+      },
+      {
+        "text": "Walk away from me? Nobody walks away from the stone.",
+        "rank": null
+      },
+      {
+        "text": "Quiet one. We like quiet. Quiet is how we got this close.",
+        "rank": null
+      },
+      {
+        "text": "Shy? Never mind. I already know all I need to about you.",
+        "rank": null
+      },
+      {
+        "text": "No answer? Fine. I've waited in walls for years. I won't wait on you.",
+        "rank": null
+      },
+      {
+        "text": "Turning your back on a stranger. You'll learn. Briefly.",
+        "rank": null
+      }
+    ]
+  }
+}

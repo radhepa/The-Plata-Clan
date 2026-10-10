@@ -1,0 +1,116 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+
+// The Plata Clan is an add-on: it needs Village Friends to run (Village Friends never needs it).
+// It compiles against a released Village Friends jar, found in this order:
+//   -PvillageFriendsJar=<path>, then libs/village-friends-*.jar, then the newest
+//   village-friends-*.jar in the VillageFriends launcher instance's mods folder.
+def findVillageFriends = {
+	if (project.hasProperty('villageFriendsJar')) return file(project.property('villageFriendsJar'))
+	def pick = { File dir ->
+		if (!dir.isDirectory()) return null
+		def jars = dir.listFiles().findAll { it.name ==~ /village-friends-[0-9.]+\.jar/ }
+		jars ? jars.max { it.lastModified() } : null
+	}
+	def appData = System.getenv('APPDATA')
+	return pick(file('libs')) ?: (appData ? pick(new File(appData, '.minecraft/instances/VillageFriends/mods')) : null)
+}
+def villageFriends = findVillageFriends()
+if (villageFriends == null || !villageFriends.isFile()) {
+	throw new GradleException("Village Friends jar not found. Put village-friends-<version>.jar in libs/ or pass -PvillageFriendsJar=<path>.")
+}
+
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		"plataclan" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+
+	runs {
+		configureEach {
+			// ./gradlew runClientGameTest -PplataTests=Reveal,Combat runs only the named client tests.
+			if (project.hasProperty('plataTests')) {
+				vmArg "-Dplataclan.tests=${project.property('plataTests')}"
+			}
+			if (project.hasProperty('testHeap')) {
+				vmArg "-Xmx${project.property('testHeap')}"
+			}
+		}
+		client { programArgs '--username', 'PlataTester' }
+	}
+}
+
+fabricApi {
+	configureTests {
+		// Client game tests drive the real game and save screenshots: gradlew runClientGameTest
+		createSourceSet = true
+		modId = "plataclan-gametest"
+		enableGameTests = false
+		enableClientGameTests = true
+		eula = true
+	}
+}
+
+// gradlew runClientGameTest -PcompatMods=<folder> also loads the mod jars in <folder> (e.g. the
+// VillageFriends instance's mods folder) so the tests run inside the real modpack. Fabric API, Village
+// Friends (already on the classpath) and this mod's own jar are skipped.
+def gameTestMods = rootProject.file('build/run/clientGameTest/mods')
+tasks.named('runClientGameTest') {
+	doFirst {
+		def mods = gameTestMods
+		delete(fileTree(mods) { include '*.jar' })
+		if (project.hasProperty('compatMods')) {
+			copy {
+				from(project.property('compatMods')) {
+					include '*.jar'
+					exclude 'fabric-api*', 'village-friends-*', 'plata-clan*'
+				}
+				into mods
+			}
+			println "Compat run with: " + fileTree(mods).files*.name.sort()
+		}
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	implementation files(villageFriends)
+
+	testImplementation "org.junit.jupiter:junit-jupiter:5.11.4"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+test {
+	useJUnitPlatform()
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_plataclan" }
+	}
+}

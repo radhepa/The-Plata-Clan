@@ -1,0 +1,45 @@
+# The Plata Clan: reply button labels (the player's side of the talk). 32 characters at most, no placeholders.
+# They sit under any disguise greeting, so every label must make sense after every greeting.
+# disguise.reply.*: the player answers a disguised traveller. The kind picked (polite, curious, suspicious)
+# chooses which reveal.taunt pool the Plata answers from.
+# kin.reply: the player wears a Plata Mask and a disguised Plata has just whispered to them as kin.
+
+[disguise.reply.polite]
+Just passing through.
+Good day to you, friend.
+Pleased to meet you.
+Safe travels to you.
+I'd best be on my way.
+Do you need any help?
+Care to share my bread?
+Kind of you to say so.
+Take care out here.
+
+[disguise.reply.curious]
+What brings you out here?
+Where are you headed?
+Where do you hail from?
+What's your trade, then?
+Which village is yours?
+How long have you been here?
+Have we met before?
+What did you mean by that?
+Do you live near here?
+
+[disguise.reply.suspicious]
+You seem... off.
+Why are you out here alone?
+Something isn't right here.
+Keep your distance.
+Who sent you?
+Show me your hands.
+No villager talks like that.
+Why were you waiting for me?
+How do you know so much?
+
+[kin.reply]
+We are in the stone.
+I'll pass the word along.
+Tell me of the Mother.
+Quiet. Someone's coming.
+Keep the count.

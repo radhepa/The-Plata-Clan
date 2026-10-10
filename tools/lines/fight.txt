@@ -1,0 +1,108 @@
+# The Plata Clan: lines during the fight. Spoken as a speech line, so keep each short (90 characters at most).
+# A line may start with a rank tag to belong to one rank only: {scuttler}, {shardcaster} or {warden}.
+# Untagged lines are for every rank. Every rank must still have the pool's minimum to pick from.
+# Scuttler: twin fang knives, fast and cocky. Shardcaster: throws silver shards (their own scales), keeps away.
+# Molt Warden: an elder with the Silvertail whip; heavy, slow to speak, calls the little ones out of the earth.
+# Placeholders: {player}, {name}, {rank} (Scuttler / Shardcaster / Molt Warden).
+
+[fight.burrow]
+Into the stone!
+Mind your feet.
+Down I go. Guess where I come up.
+Feel that rumble? That's me.
+The ground is ours, stone-breaker.
+Can't hit what's under you.
+Under you. Always under you.
+You dig for a living? Watch how it's really done.
+Back into the walls!
+Listen for the scratching.
+{scuttler}Knives first. The rest of me after.
+{shardcaster}Too close, much too close. Bye now!
+{warden}Brace yourself. I come up heavy.
+
+[fight.hurt]
+Ngh! You'll pay for that in scales.
+Lucky. You won't be lucky twice.
+Is that how you crack stone? Hard and stupid?
+That stung. I'll remember it. We remember everything.
+You've had practice hitting small things, haven't you?
+Again? Go on. There are plenty more of us.
+Ow! That's going on your count.
+Hit me all you like. Stone doesn't bruise.
+Oof. Good arm. Pity about the rest of you.
+Hah! Is that all a pick-arm's good for?
+{scuttler}Fine. No more dancing.
+{shardcaster}My scales! Do you know how long those take to grow?
+{warden}A Warden doesn't fall to one swing, child.
+
+[fight.molt]
+Enough skin. Let's see the real me.
+You've cracked the shell. Now meet what's inside.
+Off it comes. All of it. Every scrap.
+Molt and swarm! Molt and swarm!
+Nothing left to hide. That's when we're at our worst.
+Lighter now. Faster now. Worse for you.
+The Mother sheds her skin each winter. Now I shed mine.
+You wanted to see the silverfish? Here it is.
+{warden}Out of the old skin, into the old fury.
+
+[fight.call]
+Little ones! Wake up!
+Come out, come out. Someone here knows your family.
+Cousins in the wall! To me!
+You know these ones. You've met their families. Under your boot.
+Up from the stone, little silver!
+Out of the walls! Supper's standing right there.
+Swarm, little ones. This one's on the count.
+Remember them? They remember you.
+{warden}Crack the stone and see who's home!
+
+[fight.dodge]
+Too slow.
+Missed. Again.
+You swing like a miner. Straight down and dull.
+Here? No, here.
+We don't stand still to be crushed.
+Like swatting at a crack in the wall.
+Hit where I'm going, not where I was.
+Silverfish don't get stepped on twice.
+{scuttler}Ooh, close. Not close enough.
+{shardcaster}Keep your distance. I'll keep mine.
+
+[fight.win]
+Down you go. The stone has you now.
+One for our side of the count, at last.
+Lie still. Now you know how it feels.
+Sleep, stone-breaker. The little ones will tidy up.
+Tell your bed what happened. Then stay out of our stone.
+You fell like a cracked block. Very satisfying.
+Next time, step around the small things.
+Tell them a {rank} did this. Tell everyone.
+That's one. We're a patient people. We have time for the rest.
+
+[fight.flee]
+Run, then. We're under every road you take.
+Far enough? Nothing is far enough.
+Go on. We'll find you by the noise you make digging.
+Fine. The count keeps.
+You can leave this place. You can't leave the stone.
+Running back to your tunnels? We'll be there first.
+Another day, {player}. We know your name now.
+I'll tell the others you were quick. They'll want to see for themselves.
+
+[defeat]
+We are... in the stone...
+Crush one... there's always another.
+Count me, then. Someone's counting you.
+Back to the wall... back to the dust...
+The Mother... will feel this...
+You only broke the shell.
+Fine. Fine. Dust it is.
+Grey to grey... stone to stone...
+You'll find us in every wall you break.
+Not the last. Never the last.
+Somewhere under your house... someone heard that.
+Curl up... go quiet... like the little ones do...
+{scuttler}Should have... stayed a villager...
+{shardcaster}Out of scales... out of... everything...
+{warden}A Warden falls... and a hundred Scuttlers wake.

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "plataclan:plata_scuttler",
+    "plataclan:plata_shardcaster",
+    "plataclan:plata_warden"
+  ]
+}

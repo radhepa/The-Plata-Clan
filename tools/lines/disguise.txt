@@ -1,0 +1,94 @@
+# The Plata Clan: disguise greetings, the one line a disguised Plata says when the conversation window opens.
+# On first read each must pass for a friendly villager on the road. On a re-read, something is a little wrong:
+# too interested in where you're headed, stone, silver, "little ones", counting, walls, the dark under things,
+# knowing too much about you. Never say "silverfish" or "Plata" here. Never assume rain, a clear sky or the hour
+# (the line can show at any time). 1-3 sentences.
+# Pools by biome group: sand (desert, badlands), stone (peaks, windswept hills, other stone country),
+# green (plains, forest, meadow, roads), cold (snow, ice, taiga). The "any" pool mixes into every group.
+# Placeholders: {player}, {name} (the disguise name). Use sparingly.
+# Format: [pool.name] starts a pool; one entry per line; # starts a comment. Compile with build_lines.py.
+
+[disguise.greet.sand]
+Hot enough to bake bread on the rocks, isn't it? You'd think nothing could live out here. You'd be surprised what keeps cool under the sand.
+Every grain of this sand was a stone once, you know. Somebody broke it. Somebody's always breaking something.
+Water? Kind of you, but no. I don't need much. Never have.
+Mind the dunes, friend. Folk come out here digging for the old temples, and the ground remembers who dug.
+Good day! Where are you bound? East? West? Down?
+You've sand in your boots and stone dust on your sleeves. Busy hands, for a walker.
+The badlands keep their colours in stripes, one stripe for every year. I like a land that keeps count.
+I'd offer you shade, but the only shade out here is underneath things. It's very pleasant, underneath things.
+Watch out for husks, and for holes. Mostly the holes. You never know who's at the bottom of one.
+Funny, meeting someone in all this empty. I'm told I'm hard to spot. Grey on gold, you'd think it would be easy.
+You walk heavy, traveller. Out here the sand carries every footstep a long way down.
+Sandstone, they call it. As if the stone's gone soft and sleepy in the sun. It hasn't. It's only waiting.
+Lost in the dunes? No shame in it. The dunes wander about. The stone underneath never does, and neither do some of us.
+Ho there! Come for the cactus fruit, or the buried rooms? Everyone comes for the buried rooms, sooner or later.
+
+[disguise.greet.stone]
+Steep climb, isn't it? Catch your breath. The mountain isn't going anywhere, and neither is anything inside it.
+Careful on this stretch. Some of the stone up here is rotten. It breaks far too easily, and what's inside isn't always rock.
+Lovely view, this. You can see every hole anyone's ever dug in that hillside. I like to know where they all are.
+That's a fine pick on your belt. Well worn, too. I'd love to hear where it's been.
+The goats won't come near this bit of the pass. Clever animals, goats. They can hear the stone breathing.
+Up from the caves, were you? They run for miles under here. Ever wonder who's down in them while you're up top?
+Sit, if you like. Not on that rock. Or that one. They're spoken for.
+Mind your step. Every stone up here is somebody's home. My mother always said so, and she'd know.
+You came up the long way, over the top. Most folk just tunnel straight through these days, whatever's in the way.
+Grey rock, grey sky, grey old me. I blend right in, don't I? Ha! Sit a while.
+People get lost up here all the time. The mountain never loses anyone, mind. It knows exactly where they all are.
+Hello, friend. Don't mind the grit on my coat. The wind blows it about. Mostly the wind.
+These hills are hollow, you know. Full of little rooms, full of little lives. Best walk softly.
+
+[disguise.greet.green]
+A friendly face on a quiet road! You'd be surprised how many folk walk straight past me and never notice I'm here.
+Good road for walking, this. Some folk cut right through the hills instead. Rude to the hills, I always think.
+Hello! I've been watching the road a good long while. You're the first one along who looked interesting.
+Fine old woods. Old stumps, old stones. I like to turn the stones over and see who's living underneath.
+Mind the path, it's full of beetles. Little things. I never step on little things. Do you?
+Grand old trees, these. Their roots go right down into the stone and hold on. Some things hold on whatever you do to them.
+You came from the village back there, didn't you? The one with the stone well. Lovely well. Deep. I know it from the bottom up.
+Where's the road taking you, friend? Somewhere with a cellar, I hope. I'm very fond of cellars.
+Pretty meadow, isn't it? Not a stone in it, if you don't look closely. There's always a stone, if you look closely.
+A walker's legs and a miner's hands. That's an unusual pair, friend. Which do you use more?
+Have you come far? Over the hills, or under them?
+Stop a while, stop a while! The flowers don't mind. The bees don't mind. Nothing out here minds me at all.
+Bless you for stopping. Most travellers on this road are in such a hurry to get underground.
+
+[disguise.greet.cold]
+Brr! Come stand by me, out of the wind. I don't feel the cold much myself. I grew up somewhere colder. And darker.
+Snow hides everything, doesn't it? Footprints, holes, old stones, people. I find it very restful.
+Out in this, on foot? You must be on an errand. Or digging for something. Which is it?
+I'd offer you a fire, but I've nothing to burn, and I don't much care for the light anyway.
+Don't mind the frost on me, I've been standing here a while. Waiting for the weather to turn. Or for somebody.
+The spruce folk say the ground freezes solid in winter. It doesn't, you know. Not all the way down. Things keep moving down there.
+Lost in all this white? Stay close. I know every stone under this snow. I've counted them.
+Cold hands? Tuck them in your sleeves. I keep mine in mine. I keep a lot of things in my sleeves.
+A long way from any hearth, aren't we? The two of us, out here, with nobody to see.
+Listen. The snow's so quiet you can hear the whole world under it, if you lie still. Scratching away.
+Fine furs. And a fine pick, too, chipped right down to the haft. A busy winter, was it?
+Ho there! I was starting to talk to the stones. They don't answer. Not so anyone up here could hear, anyway.
+Careful on the ice, friend. It cracks long before it breaks. Most things do, if you've the ears for it.
+
+[disguise.greet.any]
+Good day! Don't mind me, I'm only resting my legs. All of them.
+Oh, hello! You're the first soul I've seen in days. The first one walking upright, anyway.
+Hello, friend. Where are you headed? No, truly, I'd like to know. Exactly where.
+Well met. I'm {name}. Just a wanderer. Nobody in particular. That's rather the point of me.
+Don't mind me, I'm only waiting. For what? Oh, nothing much. Someone like you, perhaps.
+Lovely to meet you. I'd shake your hand, but you never know where a hand's been. Yours, for instance. Underground, mostly.
+Funny, I was only just thinking about you. Well, not you. Someone very like you. With a pick.
+Mind how you go, friend. Lots of holes about these days. Lots of people making them.
+On your own, are you? Nobody waiting for you anywhere? Ah. Good to know.
+Good day, {player}. Hm? Oh, I must have heard it somewhere. Folk talk about you. Little folk.
+Did you sleep well? I never sleep well above ground. Out of doors, I mean. Out in the open.
+Hello! I'm just a simple villager out on a simple walk, thinking simple thoughts. What are yours?
+Ever get the feeling something's watching you from the walls? No? Never mind. A pleasure to meet you.
+Greetings! I've been counting the travellers on this road. You make... well. It's a number. Never mind the number.
+You've come a long way, I can tell. Heels worn through, and you favour your left side. Sorry. I notice things.
+Isn't it nice, being out in the open? Some find it a bit bright. Not me. I love it. Truly I do.
+Oh, good, company. Tell me, do you do much mining? Only curious. Everybody has a hobby.
+Peace, friend, I'm harmless. Small and harmless. Ask anyone who ever stepped on me.
+Mind if I walk with you a while? I'm good company. Quiet. You'll hardly know I'm there. Nobody ever does.
+Strange to meet a stranger out here. I suppose you're thinking the same of me. Only one of us is right.
+What a lucky meeting, out here in the middle of nowhere. Lucky for one of us, anyway.
+Bless me, a traveller! Sit, sit. Not on the stones, they're cold. Well. They're cold to you.

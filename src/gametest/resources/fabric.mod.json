@@ -1,0 +1,13 @@
+{
+	"schemaVersion": 1,
+	"id": "plataclan-gametest",
+	"version": "1.0.0",
+	"name": "The Plata Clan game tests",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-client-gametest": ["dev.plataclan.test.PlataClientTest"]
+	},
+	"depends": {
+		"plataclan": "*"
+	}
+}

@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "plataclan",
+	"version": "${version}",
+	"name": "The Plata Clan",
+	"description": "A Village Friends add-on. Out in the wild, a lone villager is waiting by the road. Talk to them and they shed their disguise: the Plata Clan, a silverfish-sworn order of ambushers whose level rises with yours.",
+	"authors": ["minal"],
+	"contact": {
+		"sources": "https://github.com/radhepa/The-Plata-Clan"
+	},
+	"license": "MIT",
+	"icon": "assets/plataclan/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": ["dev.plataclan.PlataClan"],
+		"client": ["dev.plataclan.client.PlataClanClient"]
+	},
+	"mixins": [
+		"plataclan.mixins.json",
+		{"config": "plataclan.client.mixins.json", "environment": "client"},
+		"plataclan.compat.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*",
+		"villagefriends": ">=2.26.0"
+	},
+	"suggests": {
+		"villagefriends_rpg": "*"
+	}
+}

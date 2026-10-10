@@ -1,0 +1,77 @@
+# The Plata Clan: the reveal. Spoken as the Plata springs out of the dust after the Molt.
+# reveal.taunt.<kind>: one short line, 90 characters at most (placeholders counted at their longest).
+#   polite      the player answered kindly; mock the manners
+#   curious     the player asked a question; answer it, villain-style (keep it general: any question)
+#   suspicious  the player saw something was off; grudging credit, then menace
+#   rude        the player struck the disguised traveller instead of talking (the blow did nothing)
+#   timeout     the player stood silent, closed the window or walked away
+# reveal.first: subtitle under the THE PLATA CLAN title card on a player's very first reveal. Creed-like, 60 max.
+# Placeholders: {player}, {name} (the disguise name they wore). No rank tags in these pools.
+
+[reveal.taunt.polite]
+Such lovely manners. The last stone-breaker had lovely manners too.
+Kind words! The little ones you crushed never got any.
+Polite to my face. And to all the faces under your boots?
+So courteous. I'll be courteous too. I'll make it quick. Mostly.
+A gentle one! It's always the gentle ones who swing hardest at small things.
+Good day to you too. It's about to get a good deal worse.
+You were nice. I was nice. Only one of us was lying.
+Sweet of you. Now hold still, stone-breaker.
+Manners won't save you, but I do admire them. Briefly.
+Thank you kindly. Now, shall we settle your count?
+
+[reveal.taunt.curious]
+You wanted to know about me? I was waiting for you. That's all I ever do.
+Questions, questions. Here's an answer: we are in the stone.
+Asking is a bad habit. Digging is a worse one. You do both.
+Want to know where I'm from? Under your feet. Always under your feet.
+Curious, are we? Then come and see what's under the skin.
+Want to know what I do? I count stone-breakers. You're next on the tally.
+Want to know who I am? Someone you've walked past a hundred times.
+Ask the walls about me. They'll tell you. They're full of us.
+Curious! Five miners were curious once. Look what it made of them.
+Here's one for free: you were never alone out here. Not once.
+
+[reveal.taunt.suspicious]
+Sharp eyes! Not sharp enough, but sharp.
+Off, am I? Well spotted. Pity it's too late to matter.
+Clever. Most never notice. Most never get the chance to.
+Suspicious? Good. Fear's the only manners a stone-breaker ever learns.
+You smelt the stone on me. Clever nose. Shame about the rest of you.
+Right you are. I'm no villager. Well. Not only.
+You saw through the stone. Now see what's under it.
+Trust your gut. It's telling you to run, and for once it's right.
+Caught out! Oh, I do hate that. I'll take it out on you.
+You knew, and you still came close. Brave, or just slow?
+{name}? There never was a {name}.
+
+[reveal.taunt.rude]
+Rude.
+Strike a stranger on the road? Now I know you're a stone-breaker.
+Swing first, ask never. Just the way you dig.
+That's how you greet folk? That's how you greet everything, isn't it?
+You can't crack this stone with one blow. It takes a few hundred, as you well know.
+Barbarian. A few kind words and I'd have let you live a little longer.
+Oh, we're skipping the talk? Suits me. I hate the talking part.
+Swinging at old folk on the road now? Lucky for you, I'm not old folk.
+Hit first, eh? That's the stone-breaker way. Now let me show you ours.
+You struck dust. Strike again; there's plenty more where that came from.
+
+[reveal.taunt.timeout]
+Nothing to say? Then let me do the talking.
+Silent? The stone's silent too, right before it bites.
+Leaving so soon? We were only getting to know you.
+Walk away from me? Nobody walks away from the stone.
+Quiet one. We like quiet. Quiet is how we got this close.
+Shy? Never mind. I already know all I need to about you.
+No answer? Fine. I've waited in walls for years. I won't wait on you.
+Turning your back on a stranger. You'll learn. Briefly.
+
+[reveal.first]
+We are in the stone. We were always in the stone.
+Small. Grey. Everywhere. And you never once looked down.
+Every stone you break, we count.
+You cannot stamp out what lives inside the world.
+Strike the stone, and the stone strikes back.
+We were here before your pick. We will be here after.
+Hidden in plain stone. Patient as the deep.

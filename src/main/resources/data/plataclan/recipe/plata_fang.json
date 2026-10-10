@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "result": {
+    "id": "plataclan:plata_fang",
+    "count": 1
+  },
+  "pattern": [
+    " SS",
+    " IS",
+    "T  "
+  ],
+  "key": {
+    "S": "plataclan:silver_scale",
+    "I": "minecraft:iron_ingot",
+    "T": "minecraft:stick"
+  }
+}
