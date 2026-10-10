@@ -41,7 +41,7 @@ import net.minecraft.world.phys.EntityHitResult;
  * The Plata Clan in a real game, with Village Friends: where a disguise turns up, the talk in Village
  * Friends' own window, the Molt (screenshots frame by frame), the three ranks, their moves, the
  * numbers in a fight, the mask, the rude reveal, death and loot, and (with -PcompatMods) the RPG.
- *   gradlew runClientGameTest -PtestHeap=2g [-PplataTests=Talk,Ranks,Moves,Fight,Mask,Rude,Death,Compat]
+ *   gradlew runClientGameTest -PtestHeap=2g [-PplataTests=Talk,Ranks,Moves,Fight,Mask,Rude,Death,Compat,Slayer]
  * Screenshots land in build/run/clientGameTest/screenshots.
  */
 @SuppressWarnings("UnstableApiUsage")
@@ -106,7 +106,7 @@ public class PlataClientTest implements FabricClientGameTest {
 
     @Override
     public void runTest(ClientGameTestContext ctx) {
-        if (List.of("Encounter", "Talk", "Ranks", "Moves", "Fight", "Mask", "Rude", "Death", "Compat").stream().noneMatch(PlataClientTest::wanted)) return;
+        if (List.of("Encounter", "Talk", "Ranks", "Moves", "Fight", "Mask", "Rude", "Death", "Compat", "Slayer").stream().noneMatch(PlataClientTest::wanted)) return;
         ctx.getInput().resizeWindow(1280, 800);
         ctx.runOnClient(client -> { client.options.guiScale().set(2); client.resizeGui(); });
         try (TestSingleplayerContext w = ctx.worldBuilder().adjustSettings(ui -> {
@@ -132,6 +132,7 @@ public class PlataClientTest implements FabricClientGameTest {
             if (wanted("Rude")) PlataScenes.rude(ctx, w);
             if (wanted("Death")) PlataScenes.death(ctx, w);
             if (wanted("Compat")) PlataScenes.compat(ctx, w);
+            if (wanted("Slayer")) MotherScenes.slayer(ctx, w);
         }
     }
 }

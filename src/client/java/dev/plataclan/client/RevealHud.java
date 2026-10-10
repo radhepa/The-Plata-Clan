@@ -16,14 +16,15 @@ import net.minecraft.util.Util;
 /**
  * What the clan says, on screen: a speech line above the hotbar (who's speaking, in silver, and what
  * they say), and on a player's first encounter a title card in the style of Village Friends' arrival
- * banner: the clan's mark, THE PLATA CLAN in large spaced letters, and the creed under a rule.
+ * banner: the clan's mark, THE PLATA CLAN in large spaced letters, and the creed under a rule. A Silver Mother gets
+ * the same card with her name when she rises, and again when she falls.
  */
 public final class RevealHud {
     private static final long CARD_IN = 600, CARD_HOLD = 3800, CARD_OUT = 1400;
     private static final int SILVER = 0xE6EAEE, PLATE = 0xA9B0B8, GLINT = 0xBFE6EE, SLATE = 0x24282D;
     private static final Identifier MARK = PlataClan.id("textures/gui/plata_mark.png");
 
-    private static String speaker, rank, line, cardLine;
+    private static String speaker, rank, line, cardLine, cardTitle = "THE PLATA CLAN";
     private static long lineStart, lineLength, cardStart;
 
     private RevealHud() {}
@@ -38,7 +39,9 @@ public final class RevealHud {
         lineLength = 2600 + 45L * text.length();
     }
 
-    public static void card(String text) {
+    /** A title card: {@code title} in large spaced capitals (THE PLATA CLAN, or a Silver Mother's name), the line under it. */
+    public static void card(String title, String text) {
+        cardTitle = title;
         cardLine = text;
         cardStart = Util.getMillis();
         var client = Minecraft.getInstance();
@@ -49,6 +52,7 @@ public final class RevealHud {
     /** Tests: what's on screen. */
     public static String showing() { return line; }
     public static String card() { return cardLine; }
+    public static String cardTitle() { return cardTitle; }
 
     private static float ease(float t) { t = Math.clamp(t, 0F, 1F); return t * t * (3 - 2 * t); }
     private static int argb(float alpha, int rgb) { return Math.round(Math.clamp(alpha, 0F, 1F) * 255) << 24 | rgb; }
@@ -86,7 +90,7 @@ public final class RevealHud {
         float alpha = Math.min(in, out);
         if (alpha <= .02F) return;
         int w = g.guiWidth(), h = g.guiHeight(), cx = w / 2;
-        String title = "THE PLATA CLAN";
+        String title = cardTitle;
         float scale = Math.clamp(w * .6F / Math.max(1, spacedWidth(font, title)), 1.5F, 3.5F);
         int titleH = Math.round(font.lineHeight * scale);
         int top = Math.round(h * .2F) + Math.round((1 - in) * 6);

@@ -27,7 +27,7 @@ import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
 import net.minecraft.world.level.block.entity.BannerPattern;
 
-/** Silver Scales, the thrown shard, the Plata Fang knife, the Plata Mask and a spawn egg per rank. */
+/** Silver Scales, the thrown shard, the Plata Fang knife, the Plata Mask, a Mother's crest and the spawn eggs. */
 public final class PlataItems {
     private PlataItems() {}
 
@@ -46,6 +46,9 @@ public final class PlataItems {
     public static final Item SCUTTLER_EGG = register("plata_scuttler_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(PlataEntities.SCUTTLER));
     public static final Item SHARDCASTER_EGG = register("plata_shardcaster_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(PlataEntities.SHARDCASTER));
     public static final Item WARDEN_EGG = register("plata_warden_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(PlataEntities.WARDEN));
+    public static final Item MOTHER_EGG = register("silver_mother_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(PlataEntities.SILVER_MOTHER));
+    /** What a Silver Mother leaves when she falls: her crest, named for her. A trophy. */
+    public static final Item MOTHER_CREST = register("mother_crest", Item::new, new Item.Properties().stacksTo(1).rarity(Rarity.EPIC).fireResistant());
     public static final TagKey<BannerPattern> MARK_PATTERN = TagKey.create(Registries.BANNER_PATTERN, PlataClan.id("pattern_item/plata_mark"));
     /** The clan's mark for a loom: found in hideouts. */
     public static final Item PLATA_MARK_PATTERN = register("plata_mark_banner_pattern", Item::new,
@@ -68,7 +71,7 @@ public final class PlataItems {
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(out -> out.accept(PlataBlocks.SILVER_HUSK_ITEM));
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(out -> { out.accept(PLATA_FANG); out.accept(PLATA_MASK); });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(out -> {
-            out.accept(SCUTTLER_EGG); out.accept(SHARDCASTER_EGG); out.accept(WARDEN_EGG);
+            out.accept(SCUTTLER_EGG); out.accept(SHARDCASTER_EGG); out.accept(WARDEN_EGG); out.accept(MOTHER_EGG);
         });
     }
 }

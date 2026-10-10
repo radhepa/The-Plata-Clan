@@ -22,11 +22,17 @@ public final class PlataClips {
     private PlataClips() {}
 
     public static final String MOLT = "plataclan.plata:molt";
-    private static Map<String, AnimationClip> moves;
+    private static Map<String, AnimationClip> moves, mother;
 
     public static @Nullable AnimationClip move(String id) {
-        if (moves == null) moves = load();
+        if (moves == null) moves = load("plata");
         return id == null ? null : moves.get(id);
+    }
+
+    /** The Silver Mother's clips ({@code plata_moves/mother.json}). */
+    public static @Nullable AnimationClip mother(String id) {
+        if (mother == null) mother = load("mother");
+        return id == null ? null : mother.get(id);
     }
 
     /** The resident Molt clip from Village Friends' current animation library. */
@@ -35,15 +41,15 @@ public final class PlataClips {
         return library == null ? null : library.clip(MOLT);
     }
 
-    private static Map<String, AnimationClip> load() {
-        String path = "/assets/plataclan/plata_moves/plata.json";
+    private static Map<String, AnimationClip> load(String file) {
+        String path = "/assets/plataclan/plata_moves/" + file + ".json";
         Map<String, AnimationClip> out = new HashMap<>();
         try (InputStream in = PlataClips.class.getResourceAsStream(path)) {
             if (in == null) {
                 PlataClan.LOG.error("Missing {}: the clan will fight without their moves", path);
                 return out;
             }
-            AnimationPack pack = AnimationPack.parse("plataclan.moves", JsonParser.parseReader(new InputStreamReader(in, StandardCharsets.UTF_8)).getAsJsonObject());
+            AnimationPack pack = AnimationPack.parse(file.equals("plata") ? "plataclan.moves" : "plataclan." + file, JsonParser.parseReader(new InputStreamReader(in, StandardCharsets.UTF_8)).getAsJsonObject());
             for (AnimationClip c : pack.clips()) out.put(local(c.id()), c);
         } catch (Exception e) {
             PlataClan.LOG.error("Couldn't read {}", path, e);

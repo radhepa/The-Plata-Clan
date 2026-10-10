@@ -60,11 +60,12 @@ import net.minecraft.world.phys.Vec3;
  * and the banners, then sleepers woken by a survival player, the cap on how many are up, and the
  * shells sealing again when the player leaves. A block dump of the Warren goes to hideout_dump/ for the
  * offline cutaway (tools/hideouts/cutaway.py).
- *   gradlew runClientGameTest -PplataTests=Hideouts,Sleepers,Palettes
+ * The Silver Mother in the Warren's vault is MotherScenes.mother.
+ *   gradlew runClientGameTest -PplataTests=Hideouts,Sleepers,Palettes,Mother
  */
 @SuppressWarnings("UnstableApiUsage")
 public class HideoutClientTest implements FabricClientGameTest {
-    static final List<String> SCENES = List.of("Hideouts", "Sleepers", "Palettes");
+    static final List<String> SCENES = List.of("Hideouts", "Sleepers", "Palettes", "Mother");
 
     @Override
     public void runTest(ClientGameTestContext ctx) {
@@ -97,6 +98,7 @@ public class HideoutClientTest implements FabricClientGameTest {
             }
             if (wanted("Sleepers")) sleepers(ctx, w, warren);
             if (wanted("Palettes")) palettes(ctx, w);
+            if (wanted("Mother")) MotherScenes.mother(ctx, w, warren);
         }
     }
 

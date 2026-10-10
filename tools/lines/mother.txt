@@ -1,0 +1,135 @@
+# After a Mother falls: every Plata out in the wild knows who killed her. {mother} is the Mother the player killed
+# most recently, as "Mother Ysolde". Placeholders: {player}, {name} (the member's disguise name), {rank}.
+#
+# mother.greet: a disguised traveler's opening line in Village Friends' window. Still in disguise, but they know you.
+# mother.reply.proud / .sorry / .deny: the player's reply buttons (32 characters at most).
+# After the reply they Molt as usual. Some fight to avenge her (mother.avenge); the rest let you be (mother.yield):
+# they stand there revealed and you can talk to them (truce.txt) until they go back into the stone (mother.leave).
+# Hit one who let you be and they fight after all (mother.provoked).
+# mother.sleeper: a hideout sleeper bursting out at the one who killed a Mother. mother.grief: a garrison member who
+# sees their own Mother fall. kin.mother: whispered to a Mother's killer who wears a Plata Mask (they don't know it's you).
+# A line in mother.avenge, .yield or .sleeper may start with {scuttler}, {shardcaster} or {warden}.
+
+[mother.greet]
+Funny thing. The rocks have been whispering about a traveler who went down an old stair and came back up alone.
+Out here? On your own? After what you did to {mother}? Brave. Or stupid.
+I know that walk. You've been somewhere deep, haven't you? Somewhere a Mother sleeps.
+Everyone on this road has heard about {mother}. Everyone. Did you know that?
+You've got silver dust on your boots. Old silver. I'd know it anywhere.
+Strange times. They say {mother} went cold. They say someone helped her along.
+Sit a while, {player}. I've been waiting to see your face since {mother} fell.
+Don't mind me. I'm only a traveler. A traveler who knew {mother}.
+They're singing about you in the walls, {player}. Not kindly.
+You're the one, aren't you? The one who went down to {mother}.
+Fine weather today. Was it fine weather when you killed {mother}?
+I won't pretend I don't know you. {mother}'s killer has a certain look about them.
+
+[mother.reply.proud]
+I did. And I'd do it again.
+She had it coming.
+Yes. I killed her.
+She fought well. I did better.
+What of it?
+And you're next, if you like.
+
+[mother.reply.sorry]
+I didn't want to.
+She gave me no choice.
+I'm sorry for it.
+It was her or me.
+I wish it had gone another way.
+I didn't know what she was.
+
+[mother.reply.deny]
+I don't know what you mean.
+Never heard of her.
+You've got the wrong traveler.
+Mother who?
+That wasn't me.
+I've never been underground.
+
+[mother.avenge]
+You killed {mother}, prepare to die.
+For {mother}!
+This is for {mother}. All of it.
+{mother} raised me from the husk. You'll answer for her.
+The stone remembers {mother}. So will you, briefly.
+You took {mother}. I'm taking you.
+I've waited on this road for you since {mother} fell.
+{mother} is cold because of you. Let's even that.
+No truce, {player}. Not for {mother}'s killer.
+The count has one name at the top now. Yours.
+Every wall weeps for {mother}. Let's give them something to cheer.
+I owe {mother} a stone-breaker. You'll do.
+The others may let you walk. I'm not the others.
+Mother-killer. Say it to my face, then.
+{scuttler}Knives out for {mother}!
+{shardcaster}Every scale I throw has {mother}'s name on it.
+{warden}I knelt to {mother} for twenty winters. Kneel to me.
+
+[mother.yield]
+{mother} is in the stone now. I won't follow her there today.
+Anyone who can best {mother} can walk where they like. Go on.
+I'm no fool, {player}. I saw what was left of the Hollow.
+Keep your blade down and I'll keep mine down. Talk, if you want.
+{mother} fought you and lost. I'd lose faster.
+The clan's law: whoever fells a Mother walks free a season. Lucky you.
+I won't fight you. I won't forgive you either.
+You've nothing to fear from me today. Ask what you like.
+I loved {mother}. I like breathing more.
+Fine. You win. Talk to me, then, before I change my mind.
+Put it away. I'm not here to die for {mother}.
+The stone's quieter since {mother} went. Strange. Peaceful, almost.
+Let's not. I've seen enough shells crack this season.
+You killed {mother}. You can have the road. I'll keep my life.
+{scuttler}Knives away. You've won. This time.
+{shardcaster}Keep your distance and I'll keep mine. Friendly-like.
+{warden}I've buried one Mother this year. I won't bury myself as well.
+
+[mother.provoked]
+So that's how it is. Fine.
+I offered you the road. You wanted the stone.
+Truce over. Your choice, not mine.
+You'd strike someone who let you be? {mother} was right about your kind.
+Fine. For {mother}, then.
+Wrong answer, {player}.
+I gave you mercy. You gave me a reason.
+Then let's finish what {mother} started.
+
+[mother.leave]
+The stone's calling. Don't follow.
+That's all you get. Into the dust I go.
+Mind the road, {player}. Not all of us are as kind.
+I'll tell them I saw you. I'll tell them you talked.
+Go well, stone-breaker. Go far.
+Enough talk. The walls are waiting.
+Don't come looking. You won't like who you find.
+Back to the stone. Remember me kindly, or don't.
+
+[mother.sleeper]
+It's the one who killed {mother}! Up, all of you!
+{mother}'s killer, in our burrow? Shells off!
+You came to do here what you did to {mother}. Not while I'm awake.
+Wake up! The stone-breaker who killed {mother} is here!
+I dreamt of you. You had {mother}'s dust on your hands.
+Not another Mother. Not this one. Not while I breathe.
+They warned us. {mother}'s killer comes down every stair.
+Up, up! Guard the Hollow!
+
+[mother.grief]
+Mother? MOTHER!
+No. No, no, no.
+The Hollow's gone cold...
+She's... she's in the stone.
+What have you done?
+Mother, wait for us!
+
+[kin.mother]
+Kin. You've heard? Someone went down to {mother}'s hollow and killed her. Watch the stairs.
+Keep your mask on tight. There's a stone-breaker about who murdered {mother}.
+If you see {mother}'s killer, kin, don't be brave. Send word through the walls.
+They say the one who killed {mother} walks this very road. I'm almost hoping to meet them.
+Grim days, kin. {mother} in the stone, and her killer walking free.
+Did you feel it when {mother} went? Like the whole hill shivered.
+Keep your eyes open. {mother}'s killer won't be wearing a mask, I'd wager.
+The Hollow's quiet without {mother}. I keep listening for her.

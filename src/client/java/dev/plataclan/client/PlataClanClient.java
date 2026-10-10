@@ -12,7 +12,10 @@ import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 
-/** Models and renderers for the three ranks and the shard, the speech line and title card, and the talk window hooks. */
+/**
+ * Models and renderers for the three ranks, the shard and the Silver Mother, the speech line and title cards, the
+ * talk window hooks, and the truce window.
+ */
 public final class PlataClanClient implements ClientModInitializer {
     /** The resident whose disguise talk is open on this client, or -1. */
     private static int talking = -1;
@@ -25,11 +28,18 @@ public final class PlataClanClient implements ClientModInitializer {
             EntityRendererRegistry.register(PlataEntities.of(rank), (EntityRendererProvider.Context ctx) -> new PlataRenderer(ctx, rank));
         }
         EntityRendererRegistry.register(PlataEntities.SILVER_SHARD, ThrownItemRenderer::new);
+        ModelLayerRegistry.registerModelLayer(Geometry.layer(MotherRenderer.ID), () -> Geometry.load(MotherRenderer.ID));
+        EntityRendererRegistry.register(PlataEntities.SILVER_MOTHER, MotherRenderer::new);
         RevealHud.register();
 
         ClientPlayNetworking.registerGlobalReceiver(PlataNet.Speech.TYPE, (payload, context) -> {
-            if (payload.card()) RevealHud.card(payload.text());
+            if (!payload.card().isEmpty()) RevealHud.card(payload.card(), payload.text());
             else RevealHud.speech(payload.speaker(), payload.rank(), payload.text());
+        });
+        // A Plata who lets a Mother's killer be has something to say.
+        ClientPlayNetworking.registerGlobalReceiver(PlataNet.TruceTalk.TYPE, (payload, context) -> {
+            if (context.client().gui.screen() instanceof TruceScreen open && open.entityId() == payload.entityId()) open.update(payload);
+            else context.client().gui.setScreen(new TruceScreen(payload));
         });
         ClientPlayNetworking.registerGlobalReceiver(PlataNet.TalkOpened.TYPE, (payload, context) -> talking = payload.entityId());
         ClientPlayNetworking.registerGlobalReceiver(PlataNet.CloseTalk.TYPE, (payload, context) -> {

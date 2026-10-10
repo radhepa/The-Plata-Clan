@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "plataclan:item/silver_mother_spawn_egg"
+  }
+}

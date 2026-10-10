@@ -104,7 +104,8 @@ def write_json(rel: str, data: dict):
 
 
 ITEMS = ["silver_scale", "silver_shard", "plata_fang", "plata_mask",
-         "plata_scuttler_spawn_egg", "plata_shardcaster_spawn_egg", "plata_warden_spawn_egg"]
+         "plata_scuttler_spawn_egg", "plata_shardcaster_spawn_egg", "plata_warden_spawn_egg",
+         "silver_mother_spawn_egg", "mother_crest"]
 HANDHELD = {"plata_fang"}
 
 
@@ -260,6 +261,28 @@ def spawn_egg(accent) -> Image.Image:
     return img
 
 
+# -- a Silver Mother's crest ---------------------------------------------------------------------------
+# What she leaves when she falls: a heraldic shell plate rimmed in tarnished bronze, the clan mark on it in cold light.
+CREST_HW = {1: 4, 2: 5, 3: 6, 4: 6, 5: 6, 6: 6, 7: 6, 8: 6, 9: 6, 10: 5, 11: 4, 12: 3, 13: 2, 14: 1}
+CREST_MARK = ["F...F", ".HHH.", "AAAAS", "BBBBS", "AAAAS", ".BBS.", "..A..", ".F.F."]
+
+
+def mother_crest() -> Image.Image:
+    img = Image.new("RGBA", (16, 16), CLEAR)
+    inside = {(x, y) for y, hw in CREST_HW.items() for x in range(8 - hw, 8 + hw)}
+    for (x, y) in inside:
+        rim = any((x + dx, y + dy) not in inside for dx, dy in N4)
+        d = x + y
+        if rim:
+            c = WARDEN[2] if d <= 10 else WARDEN[1] if d <= 18 else WARDEN[0]
+        else:
+            c = SILVER[3] if d <= 9 else SILVER[2] if d <= 16 else SILVER[1]
+        img.putpixel((x, y), hexc(c))
+    paint(img, 6, 4, CREST_MARK, {"F": GLINT[1], "H": GLINT[1], "A": GLINT[0], "B": SLATE[2], "S": SLATE[1]})
+    img.putpixel((4, 3), hexc(SILVER[4]))
+    return outline(img)
+
+
 # -- the mask as worn (vanilla humanoid armour sheet, 64x32) ------------------------------------------
 # Head box net at UV (0,0): top (8,0), right (0,8), front (8,8), left (16,8), back (24,8). Faces are
 # drawn as seen from outside. Front: 4 overlapping bands, glyph on the brow, eye slits in the gap
@@ -381,6 +404,10 @@ def build() -> dict:
         name = f"plata_{rank}_spawn_egg"
         out[name] = spawn_egg(accent)
         save(out[name], ITEM_TEX, name)
+    out["silver_mother_spawn_egg"] = spawn_egg(GLINT)
+    save(out["silver_mother_spawn_egg"], ITEM_TEX, "silver_mother_spawn_egg")
+    out["mother_crest"] = mother_crest()
+    save(out["mother_crest"], ITEM_TEX, "mother_crest")
     out["worn_mask"] = worn_mask()
     save(out["worn_mask"], WORN_TEX, "plata_mask")
     out["icon"] = mod_icon()

@@ -1,6 +1,7 @@
 package dev.plataclan.entity;
 
 import dev.plataclan.item.PlataItems;
+import dev.plataclan.mother.SilverMother;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -39,7 +40,7 @@ public class SilverShard extends ThrowableItemProjectile {
 
     @Override
     protected boolean canHitEntity(Entity target) {
-        if (target instanceof PlataMember || target instanceof Silverfish || target instanceof Villager) return false;
+        if (target instanceof PlataMember || target instanceof SilverMother || target instanceof Silverfish || target instanceof Villager) return false;
         return super.canHitEntity(target);
     }
 

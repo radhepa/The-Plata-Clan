@@ -6,6 +6,7 @@ import dev.plataclan.disguise.Disguises;
 import dev.plataclan.entity.PlataEntities;
 import dev.plataclan.hideout.Hideouts;
 import dev.plataclan.item.PlataItems;
+import dev.plataclan.mother.Mothers;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.resources.Identifier;
@@ -30,6 +31,7 @@ public final class PlataClan implements ModInitializer {
         PlataItems.register();
         Hideouts.register();
         java.util.Objects.requireNonNull(Disguises.DISGUISE);
+        java.util.Objects.requireNonNull(Mothers.SLAIN);
         PlataNet.register();
         DisguiseEvents.register();
         CommandRegistrationCallback.EVENT.register((dispatcher, registries, environment) -> PlataCommands.register(dispatcher));

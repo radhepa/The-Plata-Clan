@@ -24,7 +24,7 @@ Ranks:
 | **Shardcaster** | A skirmisher who keeps you at arm's length | Fans of sharpened silver *shards* (thrown scales); burrows away when you close in |
 | **Molt Warden** | An elder enforcer, rare | The *Silvertail*: a segmented whip-flail built like a giant silverfish, plus a ground slam that shakes silverfish out of the earth |
 
-The **Silver Mother**, the founder whom nobody has seen, is left for later. The clan's hideouts are in §10.
+One of the five who sat down in the dust became the first **Silver Mother**. Every Warren has had a Mother since: the oldest of the clan there, who no longer goes out on the road. The clan's hideouts are in §10, the Silver Mothers in §11.
 
 ## 2. The encounter
 
@@ -256,7 +256,7 @@ The clan lives the way the silverfish taught it: inside the stone, under somethi
 | The Brood | infested rubble, cobwebs, a silverfish spawner on a tuff plinth | 1 |
 | Shrine of the First Molt | the mark upright on the back wall, a dais of candles | 2 |
 | Storeroom | barrels, sacks, hay, two chests of stores | 1 |
-| Coffer Vault (always, behind the hall) | an iron-barred antechamber, the mark in the floor, the elder's husk on a dais over the **Clan Coffer** | 2 + the elder |
+| Coffer Vault (always, behind the hall) | an iron-barred antechamber, a stair 8 blocks down, then the Hollow: a 21×21 ribbed chamber, six calcite pillars, the mark in the floor, the empty shells of the Mother's brood along the walls, and her dais over the **Clan Coffer** | 2 + the elder + the **Silver Mother** (§11) |
 
 **Sleepers.** Members sleep standing up in **silver husks**: their own shed shells, two blocks tall.
 
@@ -305,3 +305,90 @@ The **Plata Mark banner pattern** puts the clan's mark on any banner or shield a
   - `passage` is any 3-wide tunnel mouth.
   - `vault_gate_hall`/`vault_gate` joins the hall's south door to the vault.
 
+## 11. The Silver Mothers
+
+Every Warren is ruled by a **Silver Mother**: the oldest of the clan there. She took a new name at her last molt, and the clan calls her Mother and that name: Mother Ysolde, Mother Grisel. The name is drawn from fifty when she is first put on her dais, never one the players online have already killed.
+
+**Her look** (`tools/plata/mother.py`, `silver_mother.png` + `_glow.png`):
+- **The same face as her children:** the clan's hood and banded face plate. It's the rest of her that sets her apart.
+- **What sets her apart:**
+  - The renderer draws her half again as tall (2.7 blocks; hitbox 0.9 × 2.7).
+  - A circlet on her hood carries four feelers, where her children have two.
+  - A fan collar of three shell plates rises behind her head.
+  - A coat of segment plates trimmed in tarnished bronze, heavy pauldrons, and plated gauntlets.
+  - A tabard with the mark.
+  - **Her train**, the shell of her first molt, falls from her shoulders to the floor and trails behind her in segments ending in three tail strands. `MotherModel` keeps it hanging and lying on the floor whatever her body does.
+- **Her aura:**
+  - An emissive layer lights her eye slits, the mark on her brow, the mark on her train and the tips of the strands.
+  - Motes of silver light drift up round her. They thicken with each phase.
+
+**Where she sleeps.** An invisible mark, `plataclan:mother_seat` (facing the way she looks when she rises), sits on the dais in the vault template. When a player first comes within 40 blocks, the mark puts her there curled up asleep (`Mothers.seat`) and disappears. A Warren whose vault won't fit underground isn't built (`require` in the structure), so every Warren has its Mother.
+
+**Waking.** She stays asleep (`MotherMove.DORMANT`, untouchable) until one of these happens:
+- a survival or adventure player in her sight comes within 12 blocks;
+- anyone comes within 5;
+- someone strikes her.
+
+Then she rises (2.5 s, untouchable). A title card shows her name, followed by a boss bar: `Mother Ysolde · The Silver Mother · Lv 52`, blue, six notches. Her first line is `boss.wake`, or `boss.slayer` if this player has already killed another Mother ("You killed Mother Pell. I felt her go cold through a mile of stone.").
+
+**Numbers** (`Balance`, sized to whoever woke her):
+
+| | |
+|---|---|
+| Level | the player's + 5 |
+| Health | max(500, melee hit × (40 + 0.2 × level)), +50% per extra player within 32, 20–1024 |
+| Armor | 8 + 0.04 × level, toughness 3, knockback resistance 1 |
+| Crush | 32% of the player's max health through their armor |
+| Erupt | 26% |
+| Sweep | 22% |
+| Keen | 18%, **through armor** (sonic damage), plus Slowness II for 3 s |
+| Silver Rain shard | 6% each, plus Slowness I |
+| Pace | ×1, ×1.2 after she sheds, ×1.45 after her last molt (cooldowns and stride) |
+
+**Her moves** (`MotherMove`, clips in `plata_moves/mother.json` from `tools/animations/mother_moves.py`):
+
+| Move | Length | What happens |
+|---|---|---|
+| Crush | 2.4 s | Gauntlets overhead, then into the floor 1.7 blocks ahead (radius 3) at 1.0 s. They are **stuck** there until 2.0 s: damage ×1.5, and it counts double toward a stagger. |
+| Sweep | 1.6 s | Winds up, turns a full circle, and the train hits everything within 5.5 blocks at 0.85 s. |
+| Keen | 2.2 s | Rears back with a rising chitter, then shrieks at 1.2 s in a 76° cone (100° in phase 3), 16 blocks long. **Line of sight only**: the pillars are cover. |
+| Silver Rain | 1.6 s, phase 2+ | Flings scales up at 0.6 s. 5 + 2 × phase shards come down round the target a beat apart. Falling dust and sparks mark each spot first. Counters standing on a pillar. |
+| Brood | 1.6 s | Palms to the floor. Wakes up to two sealed husks within 24 blocks (the cap of 3 awake still holds) and calls 2 + phase silverfish. |
+| Burrow | 1.0 s, then under | Travels under the floor to the target. A 3.4-block ring shakes for 1.1 s, then she erupts (radius 3.4, launches). In phase 3 she does it twice in a row. Used when the target is far or up out of reach. |
+| Shed | 2.6 s | At 66% and 33% health; untouchable. Her old shell bursts off and throws everyone back, unhurt. At 33% the vault's infested walls crack and pour out up to 6 silverfish. A Brood follows. |
+| Stagger | 1.4 s | 12% of her health in 4 s rocks her back, at most every 15 s, and never in the middle of a blow. |
+
+- **Ranged attacks.** Arrows and other projectiles do 60% damage.
+- **The leash.** She won't chase anyone more than 34 blocks from her dais.
+- **Going back to sleep.** With nobody to fight for 15 s she says so (`boss.rest`), walks back to her dais, curls up and heals whole, back in phase 1.
+
+**When she falls** (`Mothers.fallen`, 3 s death: down to her knees, curled where she slept, a burst of silver):
+- Everyone who hurt her is remembered as her killer. The `plataclan:mothers_slain` player attachment keeps the list of names and survives death. `/plata mothers` shows it.
+- Players within 64 blocks see a title card: `MOTHER YSOLDE HAS FALLEN`.
+- Every sealed husk within 64 blocks splits open, empty. Her children still standing cry out (`mother.grief`). They have no husk to go back to: when they're done fighting they leave for good, so the Warren stays quiet.
+- **Her drops:** 16–28 emeralds, 12–20 Silver Scales, 16–32 shards, a Plata Mask, a Plata Fang enchanted at 25–35, 2–5 diamonds, golden apples (now and then an enchanted one), the banner pattern, and the **Crest of Mother Ysolde**, an epic trophy item named for her (`loot_table/entities/silver_mother`, plus the crest from Java).
+
+**What the clan makes of her killer** (`Reveal`, `Truce`, the `mother.*` and `truce.*` lines). `{mother}` is the Mother the player killed most recently.
+1. **A disguised traveler** opens with a `mother.greet` line: still in disguise, but they know. The replies become **proud / sorry / deny**.
+2. They molt as always. Then `Balance.avenges` decides whether they fight:
+   - Base chance: Scuttler 35%, Shardcaster 30%, Molt Warden 60%.
+   - The reply shifts it: proud +25%, deny +10%, sorry −15%.
+   - A lookout guarding a hideout gets +15%.
+   - Striking them in disguise (rude) always makes them fight.
+3. **Avengers** attack with a `mother.avenge` line (*"You killed Mother Ysolde, prepare to die."*).
+4. **The rest let you be** (`PlataMember.yieldTo`):
+   - They stand revealed, facing you. They take no target, the hostile-player goal skips them, and they show no boss bar.
+   - Right-click opens the clan's own **truce window** (`TruceScreen`, slate and silver; Village Friends' window only takes villagers).
+   - You can ask: who the Mother was, why they let you be, about the clan, and where it sleeps. That last answer points to the nearest hideout within 32 chunks: direction and "not far / a fair walk / a long walk".
+   - After four answers, a farewell, or 2–3 minutes (`Balance.truceTicks`), they go back into the stone (`mother.leave`).
+   - **Strike one and the truce is over**: `mother.provoked`, and they fight like any Plata.
+5. **Hideout sleepers** wake with a `mother.sleeper` line instead of their usual one.
+6. **A Mother's killer wearing a Plata Mask** still passes for kin. The whispers turn to gossip about the Mother's killer (`kin.mother`).
+
+**Code:**
+- `dev.plataclan.mother`: `SilverMother`, `MotherMove`, `Mothers` (the slain list, names, the dais, the fall, the crest).
+- `dev.plataclan.disguise.Truce`.
+- `dev.plataclan.block.MotherSeatBlock`.
+- Client: `MotherRenderer`, `MotherModel`, `GlowLayer`, `TruceScreen`.
+- Payloads: `PlataNet.TruceTalk` / `TruceAction`. `Speech.card` is now the card's title.
+- Tests: `MotherScenes` (scenes Mother and Slayer); `BalanceTest.theMotherIsAWarden`, `someAvengeHerAndSomeLetYouBe`.

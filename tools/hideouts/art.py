@@ -175,6 +175,10 @@ def husk():
     # the lookout's mark: nothing to draw
     write({'textures': {'particle': 'minecraft:block/stone'}}, 'models', 'block', 'lookout.json')
     write({'variants': {'': {'model': f'{NS}:block/lookout'}}}, 'blockstates', 'lookout.json')
+    # the Mother's mark on her dais: nothing to draw either
+    write({'textures': {'particle': 'minecraft:block/calcite'}}, 'models', 'block', 'mother_seat.json')
+    write({'variants': {f'facing={f}': {'model': f'{NS}:block/mother_seat'} for f in ('north', 'east', 'south', 'west')}},
+          'blockstates', 'mother_seat.json')
 
 
 # -- the banner pattern --------------------------------------------------------------------------

@@ -12,6 +12,7 @@ import dev.plataclan.PlataNet;
 import dev.plataclan.PlayerPower;
 import dev.plataclan.Rank;
 import dev.plataclan.hideout.Sleepers;
+import dev.plataclan.mother.Mothers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -28,6 +29,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -93,6 +96,10 @@ public class PlataMember extends Monster implements Enemy {
     private @Nullable ServerBossEvent bar;
     /** A hideout sleeper's own husk, which it crawls back into when there's nobody left to fight. */
     private @Nullable BlockPos home;
+    /** Letting a Mother's killer be: standing down, ready to talk, until the time runs out or someone strikes them. */
+    private boolean truce, parting;
+    private int truceTicks, asked;
+    private @Nullable UUID truceWith;
 
     public PlataMember(EntityType<? extends PlataMember> type, Level level) {
         super(type, level);
@@ -124,7 +131,7 @@ public class PlataMember extends Monster implements Enemy {
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this, PlataMember.class));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true, (target, level) -> !this.truce));
     }
 
     // -- setup ------------------------------------------------------------------------------------
@@ -174,6 +181,8 @@ public class PlataMember extends Monster implements Enemy {
     }
 
     public boolean garrison() { return this.home != null; }
+    /** Their Mother has fallen: no husk to go back to. When they're done fighting they leave for good. */
+    public void orphan() { this.home = null; }
     public @Nullable BlockPos home() { return this.home; }
     public boolean fleeing() { return this.fleeing; }
 
@@ -217,6 +226,7 @@ public class PlataMember extends Monster implements Enemy {
         this.moveTicks++;
         this.cooldowns();
         this.updateBar(level);
+        if (this.truce) { this.standDown(level); return; }
         LivingEntity t = this.foe(level);
         switch (this.move) {
             case STANCE, TAUNT -> {
@@ -550,7 +560,7 @@ public class PlataMember extends Monster implements Enemy {
     }
 
     /** The top of the ground near (x, y, z): the block something would stand on, or null. */
-    private @Nullable BlockPos groundAt(ServerLevel level, double x, double y, double z) {
+    public static @Nullable BlockPos groundAt(ServerLevel level, double x, double y, double z) {
         BlockPos.MutableBlockPos p = BlockPos.containing(x, y + 3, z).mutable();
         for (int i = 0; i < 8; i++, p.move(0, -1, 0)) {
             BlockState s = level.getBlockState(p);
@@ -678,11 +688,16 @@ public class PlataMember extends Monster implements Enemy {
     public void say(ServerLevel level, String pool, int cooldown) {
         if (cooldown > 0 && this.sayCooldown > 0) return;
         this.sayCooldown = Math.max(this.sayCooldown, cooldown);
-        String player = this.getTarget() instanceof Player p ? p.getName().getString()
-                : this.lastFoe != null && level.getPlayerByUUID(this.lastFoe) instanceof Player p ? p.getName().getString() : null;
-        String text = PlataLines.pick(pool, this.rank, this.random, player, this.disguise.isEmpty() ? null : this.disguise);
-        this.speak(level, text, false);
+        Player who = this.getTarget() instanceof Player p ? p
+                : this.lastFoe != null && level.getPlayerByUUID(this.lastFoe) instanceof Player p ? p
+                : this.truceWith != null ? level.getPlayerByUUID(this.truceWith) : null;
+        String text = PlataLines.pick(pool, this.rank, this.random, who == null ? null : who.getName().getString(),
+                this.disguise.isEmpty() ? null : this.disguise);
+        this.speak(level, Mothers.fill(text, who), false);
     }
+
+    /** The player this member lets be, if they are letting anyone be. */
+    public @Nullable UUID truceWith() { return this.truce ? this.truceWith : null; }
 
     /** Send a line (already chosen) to everyone within 40 blocks; {@code card} for the first-encounter title card. */
     public void speak(ServerLevel level, String text, boolean card) {
@@ -711,6 +726,9 @@ public class PlataMember extends Monster implements Enemy {
         if (this.isDeadOrDying()) return false;
         Entity attacker = source.getEntity();
         boolean projectile = source.is(DamageTypeTags.IS_PROJECTILE);
+        if (this.truce && attacker instanceof Player p && !p.isCreative() && !p.isSpectator() && !this.isInvulnerableTo(level, source)) {
+            this.provoke(level, p);
+        }
         if (attacker instanceof Player && !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) && this.canDodge() && !this.isInvulnerableTo(level, source)) {
             double chance = projectile ? .25 : Balance.dodgeChance(this.level);
             if (!this.dodgedLast && this.random.nextDouble() < chance) {
@@ -762,9 +780,72 @@ public class PlataMember extends Monster implements Enemy {
 
     /** Nobody left to fight: a parting line and into the ground for good. */
     private void flee(ServerLevel level) {
+        this.leave(level, this.home != null ? "hideout.reseal" : "fight.flee");
+    }
+
+    /** A parting line from {@code pool}, and into the ground for good. */
+    public void leave(ServerLevel level, String pool) {
+        this.truce = false;
         this.fleeing = true;
-        this.say(level, this.home != null ? "hideout.reseal" : "fight.flee", 0);
+        this.say(level, pool, 0);
         this.burrow(null, false);
+    }
+
+    // -- letting a Mother's killer be ---------------------------------------------------------------------
+
+    /**
+     * They know {@code p} killed a Silver Mother, and they won't fight them for it: they stand where they are,
+     * revealed, and can be talked to ({@link dev.plataclan.disguise.Truce}) for {@code ticks}, then go back into the
+     * stone. Strike them and the truce is over.
+     */
+    public void yieldTo(ServerPlayer p, int ticks) {
+        this.truce = true;
+        this.truceTicks = ticks;
+        this.truceWith = p.getUUID();
+        this.asked = 0;
+        this.setTarget(null);
+        this.getNavigation().stop();
+    }
+
+    public boolean truce() { return this.truce; }
+    public int truceTicks() { return this.truceTicks; }
+    public void truceTicks(int ticks) { this.truceTicks = ticks; }
+    /** Questions answered in the truce window so far. */
+    public int asked() { return this.asked; }
+    public int ask() { return ++this.asked; }
+
+    private void standDown(ServerLevel level) {
+        this.getNavigation().stop();
+        if (this.move == Move.UNFURL && this.moveTicks < Move.UNFURL.ticks) return;
+        if (this.move != Move.STANCE) this.start(Move.STANCE);
+        Player p = this.truceWith == null ? null : level.getPlayerByUUID(this.truceWith);
+        if (p != null && p.distanceToSqr(this) < 16 * 16) this.faceTo(p, 12);
+        if (--this.truceTicks <= 0 || p == null || !p.isAlive() || p.distanceToSqr(this) > 40 * 40) {
+            this.leave(level, this.parting ? "" : "mother.leave");
+        }
+    }
+
+    /** They have said goodbye already: in a moment they go, without another word. */
+    public void partIn(int ticks) {
+        this.parting = true;
+        this.truceTicks = Math.min(this.truceTicks, ticks);
+    }
+
+    /** Struck while letting someone be: so be it. */
+    private void provoke(ServerLevel level, LivingEntity by) {
+        this.truce = false;
+        this.setTarget(by);
+        this.decideIn = 4;
+        this.say(level, "mother.provoked", 0);
+    }
+
+    @Override
+    protected InteractionResult mobInteract(Player player, InteractionHand hand) {
+        if (this.truce && hand == InteractionHand.MAIN_HAND && !player.isSpectator()) {
+            if (player instanceof ServerPlayer sp) dev.plataclan.disguise.Truce.open(sp, this);
+            return InteractionResult.SUCCESS_SERVER;
+        }
+        return super.mobInteract(player, hand);
     }
 
     // -- the end ----------------------------------------------------------------------------------
@@ -825,7 +906,7 @@ public class PlataMember extends Monster implements Enemy {
         if (this.tickCount % 10 != 0) return;
         this.bar.setName(this.barName());
         for (ServerPlayer p : level.players()) {
-            boolean near = p.isAlive() && !p.isSpectator() && p.distanceToSqr(this) < 40 * 40;
+            boolean near = !this.truce && p.isAlive() && !p.isSpectator() && p.distanceToSqr(this) < 40 * 40;
             if (near) this.bar.addPlayer(p);
             else this.bar.removePlayer(p);
         }
@@ -853,6 +934,11 @@ public class PlataMember extends Monster implements Enemy {
         out.putBoolean("Configured", this.configured);
         out.putBoolean("Molted", this.molted);
         if (this.home != null) out.store("Home", BlockPos.CODEC, this.home);
+        if (this.truce && this.truceWith != null) {
+            out.store("TruceWith", net.minecraft.core.UUIDUtil.CODEC, this.truceWith);
+            out.putInt("TruceTicks", this.truceTicks);
+            out.putInt("Asked", this.asked);
+        }
     }
 
     @Override
@@ -864,6 +950,10 @@ public class PlataMember extends Monster implements Enemy {
         this.configured = in.getBooleanOr("Configured", false);
         this.molted = in.getBooleanOr("Molted", false);
         this.home = in.read("Home", BlockPos.CODEC).orElse(null);
+        this.truceWith = in.read("TruceWith", net.minecraft.core.UUIDUtil.CODEC).orElse(null);
+        this.truce = this.truceWith != null;
+        this.truceTicks = in.getIntOr("TruceTicks", 0);
+        this.asked = in.getIntOr("Asked", 0);
         this.entityData.set(DATA_LEVEL, this.level);
         this.flurryLength = Balance.flurryLength(this.level);
         this.xpReward = Balance.experience(this.level);

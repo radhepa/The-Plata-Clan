@@ -12,7 +12,7 @@ over a Silver Warren, in six regional styles.
 Conventions: x runs east, z south, y up; a piece's floor is y = 0 and doorways sit at y = 1.
 Jigsaw names (all in the plataclan namespace):
   passage      3-wide tunnel mouth (rooms, tunnels, the hall)
-  vault_gate   the hall's south door, which only the vault answers
+  vault_gate   the hall's south door, which only the vault (the Silver Mother's Hollow) answers
   stair_foot   foot of the Warren's spiral stair (attaches to the hall)
   den_door     1-wide crawl from the den's ladder shaft into the den
   descent      surface hatch down to a shaft (start jigsaw of every hideout)
@@ -555,50 +555,110 @@ def store(C):
 
 
 def vault(C):
-    """The Coffer Vault behind the hall: a barred antechamber, two keepers, an elder asleep over the coffer."""
-    t = Template('warren/vault', (15, 10, 21))
+    """The Coffer Vault behind the hall, where the Warren's Silver Mother sleeps. A barred antechamber at the hall's level
+    with two keepers; a stair eight blocks down; then the Hollow, a great ribbed chamber with six calcite pillars (cover
+    from her Keen), the mark in the floor, the shells of her brood along the walls, and at the far end her dais: she
+    sleeps curled on it over the Clan Coffer, the Warren's elder asleep beside her."""
+    t = Template('warren/vault', (23, 15, 39))
     C.rng = t.rng
-    # antechamber z 0..6 (7 wide), then the vault proper z 6..20 (15 wide)
-    shell(t, C, (4, 0, 0), (10, 6, 6))
-    shell(t, C, (0, 0, 6), (14, 9, 20))
-    for x in range(5, 10):  # open the antechamber into the vault
-        for y in range(1, 6): t.set(x, y, 6, 'air')
-    t.fill((5, 0, 1), (9, 0, 5), 'deepslate_tiles')
-    # the gate: iron bars with the middle pulled open
-    for x in range(5, 10):
-        for y in range(1, 6):
-            if x in (6, 7, 8) and y <= 3: continue
+    F = 8                     # the antechamber floor: level with the hall's
+    # -- the antechamber (x 7..15, z 0..8) ----------------------------------------------------------------
+    shell(t, C, (7, F, 0), (15, F + 6, 8))
+    t.fill((8, F, 1), (14, F, 7), 'deepslate_tiles')
+    for x in range(8, 15):  # the gate: iron bars with the middle pulled open
+        for y in range(F + 1, F + 6):
+            if x in (10, 11, 12) and y <= F + 3: continue
             t.set(x, y, 3, 'iron_bars[east=true,west=true]')
-    t.set(7, 4, 3, 'iron_chain[axis=y]'); t.set(7, 5, 3, 'iron_chain[axis=y]')
-    t.husk(5, 1, 5, 'east')
-    t.husk(9, 1, 5, 'west')
-    # vault floor: the mark big and bright
-    t.fill((1, 0, 7), (13, 0, 19), 'polished_deepslate')
-    t.fill((3, 0, 7), (11, 0, 19), 'deepslate_tiles')
-    floor_mark(t, 3, 0, 7, mark=MARK_WALL)
-    # calcite pillars with silver trim
-    for (x, z) in ((2, 9), (12, 9), (2, 15), (12, 15)):
-        for y in range(1, 9): t.set(x, y, z, 'calcite' if y not in (1, 8) else 'polished_diorite')
-    for i in range(1, 14):
-        t.set(i, 8, 7, 'tuff_brick_stairs[facing=north,half=top]')
-        t.set(i, 8, 19, 'tuff_brick_stairs[facing=south,half=top]')
-    # the dais, the elder's husk and the coffer
-    t.fill((4, 1, 17), (10, 1, 19), 'polished_tuff')
-    for x in range(4, 11): t.set(x, 1, 16, 'tuff_brick_stairs[facing=north,half=bottom]')
-    t.fill((6, 2, 18), (8, 2, 19), 'calcite')
-    t.husk(7, 3, 19, 'north', kind='elder')
-    t.chest(7, 2, 17, 'north', 'chests/clan_coffer', custom_name='container.plataclan.clan_coffer')
-    for x in (5, 9):
-        t.set(x, 2, 18, 'white_candle[candles=4,lit=true]')
-    for (x, z) in ((7, 10), (4, 13), (10, 13)):
-        hanging_lantern(t, x, 6, z, chain=2)
-    t.banner(1, 5, 12, 'east'); t.banner(13, 5, 12, 'west')
-    wall_mark(t, 5, 2, 20, mark=MARK_TINY, bg='deepslate_tiles')
-    for (x, z) in ((1, 7), (13, 7), (1, 19), (13, 19)):
-        t.set(x, 1, z, 'decorated_pot[facing=north]')
-    t.jigsaw(7, 1, 0, 'north_up', 'vault_gate', 'minecraft:empty', 'minecraft:empty')
-    for x in (6, 7, 8):
-        for y in (1, 2, 3): t.set(x, y, 0, 'air') if (x, y) != (7, 1) else None
+    t.set(11, F + 4, 3, 'iron_chain[axis=y]'); t.set(11, F + 5, 3, 'iron_chain[axis=y]')
+    t.husk(8, F + 1, 5, 'east')
+    t.husk(14, F + 1, 5, 'west')
+    t.set(8, F + 1, 7, 'white_candle[candles=3,lit=true]'); t.set(14, F + 1, 7, 'white_candle[candles=3,lit=true]')
+    hanging_lantern(t, 11, F + 4, 5, chain=1)
+    # -- the stair down (x 8..14, z 8..16): seven steps from the antechamber to the Hollow's floor -----------
+    for z in range(8, 17):
+        f = max(0, min(F, F - (z - 8)))
+        ceil = f + 6
+        for x in range(8, 15):
+            for y in range(0, f):
+                t.set(x, y, z, C.plinth() if y == 0 else C.wall())
+            t.set(x, f, z, C.floor())
+            for y in range(f + 1, ceil):
+                t.set(x, y, z, C.rib() if x in (8, 14) else 'air')
+            t.set(x, ceil, z, C.rib() if z % 3 == 0 else C.ceiling())
+            for y in range(ceil + 1, 15):
+                t.set(x, y, z, C.ceiling())
+        if 9 <= z <= 15:
+            for x in range(9, 14):
+                t.set(x, f, z, 'polished_tuff_stairs[facing=north,half=bottom]')
+        if z == 12:
+            hanging_lantern(t, 11, f + 4, z, chain=1)
+    t.fill((9, F + 1, 8), (13, F + 5, 8), 'air')
+    # -- the Hollow (x 0..22, z 16..38) -------------------------------------------------------------------
+    X0, X1, Z0, Z1, Y1 = 0, 22, 16, 38, 14
+    shell(t, C, (X0, 0, Z0), (X1, Y1, Z1))
+    for x in range(9, 14):  # the stair comes in through the north wall
+        for y in range(1, 6): t.set(x, y, Z0, 'air')
+    t.set(9, 6, Z0, 'tuff_brick_stairs[facing=west,half=top]'); t.set(13, 6, Z0, 'tuff_brick_stairs[facing=east,half=top]')
+    for x in range(10, 13): t.set(x, 6, Z0, 'chiseled_tuff_bricks')
+    # rounded corners: the walls swell inward in tuff
+    for (cx, cz, sx, sz) in ((X0 + 1, Z0 + 1, 1, 1), (X1 - 1, Z0 + 1, -1, 1), (X0 + 1, Z1 - 1, 1, -1), (X1 - 1, Z1 - 1, -1, -1)):
+        for y in range(1, Y1):
+            t.set(cx, y, cz, C.rib())
+            if y >= Y1 - 4:
+                t.set(cx + sx, y, cz, C.rib()); t.set(cx, y, cz + sz, C.rib())
+    # ribs across the ceiling and down the walls, a crown of stairs where the ceiling meets the walls
+    for z in (21, 27, 33):
+        for x in range(X0 + 1, X1): t.set(x, Y1, z, 'chiseled_tuff_bricks' if x == 11 else C.rib())
+        for y in range(1, Y1): t.set(X0, y, z, C.rib()); t.set(X1, y, z, C.rib())
+    for x in range(X0 + 2, X1 - 1):
+        t.set(x, Y1 - 1, Z0 + 1, 'tuff_brick_stairs[facing=north,half=top]') if not 9 <= x <= 13 else None
+        t.set(x, Y1 - 1, Z1 - 1, 'tuff_brick_stairs[facing=south,half=top]')
+    for z in range(Z0 + 2, Z1 - 1):
+        t.set(X0 + 1, Y1 - 1, z, 'tuff_brick_stairs[facing=west,half=top]')
+        t.set(X1 - 1, Y1 - 1, z, 'tuff_brick_stairs[facing=east,half=top]')
+    # the floor: andesite, a deepslate runner from the door to the dais, the mark set in it
+    t.fill((X0 + 1, 0, Z0 + 1), (X1 - 1, 0, Z1 - 1), lambda *_: 'polished_andesite' if t.rng.random() < .8 else 'polished_tuff')
+    t.fill((6, 0, Z0 + 1), (16, 0, Z1 - 1), 'polished_deepslate')
+    t.fill((7, 0, Z0 + 1), (15, 0, Z1 - 1), 'deepslate_tiles')
+    floor_mark(t, 7, 0, Z0 + 1, mark=MARK_WALL)
+    # six calcite pillars, two blocks thick: something to put between you and her Keen
+    for (x, z) in ((3, 20), (18, 20), (3, 26), (18, 26), (5, 31), (16, 31)):
+        for y in range(1, Y1):
+            for (dx, dz) in ((0, 0), (1, 0), (0, 1), (1, 1)):
+                t.set(x + dx, y, z + dz, 'polished_diorite' if y in (1, Y1 - 1) else 'calcite' if y % 4 else 'chiseled_tuff_bricks')
+    # the dais: two steps up at the south end
+    t.fill((6, 1, 29), (16, 1, Z1 - 1), 'polished_tuff')
+    for x in range(6, 17): t.set(x, 1, 28, 'tuff_brick_stairs[facing=north,half=bottom]')
+    t.fill((8, 2, 31), (14, 2, Z1 - 1), 'calcite')
+    for x in range(8, 15): t.set(x, 2, 30, 'polished_tuff_stairs[facing=north,half=bottom]')
+    t.fill((9, 2, 33), (13, 2, 35), 'polished_diorite')
+    floor_mark(t, 9, 2, 31, mark=MARK_TINY)
+    t.mother(11, 3, 33, 'north')
+    t.chest(11, 3, 36, 'north', 'chests/clan_coffer', custom_name='container.plataclan.clan_coffer')
+    t.husk(8, 3, 36, 'north', kind='elder')
+    for x in (10, 12): t.set(x, 3, 36, 'white_candle[candles=4,lit=true]')
+    for (x, z) in ((8, 31), (14, 31), (14, 36)): t.set(x, 3, z, 'light_gray_candle[candles=3,lit=true]')
+    # the shells of her brood along the walls, every one of them split and empty
+    for z in (18, 23, 29, 35):
+        for (x, f) in ((X0 + 1, 'east'), (X1 - 1, 'west')):
+            t.set(x, 1, z, f'plataclan:silver_husk[facing={f},half=lower,kind=sleeper,split=true]')
+            t.set(x, 2, z, f'plataclan:silver_husk[facing={f},half=upper,kind=sleeper,split=true]')
+    # the mark high on the back wall over the dais, banners on the side walls
+    wall_mark(t, 7, 3, Z1 - 1, mark=MARK_WALL, bg='deepslate_tiles')
+    for z in (24, 30):
+        t.banner(X0 + 1, 7, z, 'east'); t.banner(X1 - 1, 7, z, 'west')
+    # cold light: soul lanterns on long chains, candles at the pillars' feet
+    for (x, z) in ((11, 19), (7, 24), (15, 24), (11, 29), (7, 34), (15, 34)):
+        hanging_lantern(t, x, Y1 - 5, z, chain=4)
+        t.set(x, Y1 - 5, z, 'soul_lantern[hanging=true]')
+    for (x, z) in ((5, 22), (17, 22), (5, 28), (17, 28)):
+        t.set(x, 1, z, 'white_candle[candles=2,lit=true]')
+    for (x, y, z) in ((X0 + 2, Y1 - 2, Z0 + 2), (X1 - 2, Y1 - 2, Z0 + 2), (X0 + 2, Y1 - 2, Z1 - 2), (X1 - 2, Y1 - 2, Z1 - 2)):
+        t.set(x, y, z, 'cobweb')
+    # the gate jigsaw: the hall's south door, at the antechamber's floor
+    t.jigsaw(11, F + 1, 0, 'north_up', 'vault_gate', 'minecraft:empty', 'minecraft:empty')
+    for x in (10, 11, 12):
+        for y in (F + 1, F + 2, F + 3): t.set(x, y, 0, 'air') if (x, y) != (11, F + 1) else None
     return t
 
 

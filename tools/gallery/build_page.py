@@ -136,6 +136,21 @@ def main(out):
             figure("hideout-30-sleeper-wakes", "Too close: the husk cracks open", width=560),
             figure("hideout-32-sleepers-up", "Its neighbours stir and follow", width=560),
             figure("hideout-33-sealed-again", "Walk away and they seal themselves back in", width=560)]),
+        "{{MOTHER}}": "".join(figure(n, c, width=560) for n, c in (
+            ("mother-01-asleep", "Asleep, curled on her dais over the Clan Coffer"),
+            ("mother-03-name", "She rises, and her name fills the screen"),
+            ("mother-03b-portrait", "The Silver Mother: her children's face, and everything else besides"),
+            ("mother-04-crush", "The Crush"), ("mother-05-sweep", "The Sweep of her train"), ("mother-06-keen", "The Silver Keen"),
+            ("mother-07-rain", "The Silver Rain"), ("mother-08-brood", "The Brood"),
+            ("mother-09-last-molt", "Her last molt"), ("mother-10-fallen", "She falls, and her Warren goes quiet"))),
+        "{{SLAYER}}": "".join(figure(n, c, width=560) for n, c in (
+            ("slayer-01-greeting", "A traveler who knows what you did"),
+            ("slayer-02-let-be", "Revealed, and letting you be"),
+            ("slayer-04-answer", "Talking with one of the clan"),
+            ("slayer-06-avenge", "And one who won't let it go"))),
+        "{{Q_MOTHER_WAKE}}": quote("boss.wake", 0),
+        "{{Q_MOTHER_SLAYER}}": quote("boss.slayer", 0).replace("{mother}", "Mother Pell"),
+        "{{Q_YIELD}}": quote("mother.yield", 1).replace("{mother}", "Mother Ysolde"),
         "{{Q_WAKE}}": quote("hideout.wake", 3),
         "{{Q_ELDER}}": quote("hideout.elder", 2),
     }

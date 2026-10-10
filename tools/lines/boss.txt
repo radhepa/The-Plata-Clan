@@ -1,0 +1,114 @@
+# The Silver Mother: the oldest of a Warren, asleep curled on the dais of its vault (the Hollow) over the Clan Coffer.
+# Every Warren has one. She took a new name at her last molt, and the clan calls her Mother and that name (Mother Ysolde).
+# Voice: ancient, regal, unhurried; tender to her "children" and "little ones", cold to the "stone-breaker" and "child".
+# Spoken as speech lines (90 characters at most). Placeholders: {player}; in boss.slayer, {mother} is ANOTHER Mother
+# the player already killed (her sister), as "Mother Pell".
+
+[boss.wake]
+Who walks in my stone?
+Children, wake. We have a guest.
+I smelled you on the stair, stone-breaker. Every step.
+You came all this way to the bottom of the world. To me.
+So this is the one my little ones whisper about.
+I have slept under this hill for forty winters. Wake me gently next time.
+Closer. Let me see the hands that crush my children.
+You walked past the shells of my brood to get here. I counted.
+Welcome to the Hollow. Nobody leaves it by the stair.
+
+[boss.slayer]
+You killed {mother}. I felt her go cold through a mile of stone.
+{mother} was my sister. You will not do to me what you did to her.
+I know your step. It's the one that walked out of {mother}'s hollow.
+{mother} sent me a last whisper through the rock. It was your name.
+They say {mother} fell to you. They say a great many things.
+So you're the one who put {mother} in the dust. Come and try it twice.
+
+[boss.crush]
+Down!
+Under my hands, then.
+Flat as a crushed shell.
+Lie still.
+The stone breaks you, for once.
+Feel the whole hill come down.
+
+[boss.sweep]
+Back, all of you!
+Mind my train, child.
+Around and around.
+The old shell remembers how to swing.
+Away from me!
+Every segment of it. All at once.
+
+[boss.keen]
+Hear us.
+Listen. Listen to all of them.
+A thousand little voices, child. All at once.
+Cover your ears. It won't help.
+This is what the walls say when you break them.
+Hush now. Let me sing.
+
+[boss.rain]
+Silver rain, little stone-breaker.
+Look up.
+My scales are sharper than they look.
+Stand still. It makes it easier.
+Every one of these was mine once.
+
+[boss.brood]
+Children! To your mother!
+Up from the husks, my little ones!
+Out of the walls! Mother calls!
+Wake, wake. Someone has come to play.
+My brood never sleeps when I call.
+Come, small ones. Show them the count.
+
+[boss.burrow]
+Into the stone.
+Where am I now?
+Down to the roots of the hill.
+The floor is mine, child. All of it.
+Feel me under you.
+
+[boss.hurt]
+You draw silver. How rare.
+Hah. You found a seam.
+That stung, little one. Do it again and I'll mind.
+Old shells crack. New ones grow.
+You hit like a pickaxe. Clumsy, and far too often.
+I've shed worse than you.
+A scratch. I have had a thousand.
+Again? Well. You have my full attention now.
+
+[boss.shed]
+Enough. Off with the old shell.
+You've cracked it. Now meet what grew underneath.
+Watch closely. Nobody alive has seen me molt.
+I shed my skin for the clan once. I'll shed it for you now.
+
+[boss.last]
+The last molt. You should not have made me do this.
+Everything I have left. Every scale. Every child.
+The walls themselves will fight you now.
+Feel the whole Warren wake.
+
+[boss.win]
+Hush now. Into the stone with you.
+Another shell for the walls.
+Rest. The little ones will tidy up.
+You came down the stair. You won't go back up it.
+Lie there and be counted.
+That is the count settled, for one stone-breaker.
+
+[boss.rest]
+Gone? Then I'll sleep.
+Back to the dais. The Hollow keeps.
+Run, then. Tell them what you saw.
+The stair goes up. So did you. Wise.
+
+[boss.defeat]
+My children... into the walls... hide...
+So this is how a shell feels... when it breaks...
+Tell them... Mother is in the stone now...
+Every one of us... will know... your step...
+Forty winters... and a stone-breaker...
+Little ones... don't... count me...

@@ -70,7 +70,9 @@ def structures():
         write_json(f'data/{NS}/worldgen/structure/warren_{key}.json', {
             **common, 'start_pool': f'{NS}:warren/surface_{key}', 'size': 7,
             'max_distance_from_center': {'horizontal': 80, 'vertical': 64},
-            'survey': {'radius': 12, 'step': 6, 'max_height_range': 6}, 'cover': 4})
+            'survey': {'radius': 12, 'step': 6, 'max_height_range': 6}, 'cover': 4,
+            # every Warren has its Silver Mother: no Warren without its vault
+            'require': f'{NS}:warren/vault'})
     write_json(f'data/{NS}/worldgen/structure_set/dens.json', {
         'structures': [{'structure': f'{NS}:den_{k}', 'weight': 1} for k in PALETTES],
         'placement': {'type': f'{NS}:away_from', 'spacing': 28, 'separation': 9, 'salt': 1803261447,
@@ -149,6 +151,21 @@ def loot():
                  'options': '#minecraft:on_random_loot'}])]},
         ],
     }
+    # what a Silver Mother leaves (her crest, named for her, is added by the game)
+    enchanted = lambda lo, hi: [{'type': 'minecraft:enchant_with_levels', 'levels': {'type': 'minecraft:uniform', 'min': lo, 'max': hi},
+                                 'options': '#minecraft:on_random_loot'}]
+    write_json(f'data/{NS}/loot_table/entities/silver_mother.json', {
+        'type': 'minecraft:entity', 'random_sequence': f'{NS}:entities/silver_mother',
+        'pools': [
+            {'rolls': 1, 'entries': [item('emerald', 1, 16, 28)]},
+            {'rolls': 1, 'entries': [item(f'{NS}:silver_scale', 1, 12, 20)]},
+            {'rolls': 1, 'entries': [item(f'{NS}:silver_shard', 1, 16, 32)]},
+            {'rolls': 1, 'entries': [item(f'{NS}:plata_mask', 1)]},
+            {'rolls': 1, 'entries': [item(f'{NS}:plata_fang', 1, extra=enchanted(25, 35))]},
+            {'rolls': 1, 'entries': [item('golden_apple', 3, 1, 2), item('enchanted_golden_apple', 1)]},
+            {'rolls': 1, 'entries': [item('diamond', 1, 2, 5)]},
+            {'rolls': 1, 'entries': [item(PATTERN, 1)]},
+        ]})
     for name, pools_ in chests.items():
         write_json(f'data/{NS}/loot_table/chests/{name}.json', {'type': 'minecraft:chest', 'pools': pools_,
                                                                 'random_sequence': f'{NS}:chests/{name}'})
@@ -182,6 +199,12 @@ def lang():
         f'item.{NS}.plata_mark_banner_pattern.new': 'Plata Mark Banner Pattern',
         f'item.{NS}.silver_inked_map': 'Silver-Inked Map',
         f'container.{NS}.clan_coffer': 'Clan Coffer',
+        f'block.{NS}.mother_seat': "Silver Mother's Dais",
+        f'entity.{NS}.silver_mother': 'Silver Mother',
+        f'item.{NS}.silver_mother_spawn_egg': 'Silver Mother Spawn Egg',
+        f'item.{NS}.mother_crest': "Mother's Crest",
+        f'item.{NS}.mother_crest.named': 'Crest of %s',
+        f'item.{NS}.mother_crest.lore': 'Taken from a Silver Mother. Every Plata in the stone knows it.',
     })
     for c in COLORS:
         data[f'block.{NS}.banner.plata_mark.{c}'] = c.replace('_', ' ').title() + ' Plata Mark'

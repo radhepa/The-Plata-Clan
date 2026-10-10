@@ -86,7 +86,12 @@ public final class Balance {
 
     /** The raw damage for a kind of hit, solved so the player takes its share of their max health. */
     public static float damage(Hit hit, Foe foe, int level, float scale) {
-        float share = (hit.share + .0001F * level) * scale;
+        return damage(hit.share, foe, level, scale);
+    }
+
+    /** The raw damage that takes {@code share} of the player's max health after their armor (and half their Protection). */
+    public static float damage(float share, Foe foe, int level, float scale) {
+        share = (share + .0001F * level) * scale;
         float want = Math.max(.5F, foe.maxHealth() * share);
         float lo = 0, hi = 400;
         if (taken(hi, foe.armor(), foe.toughness(), foe.protection()) < want) return hi;
@@ -139,6 +144,58 @@ public final class Balance {
         if (elder) return playerLevel >= 20 ? Rank.WARDEN : Rank.SHARDCASTER;
         return roll < .67 ? Rank.SCUTTLER : Rank.SHARDCASTER;
     }
+
+    // -- the Silver Mother ---------------------------------------------------------------------------
+    /** Whoever comes down to her, she has at least a Warden's health. */
+    public static final float MOTHER_MIN_HEALTH = 500;
+    /** Health left when she sheds her shell (phase two) and when she makes her last molt (phase three). */
+    public static final float SHED_AT = .66F, LAST_AT = .33F;
+
+    /** What the Mother can do to you, each aimed at a share of your max health. The Keen goes through armor. */
+    public enum MotherHit {
+        CRUSH(.32F), ERUPT(.26F), SWEEP(.22F), KEEN(.18F), SHARD(.06F);
+        public final float share;
+        MotherHit(float share) { this.share = share; }
+    }
+
+    /** Hits of the player's melee it takes to bring her down: as many as a vanilla Warden takes from a diamond blade. */
+    public static float motherHitsToKill(int level) { return 40 + .2F * level; }
+
+    /** Max health: the hit budget, never under {@link #MOTHER_MIN_HEALTH}, +50% per extra player. */
+    public static float motherHealth(int level, float meleeHit, int players, float scale) {
+        float budget = Math.max(MOTHER_MIN_HEALTH, Math.max(3, meleeHit) * motherHitsToKill(level));
+        float group = 1 + .5F * Math.max(0, players - 1);
+        return Math.clamp(budget * group * scale, MIN_HEALTH, MAX_HEALTH);
+    }
+
+    /** Raw damage for one of her blows (the Keen ignores armor and Protection, so its raw damage is its share). */
+    public static float motherDamage(MotherHit hit, Foe foe, int level, float scale) {
+        if (hit == MotherHit.KEEN) return Math.max(1, foe.maxHealth() * (hit.share + .0001F * level) * scale);
+        return damage(hit.share, foe, level, scale);
+    }
+
+    public static double motherArmor(int level) { return 8 + .04 * level; }
+
+    /** Damage taken within four seconds that rocks her back on her heels (once in a while, never in a chain). */
+    public static float poise(float maxHealth) { return maxHealth * .12F; }
+
+    /** How fast she fights in each phase (1, 2, 3): cooldowns shrink and her stride lengthens. */
+    public static float phasePace(int phase) { return phase >= 3 ? 1.45F : phase == 2 ? 1.2F : 1F; }
+
+    // -- after a Mother falls --------------------------------------------------------------------------
+    /**
+     * Whether a revealed member fights to avenge a Mother the player killed, from a roll in [0, 1): an elder
+     * Warden most of all; telling them you're proud of it (or lying about it) makes it likelier, being sorry
+     * less; a lookout guarding a hideout is likelier; and anyone you hit first always fights.
+     */
+    public static boolean avenges(double roll, Rank rank, String reply, boolean post) {
+        double base = switch (rank) { case SCUTTLER -> .35; case SHARDCASTER -> .30; case WARDEN -> .60; };
+        double said = switch (reply) { case "proud" -> .25; case "deny" -> .10; case "sorry" -> -.15; case "rude" -> 1; default -> 0; };
+        return roll < Math.clamp(base + said + (post ? .15 : 0), 0, 1);
+    }
+
+    /** How long a member who lets you be stays to talk before going back into the stone (2 to 3 minutes). */
+    public static int truceTicks(double roll) { return 2400 + (int) (roll * 1200); }
 
     // -- encounters ----------------------------------------------------------------------------------
     /** Chance per check (every {@code checkSeconds}) for an average gap of {@code minutes}. */

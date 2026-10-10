@@ -44,5 +44,11 @@
   "structure.plataclan.den_dry": "Scale Den",
   "structure.plataclan.warren_dry": "Silver Warren",
   "structure.plataclan.den_stone": "Scale Den",
-  "structure.plataclan.warren_stone": "Silver Warren"
+  "structure.plataclan.warren_stone": "Silver Warren",
+  "block.plataclan.mother_seat": "Silver Mother's Dais",
+  "entity.plataclan.silver_mother": "Silver Mother",
+  "item.plataclan.silver_mother_spawn_egg": "Silver Mother Spawn Egg",
+  "item.plataclan.mother_crest": "Mother's Crest",
+  "item.plataclan.mother_crest.named": "Crest of %s",
+  "item.plataclan.mother_crest.lore": "Taken from a Silver Mother. Every Plata in the stone knows it."
 }

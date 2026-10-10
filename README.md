@@ -58,7 +58,7 @@ The clan lives in the stone, under places nobody looks at twice. Each hideout ha
   - the Shrine of the First Molt
   - the Storeroom
 
-  Behind the hall is the vault, where an elder sleeps over the **Clan Coffer**.
+  Behind the hall is the vault: a barred antechamber, then a stair down into the Hollow, where the Warren's **Silver Mother** sleeps over the **Clan Coffer**.
 
 Both kinds come in six regional styles: green country, snow and taiga, desert, badlands, savanna and windswept hills. They keep well away from villages and homesteads.
 
@@ -78,6 +78,33 @@ The walls are stronghold brick, and some of it is infested. Dig through the clan
   - sometimes a **Silver-Inked Map** to the nearest Warren.
 - **The forge:** iron and the clan's knives.
 - **The Clan Coffer:** the best of it, and always the banner pattern.
+
+## The Silver Mother
+
+Every Silver Warren has its Mother: the oldest of the clan, who no longer goes out on the road. She took a new name at her last molt, and the clan calls her by it: **Mother Ysolde**, **Mother Grisel**, **Mother Petra**.
+
+- **What she looks like.** She wears the clan's own hood and face plate, like any Plata, but she stands half again as tall as her children. A circlet of four feelers rides on her hood, a fan collar of shell plates rises behind her head, and her train drags along the floor behind her. Her eye slits, her brow and the mark on her train burn with a cold light, and silver motes drift round her.
+- **Waking her.** She sleeps curled up on her dais at the end of the Hollow. Come within a dozen blocks in her sight, or strike her, and she rises. Her name fills the screen, and a boss bar appears.
+- **How hard she is.** She is a Warden-class fight, sized to whoever wakes her: never under 500 health, and about forty to sixty of your best hits. Her blows take a third of your health through any armor, and she gets faster as the fight goes on.
+- **Her moves:**
+  - the **Crush**: both gauntlets into the floor in front of her. Her hands stick there for a second afterwards, and every hit then lands harder;
+  - the **Sweep**: her train whips round in a full circle;
+  - the **Silver Keen**: a shriek in a cone that goes through armor. Put a pillar between you and her;
+  - the **Brood**: she wakes her children's husks and calls silverfish up out of the floor;
+  - the **Burrow**: she dives into the floor and comes up under you. The ground shakes in a wide ring first;
+  - the **Silver Rain** (from her second phase): scales fall round you, and dust falls first where each will land.
+- **Three phases.** At two thirds of her health she bursts out of her old shell and quickens. At one third she makes her last molt: the walls themselves crack and pour out silverfish. Arrows skip off her shell for less damage, and enough damage in a short time rocks her back on her heels.
+- **If you leave.** If everyone she fights leaves or dies, she walks back to her dais, curls up and sleeps again, whole.
+- **When she falls.** Every husk in her Warren splits open, empty, and her children still standing cry out for her, then leave the Warren for good. She leaves emeralds, scales, a Plata Mask, an enchanted Plata Fang and diamonds, and her **crest** with her name on it.
+
+**After a Mother falls**, every Plata out in the wild knows who killed her:
+
+- A disguised traveler lets on that they know ("I won't pretend I don't know you. Mother Ysolde's killer has a certain look about them."). Your answers change: proud, sorry, or denying it.
+- They still reveal themselves. Then some fight to avenge her: *"You killed Mother Ysolde, prepare to die."* Elders and lookouts are likelier to, and so are you if you're proud of it. Hit one first and they always fight.
+- The rest **let you be**. They stand there revealed, and you can **right-click them to talk**: ask who the Mother was, why they let you be, about the clan, or where it sleeps (they'll point you at the nearest hideout). After a couple of minutes, or four answers, they go back into the stone. **Strike one and the truce is over**: they fight back.
+- Sleepers in other hideouts wake with her name on their lips. A Plata Mask still fools them, so they whisper to you about the Mother's killer, none the wiser.
+
+If you've killed more than one, they name the most recent.
 
 ## Compatibility
 
@@ -106,9 +133,11 @@ Commands:
 | `/plata encounter` | operators | Places a disguised traveler a few blocks ahead. |
 | `/plata reveal` | operators | Drops the nearest disguise. |
 | `/plata spawn <scuttler\|shardcaster\|warden> [level]` | operators | Spawns a revealed Plata. |
+| `/plata mother` | operators | Wakes a Silver Mother a few blocks ahead, sized to you. |
+| `/plata mothers` | anyone | The Silver Mothers you've killed. |
 | `/locate structure #plataclan:hideouts` | operators | The nearest hideout (`#plataclan:dens`, `#plataclan:warrens` for one kind). |
 
-The three ranks also have spawn eggs.
+The three ranks and the Silver Mother also have spawn eggs.
 
 ## Building
 

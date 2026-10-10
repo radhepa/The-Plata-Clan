@@ -52,22 +52,66 @@ POOLS = {
     "hideout.wake": 12,
     "hideout.elder": 8,
     "hideout.reseal": 8,
+    # the Silver Mother (boss.txt)
+    "boss.wake": 8,
+    "boss.slayer": 6,
+    "boss.crush": 6,
+    "boss.sweep": 6,
+    "boss.keen": 6,
+    "boss.rain": 5,
+    "boss.brood": 6,
+    "boss.burrow": 5,
+    "boss.hurt": 8,
+    "boss.shed": 4,
+    "boss.last": 4,
+    "boss.win": 6,
+    "boss.rest": 4,
+    "boss.defeat": 6,
+    # after a Mother falls (mother.txt)
+    "mother.greet": 12,
+    "mother.reply.proud": 6,
+    "mother.reply.sorry": 6,
+    "mother.reply.deny": 6,
+    "mother.avenge": 14,
+    "mother.yield": 14,
+    "mother.provoked": 8,
+    "mother.leave": 8,
+    "mother.sleeper": 8,
+    "mother.grief": 6,
+    "kin.mother": 8,
+    # talking with a Plata who let you be (truce.txt)
+    "truce.greet": 8,
+    "truce.mother": 10,
+    "truce.why": 8,
+    "truce.clan": 10,
+    "truce.hideout": 6,
+    "truce.nohideout": 4,
+    "truce.bye": 6,
+    "truce.enough": 4,
 }
 
 RANKS = ("scuttler", "shardcaster", "warden")
 
 # Placeholders and their longest likely expansion, used when measuring length limits.
-PLACEHOLDERS = {"player": 16, "name": 16, "rank": 11}
+# {mother} is a slain Mother as "Mother Ysolde"; {where} and {far} only appear in truce.hideout.
+PLACEHOLDERS = {"player": 16, "name": 16, "rank": 11, "mother": 16, "where": 21, "far": 11}
 
-# (pool prefix, max characters). Reply labels are buttons; taunts and fight lines are speech lines.
+# (pool prefix, max characters). Reply labels are buttons; taunts and fight lines are speech lines;
+# greetings, whispers and the truce talk show in a window.
 LIMITS = (
     ("disguise.reply.", 32),
     ("kin.reply", 32),
+    ("mother.reply.", 32),
     ("reveal.taunt.", 90),
     ("reveal.first", 60),
     ("fight.", 90),
     ("defeat", 90),
     ("hideout.", 90),
+    ("boss.", 90),
+    ("mother.greet", 200),
+    ("mother.", 90),
+    ("kin.mother", 200),
+    ("truce.", 220),
 )
 
 # The clan is inspired by, never copied from, another franchise's ninja clan. Keep its names out.
@@ -82,7 +126,8 @@ LEAD_TAG = re.compile(r"^\{([^{}]*)\}\s*")
 
 
 def may_rank(pool: str) -> bool:
-    return pool.startswith("fight.") or pool.startswith("hideout.") or pool == "defeat"
+    return pool.startswith("fight.") or pool.startswith("hideout.") or pool == "defeat" \
+        or pool in ("mother.avenge", "mother.yield", "mother.sleeper")
 
 
 def limit_for(pool: str) -> int | None:

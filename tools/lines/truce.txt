@@ -1,0 +1,80 @@
+# Talking with a Plata who let you be after you killed a Mother (the clan's own talk window, opened by right-clicking
+# them). {mother} is the Mother you killed most recently ("Mother Ysolde"). Lines show in the window, so they may run
+# longer than speech lines (220 characters at most). Placeholders: {player}, {name}, {rank}, and in truce.hideout
+# {where} (a direction, "off to the north-east") and {far} ("not far", "a fair walk", "a long walk").
+#
+# truce.greet: when the window opens. truce.mother: "Who was she?" truce.why: "Why let me be?"
+# truce.clan: "Tell me about the clan." truce.hideout / truce.nohideout: "Where does the clan sleep?"
+# truce.bye: the player says farewell. truce.enough: they've answered four questions and go.
+
+[truce.greet]
+Well? You've got my attention. Use it before I think better of it.
+Talking, is it? All right. I've never spoken to a Mother-killer before.
+Go on, then. Ask. I might even answer.
+Strange. A season ago I'd have had your throat. Now we're chatting.
+Say your piece. The stone can wait a moment.
+I'm listening. Keep your hands where I can see them.
+Ask me anything. Except where I sleep.
+Make it quick. The others won't like me talking to you.
+
+[truce.mother]
+{mother} was the oldest thing in that Warren. Older than the stair. She molted more times than you've had birthdays.
+She raised half of us out of the husk. Fed us, named us, taught us to curl up small and listen to the rock.
+{mother} never left the Hollow. Not once in thirty winters. She didn't need to. The walls brought her everything.
+She could hear a pickaxe three valleys over. She'd tell us whose it was, and how many little ones it had killed.
+Some say she was one of the miners who sat down in the stronghold dust. Others say she was the first silverfish's daughter. I believe both.
+{mother} sang to the brood every night. You'd never know it from the Keen. It's the same voice.
+Every Mother takes a new name at her last molt. {mother} was hers. I never learned the old one.
+She was kind to us. Not to anyone else. But to us.
+She made the coffer. Every scale in it is one of ours, shed and kept. She could tell you whose, for each one.
+{mother} used to say the stone is patient, and so are we. I suppose you were more patient.
+
+[truce.why]
+The clan has a law older than the Warrens: whoever fells a Mother walks free for a season. Not forgiven. Free.
+Because you'd win. I saw what you did to {mother}. I'm not stupid enough to want that.
+The others will fight you. Let them. Someone has to be left to remember her.
+I'm tired. Maybe that's the truth. Shedding skins, sleeping in walls, counting the dead. I'm tired.
+{mother} wouldn't want her children thrown at you one by one. She was cleverer than that.
+Because you talked to me first. Nobody talks to us. They just swing.
+I wanted to see what kind of person kills a Mother. You look disappointingly ordinary.
+Don't mistake it for kindness. I'm letting you be. That's all.
+
+[truce.clan]
+We are in the stone. That's the whole of it. Every wall, every road, every cellar you've ever slept over.
+There are more of us than you'd think. Your baker. Your ferryman. That nice old shepherd. Maybe.
+We count. Every silverfish you crush is a mark against your name. Some of you have very long names.
+Scuttlers run the roads. Shardcasters keep the camps. The Wardens keep the young ones in line. And the Mothers keep everyone.
+A Warren is a hill with a Mother under it. A den is a few of us and a fire. I like dens. Less climbing.
+We sleep standing up in our old shells. It's warm, and nobody bothers you. Mostly.
+The mark? A silverfish seen from above. Feelers, segments, three tails. You'll find it everywhere we've ever lived.
+We were villagers once. Some of us still are, by day.
+We don't hate you, stone-breaker. We just remember you. From the outside it looks the same.
+Every Warren has its Mother. Every Mother has her coffer. Every coffer has the mark. That's the clan.
+
+[truce.hideout]
+There's a burrow {where}, {far}. You didn't hear it from me.
+Head {where}. It's {far}. You'll know the place by the smell of cold ash and old silver.
+{where}, {far}, if you must know. Don't wake the little ones too rudely.
+Some of my kin sleep {where}. It's {far}. Watch the lookout; it's always the friendliest face.
+I can feel my kin {where}, {far}. I'd stay away, if I were you. You won't.
+{where}. And if anyone asks, you found it by yourself.
+
+[truce.nohideout]
+Nowhere near. We've moved on from these parts. Can't think why.
+None close. The stone's empty round here.
+Nowhere you'll find. I'm not that grateful.
+Far from here. Farther than you'd want to walk.
+
+[truce.bye]
+Into the stone, then. Don't look for me.
+Go well, stone-breaker. Watch the walls.
+That's enough for one day. Enough for a lifetime, maybe.
+I'll see you on the road. You won't see me.
+Farewell, {player}. Tell nobody I was kind.
+Off you go. And no more stairs, all right?
+
+[truce.enough]
+That's more than I've said to anyone in years. I'm done.
+Enough questions. The walls are calling me home.
+You've had your answers. I've had my curiosity. We're even.
+No more. If the others knew I'd talked this long...

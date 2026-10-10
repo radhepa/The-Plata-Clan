@@ -280,6 +280,10 @@ def model_files(force_placeholder=False):
     return placeholder()
 
 
+MOTHER_GEO = GEO.replace("plata_scuttler", "silver_mother")
+MOTHER_TEX = TEX.replace("plata_scuttler", "silver_mother")
+
+
 # -- rendering -------------------------------------------------------------------------------------
 PAGE = r"""<!doctype html><html><head><meta charset="utf-8"><style>
 html,body{margin:0;height:100%;overflow:hidden;background:#262a33}
@@ -353,6 +357,9 @@ SHEETS = [("molt", ["molt", "unfurl", "defeat"]),
           ("flurry", ["flurry_1", "flurry_2", "flurry_3", "flurry_4", "lunge"]),
           ("dodge", ["backflip", "sideroll", "burrow_dive", "emerge"]),
           ("heavy", ["throw_fan", "kick", "lash", "slam"])]
+MOTHER_SHEETS = [("mother_rest", ["curl", "rise", "stance", "defeat"]),
+                 ("mother_blows", ["crush", "sweep", "keen", "rain"]),
+                 ("mother_more", ["brood", "burrow", "erupt", "shed", "stagger"])]
 
 
 def frame_times(c, beats, frames):
@@ -361,13 +368,13 @@ def frame_times(c, beats, frames):
     return [round(c["length"] * i / (frames - 1), 3) for i in range(frames)]
 
 
-def render(clips, out_png, beats, hits, frames=6, view=35, size=None):
+def render(clips, out_png, beats, hits, frames=6, view=35, size=None, mother=False):
     sys.path.insert(0, os.path.join(TOOLS, "preview"))
     import preview  # the mob previewer: Edge + three.js locations and the PNG data URI helper
     import subprocess
     import time
     import shutil
-    geo_path, tex_path = model_files()
+    geo_path, tex_path = (MOTHER_GEO, MOTHER_TEX) if mother else model_files()
     with open(geo_path, encoding="utf-8") as f:
         geo = json.load(f)
     cells = []
@@ -417,13 +424,21 @@ def main():
     ap.add_argument("--flags", action="store_true", help="with --report: only the flagged frames")
     ap.add_argument("--step", type=float, default=0.05)
     ap.add_argument("--out", help="output PNG (with --clips)")
+    ap.add_argument("--mother", action="store_true", help="the Silver Mother's clips, on her model")
     a = ap.parse_args()
     packs = build_clips.collect()
-    by_id = {c["id"]: c for pack in packs.values() for c in pack["clips"]}
-    beats, hits = build_clips.beats()
-    under = getattr(build_clips.load("plata_moves")[1], "UNDERGROUND", {})
+    mother_path = build_clips.PACKS[2]["path"]
+    by_id = {c["id"]: c for path, pack in packs.items() if (path == mother_path) == a.mother for c in pack["clips"]}
+    if a.mother:
+        mod = build_clips.load("mother_moves")[1]
+        beats, hits, under = mod.BEATS, mod.HITS, mod.UNDERGROUND
+    else:
+        beats, hits = build_clips.beats()
+        under = getattr(build_clips.load("plata_moves")[1], "UNDERGROUND", {})
     if a.clips:
         groups = [("custom", a.clips.split(","))]
+    elif a.mother:
+        groups = MOTHER_SHEETS
     else:
         groups = SHEETS
     if a.report:
@@ -434,7 +449,7 @@ def main():
     for name, ids in groups:
         out = os.path.abspath(a.out) if a.out and a.clips else os.path.join(OUT, f"clips_{name}{suffix}.png")
         os.makedirs(os.path.dirname(out), exist_ok=True)
-        print(render([by_id[i] for i in ids], out, beats, hits, a.frames, a.view))
+        print(render([by_id[i] for i in ids], out, beats, hits, a.frames, a.view, mother=a.mother))
 
 
 if __name__ == "__main__":

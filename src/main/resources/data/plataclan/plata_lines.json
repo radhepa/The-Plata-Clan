@@ -1,6 +1,358 @@
 {
   "format": 1,
   "pools": {
+    "boss.brood": [
+      {
+        "text": "Children! To your mother!",
+        "rank": null
+      },
+      {
+        "text": "Up from the husks, my little ones!",
+        "rank": null
+      },
+      {
+        "text": "Out of the walls! Mother calls!",
+        "rank": null
+      },
+      {
+        "text": "Wake, wake. Someone has come to play.",
+        "rank": null
+      },
+      {
+        "text": "My brood never sleeps when I call.",
+        "rank": null
+      },
+      {
+        "text": "Come, small ones. Show them the count.",
+        "rank": null
+      }
+    ],
+    "boss.burrow": [
+      {
+        "text": "Into the stone.",
+        "rank": null
+      },
+      {
+        "text": "Where am I now?",
+        "rank": null
+      },
+      {
+        "text": "Down to the roots of the hill.",
+        "rank": null
+      },
+      {
+        "text": "The floor is mine, child. All of it.",
+        "rank": null
+      },
+      {
+        "text": "Feel me under you.",
+        "rank": null
+      }
+    ],
+    "boss.crush": [
+      {
+        "text": "Down!",
+        "rank": null
+      },
+      {
+        "text": "Under my hands, then.",
+        "rank": null
+      },
+      {
+        "text": "Flat as a crushed shell.",
+        "rank": null
+      },
+      {
+        "text": "Lie still.",
+        "rank": null
+      },
+      {
+        "text": "The stone breaks you, for once.",
+        "rank": null
+      },
+      {
+        "text": "Feel the whole hill come down.",
+        "rank": null
+      }
+    ],
+    "boss.defeat": [
+      {
+        "text": "My children... into the walls... hide...",
+        "rank": null
+      },
+      {
+        "text": "So this is how a shell feels... when it breaks...",
+        "rank": null
+      },
+      {
+        "text": "Tell them... Mother is in the stone now...",
+        "rank": null
+      },
+      {
+        "text": "Every one of us... will know... your step...",
+        "rank": null
+      },
+      {
+        "text": "Forty winters... and a stone-breaker...",
+        "rank": null
+      },
+      {
+        "text": "Little ones... don't... count me...",
+        "rank": null
+      }
+    ],
+    "boss.hurt": [
+      {
+        "text": "You draw silver. How rare.",
+        "rank": null
+      },
+      {
+        "text": "Hah. You found a seam.",
+        "rank": null
+      },
+      {
+        "text": "That stung, little one. Do it again and I'll mind.",
+        "rank": null
+      },
+      {
+        "text": "Old shells crack. New ones grow.",
+        "rank": null
+      },
+      {
+        "text": "You hit like a pickaxe. Clumsy, and far too often.",
+        "rank": null
+      },
+      {
+        "text": "I've shed worse than you.",
+        "rank": null
+      },
+      {
+        "text": "A scratch. I have had a thousand.",
+        "rank": null
+      },
+      {
+        "text": "Again? Well. You have my full attention now.",
+        "rank": null
+      }
+    ],
+    "boss.keen": [
+      {
+        "text": "Hear us.",
+        "rank": null
+      },
+      {
+        "text": "Listen. Listen to all of them.",
+        "rank": null
+      },
+      {
+        "text": "A thousand little voices, child. All at once.",
+        "rank": null
+      },
+      {
+        "text": "Cover your ears. It won't help.",
+        "rank": null
+      },
+      {
+        "text": "This is what the walls say when you break them.",
+        "rank": null
+      },
+      {
+        "text": "Hush now. Let me sing.",
+        "rank": null
+      }
+    ],
+    "boss.last": [
+      {
+        "text": "The last molt. You should not have made me do this.",
+        "rank": null
+      },
+      {
+        "text": "Everything I have left. Every scale. Every child.",
+        "rank": null
+      },
+      {
+        "text": "The walls themselves will fight you now.",
+        "rank": null
+      },
+      {
+        "text": "Feel the whole Warren wake.",
+        "rank": null
+      }
+    ],
+    "boss.rain": [
+      {
+        "text": "Silver rain, little stone-breaker.",
+        "rank": null
+      },
+      {
+        "text": "Look up.",
+        "rank": null
+      },
+      {
+        "text": "My scales are sharper than they look.",
+        "rank": null
+      },
+      {
+        "text": "Stand still. It makes it easier.",
+        "rank": null
+      },
+      {
+        "text": "Every one of these was mine once.",
+        "rank": null
+      }
+    ],
+    "boss.rest": [
+      {
+        "text": "Gone? Then I'll sleep.",
+        "rank": null
+      },
+      {
+        "text": "Back to the dais. The Hollow keeps.",
+        "rank": null
+      },
+      {
+        "text": "Run, then. Tell them what you saw.",
+        "rank": null
+      },
+      {
+        "text": "The stair goes up. So did you. Wise.",
+        "rank": null
+      }
+    ],
+    "boss.shed": [
+      {
+        "text": "Enough. Off with the old shell.",
+        "rank": null
+      },
+      {
+        "text": "You've cracked it. Now meet what grew underneath.",
+        "rank": null
+      },
+      {
+        "text": "Watch closely. Nobody alive has seen me molt.",
+        "rank": null
+      },
+      {
+        "text": "I shed my skin for the clan once. I'll shed it for you now.",
+        "rank": null
+      }
+    ],
+    "boss.slayer": [
+      {
+        "text": "You killed {mother}. I felt her go cold through a mile of stone.",
+        "rank": null
+      },
+      {
+        "text": "{mother} was my sister. You will not do to me what you did to her.",
+        "rank": null
+      },
+      {
+        "text": "I know your step. It's the one that walked out of {mother}'s hollow.",
+        "rank": null
+      },
+      {
+        "text": "{mother} sent me a last whisper through the rock. It was your name.",
+        "rank": null
+      },
+      {
+        "text": "They say {mother} fell to you. They say a great many things.",
+        "rank": null
+      },
+      {
+        "text": "So you're the one who put {mother} in the dust. Come and try it twice.",
+        "rank": null
+      }
+    ],
+    "boss.sweep": [
+      {
+        "text": "Back, all of you!",
+        "rank": null
+      },
+      {
+        "text": "Mind my train, child.",
+        "rank": null
+      },
+      {
+        "text": "Around and around.",
+        "rank": null
+      },
+      {
+        "text": "The old shell remembers how to swing.",
+        "rank": null
+      },
+      {
+        "text": "Away from me!",
+        "rank": null
+      },
+      {
+        "text": "Every segment of it. All at once.",
+        "rank": null
+      }
+    ],
+    "boss.wake": [
+      {
+        "text": "Who walks in my stone?",
+        "rank": null
+      },
+      {
+        "text": "Children, wake. We have a guest.",
+        "rank": null
+      },
+      {
+        "text": "I smelled you on the stair, stone-breaker. Every step.",
+        "rank": null
+      },
+      {
+        "text": "You came all this way to the bottom of the world. To me.",
+        "rank": null
+      },
+      {
+        "text": "So this is the one my little ones whisper about.",
+        "rank": null
+      },
+      {
+        "text": "I have slept under this hill for forty winters. Wake me gently next time.",
+        "rank": null
+      },
+      {
+        "text": "Closer. Let me see the hands that crush my children.",
+        "rank": null
+      },
+      {
+        "text": "You walked past the shells of my brood to get here. I counted.",
+        "rank": null
+      },
+      {
+        "text": "Welcome to the Hollow. Nobody leaves it by the stair.",
+        "rank": null
+      }
+    ],
+    "boss.win": [
+      {
+        "text": "Hush now. Into the stone with you.",
+        "rank": null
+      },
+      {
+        "text": "Another shell for the walls.",
+        "rank": null
+      },
+      {
+        "text": "Rest. The little ones will tidy up.",
+        "rank": null
+      },
+      {
+        "text": "You came down the stair. You won't go back up it.",
+        "rank": null
+      },
+      {
+        "text": "Lie there and be counted.",
+        "rank": null
+      },
+      {
+        "text": "That is the count settled, for one stone-breaker.",
+        "rank": null
+      }
+    ],
     "defeat": [
       {
         "text": "We are... in the stone...",
@@ -943,6 +1295,40 @@
         "rank": "warden"
       }
     ],
+    "kin.mother": [
+      {
+        "text": "Kin. You've heard? Someone went down to {mother}'s hollow and killed her. Watch the stairs.",
+        "rank": null
+      },
+      {
+        "text": "Keep your mask on tight. There's a stone-breaker about who murdered {mother}.",
+        "rank": null
+      },
+      {
+        "text": "If you see {mother}'s killer, kin, don't be brave. Send word through the walls.",
+        "rank": null
+      },
+      {
+        "text": "They say the one who killed {mother} walks this very road. I'm almost hoping to meet them.",
+        "rank": null
+      },
+      {
+        "text": "Grim days, kin. {mother} in the stone, and her killer walking free.",
+        "rank": null
+      },
+      {
+        "text": "Did you feel it when {mother} went? Like the whole hill shivered.",
+        "rank": null
+      },
+      {
+        "text": "Keep your eyes open. {mother}'s killer won't be wearing a mask, I'd wager.",
+        "rank": null
+      },
+      {
+        "text": "The Hollow's quiet without {mother}. I keep listening for her.",
+        "rank": null
+      }
+    ],
     "kin.reply": [
       {
         "text": "We are in the stone.",
@@ -1061,6 +1447,402 @@
       {
         "text": "Grisel cracked the Silvertail at a Scuttler last night for laughing during the count. Missed. Laughed too. Then went very quiet.",
         "rank": null
+      }
+    ],
+    "mother.avenge": [
+      {
+        "text": "You killed {mother}, prepare to die.",
+        "rank": null
+      },
+      {
+        "text": "For {mother}!",
+        "rank": null
+      },
+      {
+        "text": "This is for {mother}. All of it.",
+        "rank": null
+      },
+      {
+        "text": "{mother} raised me from the husk. You'll answer for her.",
+        "rank": null
+      },
+      {
+        "text": "The stone remembers {mother}. So will you, briefly.",
+        "rank": null
+      },
+      {
+        "text": "You took {mother}. I'm taking you.",
+        "rank": null
+      },
+      {
+        "text": "I've waited on this road for you since {mother} fell.",
+        "rank": null
+      },
+      {
+        "text": "{mother} is cold because of you. Let's even that.",
+        "rank": null
+      },
+      {
+        "text": "No truce, {player}. Not for {mother}'s killer.",
+        "rank": null
+      },
+      {
+        "text": "The count has one name at the top now. Yours.",
+        "rank": null
+      },
+      {
+        "text": "Every wall weeps for {mother}. Let's give them something to cheer.",
+        "rank": null
+      },
+      {
+        "text": "I owe {mother} a stone-breaker. You'll do.",
+        "rank": null
+      },
+      {
+        "text": "The others may let you walk. I'm not the others.",
+        "rank": null
+      },
+      {
+        "text": "Mother-killer. Say it to my face, then.",
+        "rank": null
+      },
+      {
+        "text": "Knives out for {mother}!",
+        "rank": "scuttler"
+      },
+      {
+        "text": "Every scale I throw has {mother}'s name on it.",
+        "rank": "shardcaster"
+      },
+      {
+        "text": "I knelt to {mother} for twenty winters. Kneel to me.",
+        "rank": "warden"
+      }
+    ],
+    "mother.greet": [
+      {
+        "text": "Funny thing. The rocks have been whispering about a traveler who went down an old stair and came back up alone.",
+        "rank": null
+      },
+      {
+        "text": "Out here? On your own? After what you did to {mother}? Brave. Or stupid.",
+        "rank": null
+      },
+      {
+        "text": "I know that walk. You've been somewhere deep, haven't you? Somewhere a Mother sleeps.",
+        "rank": null
+      },
+      {
+        "text": "Everyone on this road has heard about {mother}. Everyone. Did you know that?",
+        "rank": null
+      },
+      {
+        "text": "You've got silver dust on your boots. Old silver. I'd know it anywhere.",
+        "rank": null
+      },
+      {
+        "text": "Strange times. They say {mother} went cold. They say someone helped her along.",
+        "rank": null
+      },
+      {
+        "text": "Sit a while, {player}. I've been waiting to see your face since {mother} fell.",
+        "rank": null
+      },
+      {
+        "text": "Don't mind me. I'm only a traveler. A traveler who knew {mother}.",
+        "rank": null
+      },
+      {
+        "text": "They're singing about you in the walls, {player}. Not kindly.",
+        "rank": null
+      },
+      {
+        "text": "You're the one, aren't you? The one who went down to {mother}.",
+        "rank": null
+      },
+      {
+        "text": "Fine weather today. Was it fine weather when you killed {mother}?",
+        "rank": null
+      },
+      {
+        "text": "I won't pretend I don't know you. {mother}'s killer has a certain look about them.",
+        "rank": null
+      }
+    ],
+    "mother.grief": [
+      {
+        "text": "Mother? MOTHER!",
+        "rank": null
+      },
+      {
+        "text": "No. No, no, no.",
+        "rank": null
+      },
+      {
+        "text": "The Hollow's gone cold...",
+        "rank": null
+      },
+      {
+        "text": "She's... she's in the stone.",
+        "rank": null
+      },
+      {
+        "text": "What have you done?",
+        "rank": null
+      },
+      {
+        "text": "Mother, wait for us!",
+        "rank": null
+      }
+    ],
+    "mother.leave": [
+      {
+        "text": "The stone's calling. Don't follow.",
+        "rank": null
+      },
+      {
+        "text": "That's all you get. Into the dust I go.",
+        "rank": null
+      },
+      {
+        "text": "Mind the road, {player}. Not all of us are as kind.",
+        "rank": null
+      },
+      {
+        "text": "I'll tell them I saw you. I'll tell them you talked.",
+        "rank": null
+      },
+      {
+        "text": "Go well, stone-breaker. Go far.",
+        "rank": null
+      },
+      {
+        "text": "Enough talk. The walls are waiting.",
+        "rank": null
+      },
+      {
+        "text": "Don't come looking. You won't like who you find.",
+        "rank": null
+      },
+      {
+        "text": "Back to the stone. Remember me kindly, or don't.",
+        "rank": null
+      }
+    ],
+    "mother.provoked": [
+      {
+        "text": "So that's how it is. Fine.",
+        "rank": null
+      },
+      {
+        "text": "I offered you the road. You wanted the stone.",
+        "rank": null
+      },
+      {
+        "text": "Truce over. Your choice, not mine.",
+        "rank": null
+      },
+      {
+        "text": "You'd strike someone who let you be? {mother} was right about your kind.",
+        "rank": null
+      },
+      {
+        "text": "Fine. For {mother}, then.",
+        "rank": null
+      },
+      {
+        "text": "Wrong answer, {player}.",
+        "rank": null
+      },
+      {
+        "text": "I gave you mercy. You gave me a reason.",
+        "rank": null
+      },
+      {
+        "text": "Then let's finish what {mother} started.",
+        "rank": null
+      }
+    ],
+    "mother.reply.deny": [
+      {
+        "text": "I don't know what you mean.",
+        "rank": null
+      },
+      {
+        "text": "Never heard of her.",
+        "rank": null
+      },
+      {
+        "text": "You've got the wrong traveler.",
+        "rank": null
+      },
+      {
+        "text": "Mother who?",
+        "rank": null
+      },
+      {
+        "text": "That wasn't me.",
+        "rank": null
+      },
+      {
+        "text": "I've never been underground.",
+        "rank": null
+      }
+    ],
+    "mother.reply.proud": [
+      {
+        "text": "I did. And I'd do it again.",
+        "rank": null
+      },
+      {
+        "text": "She had it coming.",
+        "rank": null
+      },
+      {
+        "text": "Yes. I killed her.",
+        "rank": null
+      },
+      {
+        "text": "She fought well. I did better.",
+        "rank": null
+      },
+      {
+        "text": "What of it?",
+        "rank": null
+      },
+      {
+        "text": "And you're next, if you like.",
+        "rank": null
+      }
+    ],
+    "mother.reply.sorry": [
+      {
+        "text": "I didn't want to.",
+        "rank": null
+      },
+      {
+        "text": "She gave me no choice.",
+        "rank": null
+      },
+      {
+        "text": "I'm sorry for it.",
+        "rank": null
+      },
+      {
+        "text": "It was her or me.",
+        "rank": null
+      },
+      {
+        "text": "I wish it had gone another way.",
+        "rank": null
+      },
+      {
+        "text": "I didn't know what she was.",
+        "rank": null
+      }
+    ],
+    "mother.sleeper": [
+      {
+        "text": "It's the one who killed {mother}! Up, all of you!",
+        "rank": null
+      },
+      {
+        "text": "{mother}'s killer, in our burrow? Shells off!",
+        "rank": null
+      },
+      {
+        "text": "You came to do here what you did to {mother}. Not while I'm awake.",
+        "rank": null
+      },
+      {
+        "text": "Wake up! The stone-breaker who killed {mother} is here!",
+        "rank": null
+      },
+      {
+        "text": "I dreamt of you. You had {mother}'s dust on your hands.",
+        "rank": null
+      },
+      {
+        "text": "Not another Mother. Not this one. Not while I breathe.",
+        "rank": null
+      },
+      {
+        "text": "They warned us. {mother}'s killer comes down every stair.",
+        "rank": null
+      },
+      {
+        "text": "Up, up! Guard the Hollow!",
+        "rank": null
+      }
+    ],
+    "mother.yield": [
+      {
+        "text": "{mother} is in the stone now. I won't follow her there today.",
+        "rank": null
+      },
+      {
+        "text": "Anyone who can best {mother} can walk where they like. Go on.",
+        "rank": null
+      },
+      {
+        "text": "I'm no fool, {player}. I saw what was left of the Hollow.",
+        "rank": null
+      },
+      {
+        "text": "Keep your blade down and I'll keep mine down. Talk, if you want.",
+        "rank": null
+      },
+      {
+        "text": "{mother} fought you and lost. I'd lose faster.",
+        "rank": null
+      },
+      {
+        "text": "The clan's law: whoever fells a Mother walks free a season. Lucky you.",
+        "rank": null
+      },
+      {
+        "text": "I won't fight you. I won't forgive you either.",
+        "rank": null
+      },
+      {
+        "text": "You've nothing to fear from me today. Ask what you like.",
+        "rank": null
+      },
+      {
+        "text": "I loved {mother}. I like breathing more.",
+        "rank": null
+      },
+      {
+        "text": "Fine. You win. Talk to me, then, before I change my mind.",
+        "rank": null
+      },
+      {
+        "text": "Put it away. I'm not here to die for {mother}.",
+        "rank": null
+      },
+      {
+        "text": "The stone's quieter since {mother} went. Strange. Peaceful, almost.",
+        "rank": null
+      },
+      {
+        "text": "Let's not. I've seen enough shells crack this season.",
+        "rank": null
+      },
+      {
+        "text": "You killed {mother}. You can have the road. I'll keep my life.",
+        "rank": null
+      },
+      {
+        "text": "Knives away. You've won. This time.",
+        "rank": "scuttler"
+      },
+      {
+        "text": "Keep your distance and I'll keep mine. Friendly-like.",
+        "rank": "shardcaster"
+      },
+      {
+        "text": "I've buried one Mother this year. I won't bury myself as well.",
+        "rank": "warden"
       }
     ],
     "reveal.first": [
@@ -1296,6 +2078,246 @@
       },
       {
         "text": "Turning your back on a stranger. You'll learn. Briefly.",
+        "rank": null
+      }
+    ],
+    "truce.bye": [
+      {
+        "text": "Into the stone, then. Don't look for me.",
+        "rank": null
+      },
+      {
+        "text": "Go well, stone-breaker. Watch the walls.",
+        "rank": null
+      },
+      {
+        "text": "That's enough for one day. Enough for a lifetime, maybe.",
+        "rank": null
+      },
+      {
+        "text": "I'll see you on the road. You won't see me.",
+        "rank": null
+      },
+      {
+        "text": "Farewell, {player}. Tell nobody I was kind.",
+        "rank": null
+      },
+      {
+        "text": "Off you go. And no more stairs, all right?",
+        "rank": null
+      }
+    ],
+    "truce.clan": [
+      {
+        "text": "We are in the stone. That's the whole of it. Every wall, every road, every cellar you've ever slept over.",
+        "rank": null
+      },
+      {
+        "text": "There are more of us than you'd think. Your baker. Your ferryman. That nice old shepherd. Maybe.",
+        "rank": null
+      },
+      {
+        "text": "We count. Every silverfish you crush is a mark against your name. Some of you have very long names.",
+        "rank": null
+      },
+      {
+        "text": "Scuttlers run the roads. Shardcasters keep the camps. The Wardens keep the young ones in line. And the Mothers keep everyone.",
+        "rank": null
+      },
+      {
+        "text": "A Warren is a hill with a Mother under it. A den is a few of us and a fire. I like dens. Less climbing.",
+        "rank": null
+      },
+      {
+        "text": "We sleep standing up in our old shells. It's warm, and nobody bothers you. Mostly.",
+        "rank": null
+      },
+      {
+        "text": "The mark? A silverfish seen from above. Feelers, segments, three tails. You'll find it everywhere we've ever lived.",
+        "rank": null
+      },
+      {
+        "text": "We were villagers once. Some of us still are, by day.",
+        "rank": null
+      },
+      {
+        "text": "We don't hate you, stone-breaker. We just remember you. From the outside it looks the same.",
+        "rank": null
+      },
+      {
+        "text": "Every Warren has its Mother. Every Mother has her coffer. Every coffer has the mark. That's the clan.",
+        "rank": null
+      }
+    ],
+    "truce.enough": [
+      {
+        "text": "That's more than I've said to anyone in years. I'm done.",
+        "rank": null
+      },
+      {
+        "text": "Enough questions. The walls are calling me home.",
+        "rank": null
+      },
+      {
+        "text": "You've had your answers. I've had my curiosity. We're even.",
+        "rank": null
+      },
+      {
+        "text": "No more. If the others knew I'd talked this long...",
+        "rank": null
+      }
+    ],
+    "truce.greet": [
+      {
+        "text": "Well? You've got my attention. Use it before I think better of it.",
+        "rank": null
+      },
+      {
+        "text": "Talking, is it? All right. I've never spoken to a Mother-killer before.",
+        "rank": null
+      },
+      {
+        "text": "Go on, then. Ask. I might even answer.",
+        "rank": null
+      },
+      {
+        "text": "Strange. A season ago I'd have had your throat. Now we're chatting.",
+        "rank": null
+      },
+      {
+        "text": "Say your piece. The stone can wait a moment.",
+        "rank": null
+      },
+      {
+        "text": "I'm listening. Keep your hands where I can see them.",
+        "rank": null
+      },
+      {
+        "text": "Ask me anything. Except where I sleep.",
+        "rank": null
+      },
+      {
+        "text": "Make it quick. The others won't like me talking to you.",
+        "rank": null
+      }
+    ],
+    "truce.hideout": [
+      {
+        "text": "There's a burrow {where}, {far}. You didn't hear it from me.",
+        "rank": null
+      },
+      {
+        "text": "Head {where}. It's {far}. You'll know the place by the smell of cold ash and old silver.",
+        "rank": null
+      },
+      {
+        "text": "{where}, {far}, if you must know. Don't wake the little ones too rudely.",
+        "rank": null
+      },
+      {
+        "text": "Some of my kin sleep {where}. It's {far}. Watch the lookout; it's always the friendliest face.",
+        "rank": null
+      },
+      {
+        "text": "I can feel my kin {where}, {far}. I'd stay away, if I were you. You won't.",
+        "rank": null
+      },
+      {
+        "text": "{where}. And if anyone asks, you found it by yourself.",
+        "rank": null
+      }
+    ],
+    "truce.mother": [
+      {
+        "text": "{mother} was the oldest thing in that Warren. Older than the stair. She molted more times than you've had birthdays.",
+        "rank": null
+      },
+      {
+        "text": "She raised half of us out of the husk. Fed us, named us, taught us to curl up small and listen to the rock.",
+        "rank": null
+      },
+      {
+        "text": "{mother} never left the Hollow. Not once in thirty winters. She didn't need to. The walls brought her everything.",
+        "rank": null
+      },
+      {
+        "text": "She could hear a pickaxe three valleys over. She'd tell us whose it was, and how many little ones it had killed.",
+        "rank": null
+      },
+      {
+        "text": "Some say she was one of the miners who sat down in the stronghold dust. Others say she was the first silverfish's daughter. I believe both.",
+        "rank": null
+      },
+      {
+        "text": "{mother} sang to the brood every night. You'd never know it from the Keen. It's the same voice.",
+        "rank": null
+      },
+      {
+        "text": "Every Mother takes a new name at her last molt. {mother} was hers. I never learned the old one.",
+        "rank": null
+      },
+      {
+        "text": "She was kind to us. Not to anyone else. But to us.",
+        "rank": null
+      },
+      {
+        "text": "She made the coffer. Every scale in it is one of ours, shed and kept. She could tell you whose, for each one.",
+        "rank": null
+      },
+      {
+        "text": "{mother} used to say the stone is patient, and so are we. I suppose you were more patient.",
+        "rank": null
+      }
+    ],
+    "truce.nohideout": [
+      {
+        "text": "Nowhere near. We've moved on from these parts. Can't think why.",
+        "rank": null
+      },
+      {
+        "text": "None close. The stone's empty round here.",
+        "rank": null
+      },
+      {
+        "text": "Nowhere you'll find. I'm not that grateful.",
+        "rank": null
+      },
+      {
+        "text": "Far from here. Farther than you'd want to walk.",
+        "rank": null
+      }
+    ],
+    "truce.why": [
+      {
+        "text": "The clan has a law older than the Warrens: whoever fells a Mother walks free for a season. Not forgiven. Free.",
+        "rank": null
+      },
+      {
+        "text": "Because you'd win. I saw what you did to {mother}. I'm not stupid enough to want that.",
+        "rank": null
+      },
+      {
+        "text": "The others will fight you. Let them. Someone has to be left to remember her.",
+        "rank": null
+      },
+      {
+        "text": "I'm tired. Maybe that's the truth. Shedding skins, sleeping in walls, counting the dead. I'm tired.",
+        "rank": null
+      },
+      {
+        "text": "{mother} wouldn't want her children thrown at you one by one. She was cleverer than that.",
+        "rank": null
+      },
+      {
+        "text": "Because you talked to me first. Nobody talks to us. They just swing.",
+        "rank": null
+      },
+      {
+        "text": "I wanted to see what kind of person kills a Mother. You look disappointingly ordinary.",
+        "rank": null
+      },
+      {
+        "text": "Don't mistake it for kindness. I'm letting you be. That's all.",
         "rank": null
       }
     ]

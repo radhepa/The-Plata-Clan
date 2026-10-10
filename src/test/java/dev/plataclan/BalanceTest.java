@@ -124,4 +124,39 @@ class BalanceTest {
         assertEquals(Rank.SHARDCASTER, Balance.sleeperRank(.5, 19, true));
         assertTrue(Balance.AWAKE_CAP >= 2 && Balance.AWAKE_CAP <= 4);
     }
+
+    @Test
+    void theMotherIsAWarden() {
+        // Never less than a Warden's 500 health, whoever comes; a strong player meets a longer fight.
+        assertEquals(Balance.MOTHER_MIN_HEALTH, Balance.motherHealth(1, 1, 1, 1));
+        float diamond = Balance.motherHealth(50, 12, 1, 1);
+        assertTrue(diamond / 12 >= 45 && diamond / 12 <= 55, "hits " + diamond / 12);
+        assertTrue(diamond > 2.4F * Balance.health(Rank.WARDEN, 50, 12, 1, 1), "two and a half Molt Wardens or more: " + diamond);
+        assertEquals(Balance.MAX_HEALTH, Balance.motherHealth(100, 40, 3, 1));
+        assertEquals(Balance.motherHealth(30, 8, 1, 1) * 1.5F, Balance.motherHealth(30, 8, 2, 1), .01F);
+        // Her heaviest blow takes about a third of your health through any armor; the Keen ignores armor altogether.
+        Balance.Foe netherite = new Balance.Foe(70, 20, 20, 12, 16, 11);
+        Balance.Foe naked = new Balance.Foe(1, 20, 0, 0, 0, 1);
+        for (Balance.Foe f : new Balance.Foe[]{naked, netherite}) {
+            float crush = Balance.taken(Balance.motherDamage(Balance.MotherHit.CRUSH, f, f.level(), 1), f.armor(), f.toughness(), f.protection());
+            assertEquals(f.maxHealth() * (Balance.MotherHit.CRUSH.share + .0001F * f.level()), crush, .05F);
+            assertTrue(crush > f.maxHealth() * .3F, "crush " + crush);
+        }
+        float keen = Balance.motherDamage(Balance.MotherHit.KEEN, netherite, 70, 1);
+        assertEquals(netherite.maxHealth() * (Balance.MotherHit.KEEN.share + .007F), keen, .01F);
+        assertTrue(Balance.phasePace(3) > Balance.phasePace(2) && Balance.phasePace(2) > Balance.phasePace(1));
+    }
+
+    @Test
+    void someAvengeHerAndSomeLetYouBe() {
+        int avenge = 0, n = 1000;
+        for (int i = 0; i < n; i++) if (Balance.avenges((i + .5) / n, Rank.SCUTTLER, "timeout", false)) avenge++;
+        assertTrue(avenge > 250 && avenge < 450, "a third of Scuttlers fight: " + avenge);
+        // Hit them first and they always fight; an elder Warden mostly does; being sorry helps, being proud doesn't.
+        for (double roll = 0; roll < 1; roll += .05) assertTrue(Balance.avenges(roll, Rank.SHARDCASTER, "rude", false));
+        assertTrue(Balance.avenges(.55, Rank.WARDEN, "timeout", false));
+        assertTrue(Balance.avenges(.5, Rank.SCUTTLER, "proud", false) && !Balance.avenges(.25, Rank.SCUTTLER, "sorry", false));
+        assertTrue(Balance.avenges(.45, Rank.SCUTTLER, "timeout", true) && !Balance.avenges(.45, Rank.SCUTTLER, "timeout", false));
+        assertTrue(Balance.truceTicks(0) >= 2400 && Balance.truceTicks(.999) <= 3600);
+    }
 }

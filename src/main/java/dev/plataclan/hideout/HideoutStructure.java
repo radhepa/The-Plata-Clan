@@ -20,6 +20,7 @@ import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePiecesBuilder;
 import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
+import net.minecraft.world.level.levelgen.structure.pools.SinglePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
 import net.minecraft.world.level.levelgen.structure.structures.JigsawStructure;
@@ -53,7 +54,8 @@ public final class HideoutStructure extends Structure {
             Codec.intRange(0, 20).fieldOf("size").forGetter(s -> s.size),
             JigsawStructure.MaxDistance.CODEC.fieldOf("max_distance_from_center").forGetter(s -> s.maxDistance),
             Survey.CODEC.optionalFieldOf("survey", Survey.DEFAULT).forGetter(s -> s.survey),
-            Codec.intRange(0, 32).optionalFieldOf("cover", 3).forGetter(s -> s.cover)
+            Codec.intRange(0, 32).optionalFieldOf("cover", 3).forGetter(s -> s.cover),
+            Identifier.CODEC.optionalFieldOf("require").forGetter(s -> s.require)
     ).apply(i, HideoutStructure::new));
     public static final StructureType<HideoutStructure> TYPE = () -> CODEC;
 
@@ -63,9 +65,11 @@ public final class HideoutStructure extends Structure {
     private final JigsawStructure.MaxDistance maxDistance;
     private final Survey survey;
     private final int cover;
+    /** A piece the hideout can't do without (a Warren's vault, where its Silver Mother sleeps), or empty. */
+    private final Optional<Identifier> require;
 
     public HideoutStructure(StructureSettings settings, Holder<StructureTemplatePool> startPool, Identifier startJigsaw, int size,
-                            JigsawStructure.MaxDistance maxDistance, Survey survey, int cover) {
+                            JigsawStructure.MaxDistance maxDistance, Survey survey, int cover, Optional<Identifier> require) {
         super(settings);
         this.startPool = startPool;
         this.startJigsaw = startJigsaw;
@@ -73,6 +77,7 @@ public final class HideoutStructure extends Structure {
         this.maxDistance = maxDistance;
         this.survey = survey;
         this.cover = cover;
+        this.require = require;
     }
 
     @Override public StructureType<?> type() { return TYPE; }
@@ -125,17 +130,28 @@ public final class HideoutStructure extends Structure {
         return Optional.of(new GenerationStub(stub.get().position(), (StructurePiecesBuilder builder) -> kept.forEach(builder::addPiece)));
     }
 
-    /** The pieces that stay hidden under enough ground, or null if a piece the burrow can't do without would show. */
+    /**
+     * The pieces that stay hidden under enough ground, or null if a piece the burrow can't do without would show (or
+     * the required piece never fitted at all).
+     */
     private List<StructurePiece> buried(GenerationContext c, List<StructurePiece> pieces) {
         List<StructurePiece> out = new ArrayList<>(pieces.size());
+        boolean found = this.require.isEmpty();
         for (int i = 0; i < pieces.size(); i++) {
             StructurePiece piece = pieces.get(i);
+            boolean required = this.required(piece);
+            found |= required;
             // the surface piece and the shaft or stair under its hatch are meant to meet the air
             if (i <= 1 || this.covered(c, piece.getBoundingBox())) { out.add(piece); continue; }
             boolean leaf = piece instanceof PoolElementStructurePiece p && p.getJunctions().size() <= 1;
-            if (!leaf) return null;
+            if (!leaf || required) return null;
         }
-        return out;
+        return found ? out : null;
+    }
+
+    private boolean required(StructurePiece piece) {
+        return this.require.isPresent() && piece instanceof PoolElementStructurePiece p && p.getElement() instanceof SinglePoolElement single
+                && single.getTemplateLocation().equals(this.require.get());
     }
 
     private boolean covered(GenerationContext c, BoundingBox box) {

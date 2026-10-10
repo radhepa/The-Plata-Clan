@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "plataclan:block/mother_seat"
+    },
+    "facing=east": {
+      "model": "plataclan:block/mother_seat"
+    },
+    "facing=south": {
+      "model": "plataclan:block/mother_seat"
+    },
+    "facing=west": {
+      "model": "plataclan:block/mother_seat"
+    }
+  }
+}

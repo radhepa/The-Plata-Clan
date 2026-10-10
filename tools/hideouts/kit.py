@@ -24,6 +24,7 @@ MOD_BLOCKS = {
     'plataclan:silver_husk': {'half': {'lower', 'upper'}, 'facing': {'north', 'south', 'east', 'west'},
                               'kind': {'sleeper', 'elder'}, 'split': {'true', 'false'}},
     'plataclan:lookout': {},
+    'plataclan:mother_seat': {'facing': {'north', 'south', 'east', 'west'}},
 }
 # Properties that never show up in blockstate files because no model depends on them.
 HIDDEN_PROPERTIES = {'waterlogged', 'powered', 'persistent', 'distance', 'occupied', 'triggered', 'enabled',
@@ -238,6 +239,11 @@ class Template:
         """Where the hideout's disguised lookout waits (spawned when a player comes near)."""
         self.set(x, y, z, 'plataclan:lookout', {'id': 'plataclan:lookout'})
         self.notes['lookout'] = (x, y, z)
+
+    def mother(self, x, y, z, facing):
+        """Where the Warren's Silver Mother sleeps (she is put there, curled up, when a player first comes near)."""
+        self.set(x, y, z, ('plataclan:mother_seat', {'facing': facing}), {'id': 'plataclan:mother_seat'})
+        self.notes['mother'] = (x, y, z)
 
     def banner(self, x, y, z, facing, color='light_gray', pattern_color='gray'):
         """A wall banner bearing the clan's mark, hung on the block behind it (facing away from that wall)."""

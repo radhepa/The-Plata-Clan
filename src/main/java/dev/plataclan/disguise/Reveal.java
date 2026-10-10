@@ -15,6 +15,7 @@ import dev.plataclan.Rank;
 import dev.plataclan.entity.PlataEntities;
 import dev.plataclan.entity.PlataMember;
 import dev.plataclan.item.PlataItems;
+import dev.plataclan.mother.Mothers;
 import dev.villagefriends.FriendshipPayload;
 import dev.villagefriends.VillageFriends;
 import net.fabricmc.fabric.api.attachment.v1.AttachmentTarget;
@@ -53,9 +54,13 @@ public final class Reveal {
     public static final int SWAP_TICKS = 24;
     private static final int TALK_TICKS = 200;
     private static final String[] KINDS = {"polite", "curious", "suspicious"};
+    /** The replies open to someone who killed a Silver Mother, when a traveler lets on that they know. */
+    private static final String[] SLAYER_KINDS = {"proud", "sorry", "deny"};
+    /** Tests only: force the next slayer reveal to avenge (true) or let the player be (false). */
+    public static Boolean forceAvenge;
 
-    /** A conversation waiting for a reply. */
-    private record Talk(UUID player, long since, int seed) {}
+    /** A conversation waiting for a reply; {@code slayer}: the player killed a Mother, and the traveler knows it. */
+    private record Talk(UUID player, long since, int seed, boolean slayer) {}
     /** A Molt in progress. */
     private record Molt(Villager villager, UUID player, String kind, long start) {}
 
@@ -73,10 +78,11 @@ public final class Reveal {
         mark(v);
         if (PlataItems.wearsMask(p)) { kin(p, v); return InteractionResult.SUCCESS_SERVER; }
         if (!PlataConfig.get().talkFirst) { start((ServerLevel) world, v, p, "curious"); return InteractionResult.SUCCESS_SERVER; }
-        talks.put(v.getUUID(), new Talk(p.getUUID(), world.getGameTime(), world.getRandom().nextInt(1 << 16)));
+        boolean slayer = Mothers.slayer(p);
+        talks.put(v.getUUID(), new Talk(p.getUUID(), world.getGameTime(), world.getRandom().nextInt(1 << 16), slayer));
         String country = Disguises.country((ServerLevel) world, v.blockPosition());
-        String pool = world.getRandom().nextFloat() < .6F ? "disguise.greet." + country : "disguise.greet.any";
-        String line = PlataLines.pick(pool, null, world.getRandom(), p.getName().getString(), VillageFriends.name(v));
+        String pool = slayer ? "mother.greet" : world.getRandom().nextFloat() < .6F ? "disguise.greet." + country : "disguise.greet.any";
+        String line = Mothers.fill(PlataLines.pick(pool, null, world.getRandom(), p.getName().getString(), VillageFriends.name(v)), p);
         PlataNet.talkOpened(p, v);
         VillageFriends.show(p, v, TAB, line, "A traveler, far from any village.", true, null);
         return InteractionResult.SUCCESS_SERVER;
@@ -87,9 +93,13 @@ public final class Reveal {
         if (d != null && !d.met()) ((AttachmentTarget) v).setAttached(Disguises.DISGUISE, d.meet());
     }
 
-    /** Wearing the clan's face: they take you for kin and whisper instead of fighting. */
+    /**
+     * Wearing the clan's face: they take you for kin and whisper instead of fighting. To a Mother's killer they
+     * whisper about the Mother's killer, none the wiser.
+     */
     static void kin(ServerPlayer p, Villager v) {
-        String line = PlataLines.pick("kin.whisper", null, p.getRandom(), p.getName().getString(), VillageFriends.name(v));
+        String pool = Mothers.slayer(p) && p.getRandom().nextFloat() < .7F ? "kin.mother" : "kin.whisper";
+        String line = Mothers.fill(PlataLines.pick(pool, null, p.getRandom(), p.getName().getString(), VillageFriends.name(v)), p);
         VillageFriends.show(p, v, KIN_TAB, line, "They lean in close.", true, null);
     }
 
@@ -103,9 +113,11 @@ public final class Reveal {
         if (!tab.equals(TAB)) return null;
         Talk t = talks.get(v.getUUID());
         int seed = t == null ? v.getUUID().hashCode() : t.seed();
+        boolean slayer = t != null && t.slayer();
         List<FriendshipPayload.Choice> out = new ArrayList<>();
-        for (String kind : KINDS) {
-            out.add(new FriendshipPayload.Choice(ACTION + kind, PlataLines.nth("disguise.reply." + kind, seed + kind.length(), null, null, null), true, ""));
+        for (String kind : slayer ? SLAYER_KINDS : KINDS) {
+            String pool = (slayer ? "mother.reply." : "disguise.reply.") + kind;
+            out.add(new FriendshipPayload.Choice(ACTION + kind, PlataLines.nth(pool, seed + kind.length(), null, null, null), true, ""));
         }
         return out;
     }
@@ -119,7 +131,7 @@ public final class Reveal {
         if (!(p.level() instanceof ServerLevel level) || !(level.getEntity(entityId) instanceof Villager v) || !Disguises.disguised(v)) return false;
         if (action.startsWith(ACTION + "kin") || PlataItems.wearsMask(p)) { PlataNet.closeTalk(p, v); return true; }
         String kind = action.startsWith(ACTION) ? action.substring(ACTION.length()) : "curious";
-        start(level, v, p, List.of(KINDS).contains(kind) ? kind : "curious");
+        start(level, v, p, List.of(KINDS).contains(kind) || List.of(SLAYER_KINDS).contains(kind) ? kind : "curious");
         return true;
     }
 
@@ -200,6 +212,7 @@ public final class Reveal {
             member.unfurl();
             level.addFreshEntity(member);
         }
+        Disguises.Disguise wore = Disguises.disguise(v);
         burst(level, v);
         forget(level, v);
         v.discard();
@@ -210,6 +223,18 @@ public final class Reveal {
                 member.speak(level, PlataLines.pick("reveal.first", rank, level.getRandom(), p.getName().getString(), name), true);
             }
             Disguises.log(p, new Disguises.PlayerLog(log.lastEncounter(), log.reveals() + 1, true));
+        }
+        if (p != null && Mothers.slayer(p)) {
+            // they know who you are: some fight to avenge her, the rest let you be
+            boolean post = wore != null && wore.post();
+            boolean avenge = forceAvenge != null ? forceAvenge : Balance.avenges(level.getRandom().nextDouble(), rank, m.kind(), post);
+            if (avenge) {
+                member.say(level, "mother.avenge", 0);
+            } else {
+                member.yieldTo(p, Balance.truceTicks(level.getRandom().nextDouble()));
+                member.say(level, "mother.yield", 0);
+            }
+            return;
         }
         member.say(level, "reveal.taunt." + m.kind(), 0);
     }

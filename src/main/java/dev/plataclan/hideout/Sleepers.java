@@ -8,6 +8,7 @@ import dev.plataclan.block.SilverHuskBlock;
 import dev.plataclan.block.SilverHuskBlockEntity;
 import dev.plataclan.entity.PlataEntities;
 import dev.plataclan.entity.PlataMember;
+import dev.plataclan.mother.Mothers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -82,7 +83,7 @@ public final class Sleepers {
     }
 
     /** Sleepers from this hideout already up and about near pos. */
-    static int awake(ServerLevel level, BlockPos pos) {
+    public static int awake(ServerLevel level, BlockPos pos) {
         return level.getEntitiesOfClass(PlataMember.class, new AABB(pos).inflate(CROWD_RADIUS),
                 m -> m.isAlive() && m.garrison() && !m.fleeing()).size();
     }
@@ -114,7 +115,7 @@ public final class Sleepers {
         m.unfurl();
         level.addFreshEntity(m);
         burst(level, pos, elder);
-        m.say(level, elder ? "hideout.elder" : "hideout.wake", 0);
+        m.say(level, p != null && Mothers.slayer(p) ? "mother.sleeper" : elder ? "hideout.elder" : "hideout.wake", 0);
         stirNeighbours(level, pos, level.getGameTime());
         return m;
     }

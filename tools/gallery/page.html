@@ -154,7 +154,7 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--rule
     <p>The clan lives the way the silverfish taught it, inside the stone and under something nobody looks at twice. A <strong>Scale Den</strong> hides under a traveler's camp; a <strong>Silver Warren</strong> under a ruined toll-house, with a cistern that is really a spiral stair twenty blocks down. Each has a lookout up top: a disguised Plata, happy to chat until they aren't. Both come in six regional styles and keep well away from villages and homesteads.</p>
     <div class="strip">{{HIDEOUT_SURFACES}}</div>
     {{HIDEOUT_CUTAWAY}}
-    <p>Every Warren branches differently from the <strong>Molting Hall</strong>, where the clan's mark runs the length of the floor. Ribbed tunnels, built like the segments of a silverfish's back, lead to the Shell Gallery, the Sparring Pit, the Scale Forge, the Brood, the Shrine of the First Molt and the Storeroom. Behind the hall, the vault: an elder asleep over the Clan Coffer. The walls are stronghold brick, and some of it is infested.</p>
+    <p>Every Warren branches differently from the <strong>Molting Hall</strong>, where the clan's mark runs the length of the floor. Ribbed tunnels, built like the segments of a silverfish's back, lead to the Shell Gallery, the Sparring Pit, the Scale Forge, the Brood, the Shrine of the First Molt and the Storeroom. Behind the hall, the vault: a barred antechamber, a stair down, and the Hollow, where the Warren's Silver Mother sleeps over the Clan Coffer. The walls are stronghold brick, and some of it is infested.</p>
     <div class="moves">{{HIDEOUT_ROOMS}}</div>
   </section>
 
@@ -170,6 +170,29 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--rule
   </section>
 
   <section>
+    <div class="eyebrow">At the bottom of every Warren</div>
+    <h2>The Silver Mother</h2>
+    <p>Every Warren has its Mother: the oldest of the clan, who no longer goes out on the road. She took a new name at her last molt, and the clan calls her by it: Mother Ysolde, Mother Wren, Mother Petra. She wears her children's face, but she stands half again as tall. A circlet of four feelers rides on her hood and a fan of shell plates rises behind her head. Her train, the shell of her first molt, drags along the floor behind her. Her eye slits and the mark on her train burn with a cold light, and silver motes drift round her.</p>
+    <p>She sleeps curled on her dais until you come close, then rises, and her name fills the screen. She is a Warden-class fight sized to you: never under 500 health, and about forty to sixty of your best blows. She has the <strong>Crush</strong> (her gauntlets stick in the floor afterwards: hit her then), the <strong>Sweep</strong> of her train, the <strong>Silver Keen</strong> (a shriek through armor: get a pillar between you), the <strong>Brood</strong>, the <strong>Burrow</strong> and the <strong>Silver Rain</strong>. At two thirds of her health she bursts out of her old shell; at one third, the walls themselves wake.</p>
+    <div class="moves">{{MOTHER}}</div>
+    <div class="cols" style="margin-top:14px">
+      <p class="quote">{{Q_MOTHER_WAKE}}<small>Woken</small></p>
+      <p class="quote">{{Q_MOTHER_SLAYER}}<small>To someone who killed her sister</small></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">After a Mother falls</div>
+    <h2>Every Plata knows your name</h2>
+    <p>Kill a Mother and every Plata in the wild knows it. A disguised traveler lets on, and your answers change: proud, sorry, or denying it. They still molt. Some fight to avenge her, elders and lookouts most of all. The rest let you be: they stand there revealed, and you can talk to them, ask who she was, why they spare you, or where the clan sleeps. Then they go back into the stone. Strike one and the truce is over.</p>
+    <div class="moves">{{SLAYER}}</div>
+    <div class="cols" style="margin-top:14px">
+      <p class="quote">You killed Mother Ysolde, prepare to die.<small>One who won't let it go</small></p>
+      <p class="quote">{{Q_YIELD}}<small>One who lets you be</small></p>
+    </div>
+  </section>
+
+  <section>
     <div class="eyebrow">In the modpack</div>
     <h2>Gets along with everything</h2>
     <ul class="plain">
@@ -180,5 +203,5 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--rule
     </ul>
   </section>
 
-  <footer>The Plata Clan 1.1.0 for Minecraft 26.3 (Fabric). {{LINE_COUNT}} lines of dialogue. Every image on this page is from the game or from the mod's own art tools.</footer>
+  <footer>The Plata Clan 1.2.0 for Minecraft 26.3 (Fabric). {{LINE_COUNT}} lines of dialogue. Every image on this page is from the game or from the mod's own art tools.</footer>
 </main>

@@ -9,6 +9,8 @@ import dev.plataclan.disguise.Disguises;
 import dev.plataclan.disguise.Reveal;
 import dev.plataclan.entity.PlataEntities;
 import dev.plataclan.entity.PlataMember;
+import dev.plataclan.mother.Mothers;
+import dev.plataclan.mother.SilverMother;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
@@ -23,7 +25,8 @@ import net.minecraft.world.level.levelgen.Heightmap;
 /**
  * {@code /plata level} shows how the clan sizes you up. Operators, for testing:
  * {@code /plata encounter} puts a disguised traveler a few blocks ahead of you,
- * {@code /plata spawn <rank> [level]} a revealed member, {@code /plata reveal} drops the nearest disguise.
+ * {@code /plata spawn <rank> [level]} a revealed member, {@code /plata reveal} drops the nearest disguise,
+ * {@code /plata mother} wakes a Silver Mother in front of you. {@code /plata mothers} lists the Mothers you killed.
  */
 public final class PlataCommands {
     private PlataCommands() {}
@@ -31,6 +34,9 @@ public final class PlataCommands {
     static void register(CommandDispatcher<CommandSourceStack> d) {
         d.register(Commands.literal("plata")
                 .then(Commands.literal("level").executes(c -> level(c.getSource(), c.getSource().getPlayerOrException())))
+                .then(Commands.literal("mothers").executes(c -> mothers(c.getSource(), c.getSource().getPlayerOrException())))
+                .then(Commands.literal("mother").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
+                        .executes(c -> mother(c.getSource(), c.getSource().getPlayerOrException())))
                 .then(Commands.literal("encounter").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
                         .executes(c -> encounter(c.getSource(), c.getSource().getPlayerOrException(), 6)))
                 .then(Commands.literal("reveal").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
@@ -48,6 +54,32 @@ public final class PlataCommands {
         String from = PlayerPower.rpgLevel(p) > 0 ? "your character level" : "your gear";
         src.sendSuccess(() -> Component.literal("The Plata Clan sizes you up at level " + level + " (from " + from + ")."), false);
         return level;
+    }
+
+    /** The Silver Mothers you have killed, the most recent last. */
+    private static int mothers(CommandSourceStack src, ServerPlayer p) {
+        var slain = Mothers.slain(p);
+        if (slain.isEmpty()) {
+            src.sendSuccess(() -> Component.literal("You have killed no Silver Mother. The clan has no quarrel with you beyond the usual."), false);
+            return 0;
+        }
+        String names = String.join(", ", slain.stream().map(s -> "Mother " + s.name()).toList());
+        src.sendSuccess(() -> Component.literal("Every Plata in the stone knows you killed " + names + "."), false);
+        return slain.size();
+    }
+
+    /** A Silver Mother a few blocks ahead, awake and sized up to you (her dais is where she stands). */
+    private static int mother(CommandSourceStack src, ServerPlayer p) {
+        ServerLevel world = (ServerLevel) p.level();
+        SilverMother m = PlataEntities.SILVER_MOTHER.create(world, EntitySpawnReason.COMMAND);
+        if (m == null) return 0;
+        BlockPos at = ahead(p, 7);
+        m.settleAt(at, p.getYRot() + 180, Mothers.newName(world.getRandom(), world));
+        m.finalizeSpawn(world, world.getCurrentDifficultyAt(at), EntitySpawnReason.COMMAND, null);
+        world.addFreshEntity(m);
+        m.awaken(p);
+        src.sendSuccess(() -> Component.literal(m.title() + " rises (" + Math.round(m.getMaxHealth()) + " health)."), true);
+        return 1;
     }
 
     private static BlockPos ahead(ServerPlayer p, double dist) {

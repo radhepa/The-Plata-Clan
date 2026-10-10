@@ -18,7 +18,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 
-/** The hideouts' two blocks: the silver husk a Plata sleeps in, and the invisible mark where a lookout waits. */
+/**
+ * The hideouts' blocks: the silver husk a Plata sleeps in, the invisible mark where a lookout waits, and the
+ * invisible mark where a Warren's Silver Mother sleeps.
+ */
 public final class PlataBlocks {
     private PlataBlocks() {}
 
@@ -28,8 +31,13 @@ public final class PlataBlocks {
             .noCollision().noOcclusion().noLootTable().strength(-1.0F, 3600000.0F).replaceable().noTerrainParticles()
             .pushReaction(PushReaction.POPPED));
 
+    public static final MotherSeatBlock MOTHER_SEAT = register("mother_seat", MotherSeatBlock::new, BlockBehaviour.Properties.of()
+            .noCollision().noOcclusion().noLootTable().strength(-1.0F, 3600000.0F).replaceable().noTerrainParticles()
+            .pushReaction(PushReaction.POPPED));
+
     public static final BlockEntityType<SilverHuskBlockEntity> SILVER_HUSK_ENTITY = entity("silver_husk", SilverHuskBlockEntity::new, SILVER_HUSK);
     public static final BlockEntityType<LookoutBlockEntity> LOOKOUT_ENTITY = entity("lookout", LookoutBlockEntity::new, LOOKOUT);
+    public static final BlockEntityType<MotherSeatBlockEntity> MOTHER_SEAT_ENTITY = entity("mother_seat", MotherSeatBlockEntity::new, MOTHER_SEAT);
 
     public static final Item SILVER_HUSK_ITEM = Registry.register(BuiltInRegistries.ITEM, PlataClan.id("silver_husk"), new BlockItem(SILVER_HUSK,
             new Item.Properties().setId(ResourceKey.create(Registries.ITEM, PlataClan.id("silver_husk"))).useBlockDescriptionPrefix()));

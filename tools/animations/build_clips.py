@@ -31,17 +31,24 @@ MOVES = {"stance": 2.0, "unfurl": 1.1, "ready": 0.4, "flurry_1": 0.45, "flurry_2
          "throw_fan": 0.8, "kick": 0.6, "lash": 1.3, "slam": 1.4, "call": 1.2, "stagger": 1.0, "taunt": 1.6,
          "defeat": 1.4}
 MOLT = {"molt": 1.3}
+# The Silver Mother's moves (MotherMove in the game).
+MOTHER = {"stance": 2.4, "curl": 4.0, "rise": 2.5, "crush": 2.4, "sweep": 1.6, "keen": 2.2, "rain": 1.6, "brood": 1.6,
+          "burrow": 1.0, "erupt": 1.2, "shed": 2.6, "stagger": 1.4, "defeat": 3.0}
 # Clips allowed to start (or end) away from the stance: the contract puts them somewhere else.
 FREE_START = {"unfurl", "emerge"}
 FREE_END = {"burrow_dive", "defeat"}
 
 PACKS = [
     dict(path=os.path.join(ASSETS, "plata_moves", "plata.json"), module="plata_moves", required=MOVES,
-         name="Plata moves", trigger="idle", require=None,
+         name="Plata moves", trigger="idle", require=None, free_start=FREE_START, free_end=FREE_END,
          description="The Plata Clan fighter's moves, played by id by PlataPoser on the Plata model."),
     dict(path=os.path.join(ASSETS, "resident_animations", "plata.json"), module="molt", required=MOLT,
          name="The Molt", trigger="pet", require=["play:plata_never"],
          description="A disguised Plata drops the act. Played only by the Plata Clan reveal, never by the director."),
+    dict(path=os.path.join(ASSETS, "plata_moves", "mother.json"), module="mother_moves", required=MOTHER,
+         name="The Silver Mother", trigger="idle", require=None,
+         free_start={"curl", "rise", "erupt"}, free_end={"curl", "burrow", "defeat"},
+         description="The Silver Mother's moves, played by id by MotherModel on her model."),
 ]
 
 
@@ -146,19 +153,25 @@ def validate(pack, data):
     return errors, by_id
 
 
-def contract(moves, molt):
-    """Blend rules between clips: stance loops, clips start/end in the stance, unfurl starts where molt ends."""
+def stance_contract(moves, free_start, free_end, who=""):
+    """The stance loops; every other clip starts and ends in it unless the contract puts it somewhere else."""
     errors = []
     stance = moves.get("stance")
     if stance:
         s0 = sample(stance, 0)
         if d := differ(s0, sample(stance, stance["length"]), 1e-3):
-            errors.append(f"stance does not loop: {d[1]} off by {d[0]:.3f}")
+            errors.append(f"{who}stance does not loop: {d[1]} off by {d[0]:.3f}")
         for cid, c in moves.items():
-            if cid not in FREE_START and (d := differ(s0, sample(c, 0), 0.5)):
-                errors.append(f"{cid}: starts {d[0]:.2f} away from the stance ({d[1]})")
-            if cid not in FREE_END and (d := differ(s0, sample(c, c["length"]), 0.5)):
-                errors.append(f"{cid}: ends {d[0]:.2f} away from the stance ({d[1]})")
+            if cid not in free_start and (d := differ(s0, sample(c, 0), 0.5)):
+                errors.append(f"{who}{cid}: starts {d[0]:.2f} away from the stance ({d[1]})")
+            if cid not in free_end and (d := differ(s0, sample(c, c["length"]), 0.5)):
+                errors.append(f"{who}{cid}: ends {d[0]:.2f} away from the stance ({d[1]})")
+    return errors
+
+
+def contract(moves, molt):
+    """Blend rules between clips: stance loops, clips start/end in the stance, unfurl starts where molt ends."""
+    errors = stance_contract(moves, FREE_START, FREE_END)
     if "unfurl" in moves and "molt" in molt:
         m = molt["molt"]
         if d := differ(sample(m, m["length"]), sample(moves["unfurl"], 0), 0.01):
@@ -194,6 +207,13 @@ def main():
         errors += errs
         ids[pack["module"]] = by_id
     errors += contract(ids["plata_moves"], ids["molt"])
+    mother = PACKS[2]
+    errors += stance_contract(ids["mother_moves"], mother["free_start"], mother["free_end"], "mother:")
+    curl = ids["mother_moves"]["curl"]
+    for cid, at in (("rise", 0), ("defeat", None)):
+        c = ids["mother_moves"][cid]
+        if d := differ(sample(curl, 0), sample(c, c["length"] if at is None else at), 0.5):
+            errors.append(f"mother:{cid} must {'start' if at == 0 else 'end'} curled: {d[1]} off by {d[0]:.2f}")
     if errors:
         raise SystemExit("Clip errors:\n  " + "\n  ".join(errors))
     stale = []
