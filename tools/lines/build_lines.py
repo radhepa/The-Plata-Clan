@@ -49,6 +49,9 @@ POOLS = {
     "defeat": 12,
     "kin.whisper": 20,
     "kin.reply": 4,
+    "hideout.wake": 12,
+    "hideout.elder": 8,
+    "hideout.reseal": 8,
 }
 
 RANKS = ("scuttler", "shardcaster", "warden")
@@ -64,6 +67,7 @@ LIMITS = (
     ("reveal.first", 60),
     ("fight.", 90),
     ("defeat", 90),
+    ("hideout.", 90),
 )
 
 # The clan is inspired by, never copied from, another franchise's ninja clan. Keep its names out.
@@ -78,7 +82,7 @@ LEAD_TAG = re.compile(r"^\{([^{}]*)\}\s*")
 
 
 def may_rank(pool: str) -> bool:
-    return pool.startswith("fight.") or pool == "defeat"
+    return pool.startswith("fight.") or pool.startswith("hideout.") or pool == "defeat"
 
 
 def limit_for(pool: str) -> int | None:

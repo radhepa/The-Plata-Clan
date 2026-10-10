@@ -1,6 +1,7 @@
 package dev.plataclan;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
@@ -105,5 +106,22 @@ class BalanceTest {
         assertTrue(Balance.encounterChance(25, 30, 2, 0) > p);
         assertTrue(Balance.encounterChance(25, 30, 1, 400) > Balance.encounterChance(25, 30, 1, 100));
         assertEquals(0, Balance.encounterChance(25, 30, 0, 0));
+    }
+
+    @Test
+    void hideoutSleepers() {
+        // Sneaking halves how close you can get before a husk notices; an elder sleeps lighter.
+        assertEquals(Balance.WAKE_RANGE / 2, Balance.wakeRange(false, true), 1e-9);
+        assertTrue(Balance.wakeRange(true, false) > Balance.wakeRange(false, false));
+        // Sleepers wake groggy; the vault's elder is the boss and wakes whole.
+        assertTrue(Balance.garrisonHealth(false) < 1F);
+        assertEquals(1F, Balance.garrisonHealth(true));
+        // Sleepers are footsoldiers: never a Warden. An elder is a Warden from level 20, else a Shardcaster.
+        for (double roll = 0; roll < 1; roll += .05) assertNotEquals(Rank.WARDEN, Balance.sleeperRank(roll, 90, false));
+        assertEquals(Rank.SCUTTLER, Balance.sleeperRank(.1, 50, false));
+        assertEquals(Rank.SHARDCASTER, Balance.sleeperRank(.9, 50, false));
+        assertEquals(Rank.WARDEN, Balance.sleeperRank(.5, 20, true));
+        assertEquals(Rank.SHARDCASTER, Balance.sleeperRank(.5, 19, true));
+        assertTrue(Balance.AWAKE_CAP >= 2 && Balance.AWAKE_CAP <= 4);
     }
 }

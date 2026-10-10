@@ -85,6 +85,34 @@ def main(out):
     def quote(pool, i):
         items = lines.get(pool, [])
         return items[i % len(items)]["text"] if items else ""
+    def shots(contains):
+        """Every collected screenshot whose name contains the text, in order (names vary with what generated)."""
+        names = []
+        for f in sorted(os.listdir(SHOTS)) if os.path.isdir(SHOTS) else []:
+            stem = os.path.splitext(f)[0]
+            stem = stem.split("_", 1)[-1] if stem[:4].isdigit() else stem
+            if contains in stem and stem not in names: names.append(stem)
+        return names
+    styles = {"green": "green country", "cold": "snow and taiga", "sand": "desert", "mesa": "badlands", "dry": "savanna", "stone": "windswept hills"}
+    surfaces = [figure("hideout-01-warren-surface", "A Silver Warren: a ruined toll-house with an old cistern", width=620),
+                figure("hideout-02-warren-lookout", "Its lookout, on the bench by the door", width=620),
+                figure("hideout-20-den-surface", "A Scale Den: someone's camp, far from anywhere", width=620),
+                figure("hideout-22-den-lookout", "Its lookout, by the fire", width=620),
+                figure("hideout-03-warren-cistern", "The old cistern: its broken cover hides the top of a spiral stair", width=620)]
+    for name in shots("-warren-") + shots("-den-"):
+        parts = name.split("-")
+        if len(parts) == 4 and parts[3] in styles and parts[1] >= "40":
+            surfaces.append(figure(name, f"{'Warren' if parts[2] == 'warren' else 'Den'}, {styles[parts[3]]} style", width=620))
+    rooms = {"hall": "The Molting Hall: the mark the length of the floor", "vault": "The vault: the elder's husk over the Clan Coffer",
+             "gallery": "The Shell Gallery", "pit": "The Sparring Pit", "forge": "The Scale Forge", "nest": "The Brood",
+             "shrine": "The Shrine of the First Molt", "store": "The Storeroom", "tunnel": "A ribbed tunnel"}
+    room_figs = []
+    for key, caption in rooms.items():
+        for name in shots("-warren-" + key)[:1]:
+            room_figs.append(figure(name, caption, width=560))
+    for name in shots("-den-room")[:1]:
+        room_figs.append(figure(name, "A Scale Den's one room", width=560))
+    cutaway = embed("warren_cutaway", width=1100, quality=88)
     swaps = {
         "{{LINEUP}}": embed("plata-06-lineup", width=1280, crop=(0.2, 0.27, 0.9, 0.72)) or embed("plata_lineup", width=1400) or "",
         "{{MARK}}": embed_png(os.path.join(ROOT, "src", "main", "resources", "assets", "plataclan", "textures", "gui", "plata_mark.png")),
@@ -100,6 +128,16 @@ def main(out):
         "{{Q_DEFEAT}}": quote("defeat", 3),
         "{{Q_KIN}}": quote("kin.whisper", 4),
         "{{LINE_COUNT}}": str(sum(len(v) for v in lines.values())),
+        "{{HIDEOUT_SURFACES}}": "".join(surfaces),
+        "{{HIDEOUT_CUTAWAY}}": (f'<figure><img src="{cutaway}" alt="A whole generated Warren, cut away: the ruin above, the stair, the hall, tunnels, rooms and the vault">'
+                               '<figcaption>A whole Warren from the game, every room cut away above its walls: the ruin and stair at the top, the burrow below</figcaption></figure>') if cutaway else "",
+        "{{HIDEOUT_ROOMS}}": "".join(room_figs),
+        "{{HIDEOUT_SLEEPERS}}": "".join([
+            figure("hideout-30-sleeper-wakes", "Too close: the husk cracks open", width=560),
+            figure("hideout-32-sleepers-up", "Its neighbours stir and follow", width=560),
+            figure("hideout-33-sealed-again", "Walk away and they seal themselves back in", width=560)]),
+        "{{Q_WAKE}}": quote("hideout.wake", 3),
+        "{{Q_ELDER}}": quote("hideout.elder", 2),
     }
     for k, v in swaps.items():
         page = page.replace(k, v)

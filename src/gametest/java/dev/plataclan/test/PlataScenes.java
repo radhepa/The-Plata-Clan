@@ -308,7 +308,9 @@ final class PlataScenes {
         onServer(w, l -> {
             PlataMember m = (PlataMember) l.getEntity(id);
             ServerPlayer p = player(w);
+            // a Plata may dodge a blow, but never two in a row
             m.hurtServer(l, p.damageSources().playerAttack(p), 100000);
+            if (!m.isDeadOrDying()) m.hurtServer(l, p.damageSources().playerAttack(p), 100000);
             check(m.isDeadOrDying(), "down");
             return null;
         });

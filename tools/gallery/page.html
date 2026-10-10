@@ -149,14 +149,36 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--rule
   </section>
 
   <section>
+    <div class="eyebrow">Where they live</div>
+    <h2>Hideouts: in the stone</h2>
+    <p>The clan lives the way the silverfish taught it, inside the stone and under something nobody looks at twice. A <strong>Scale Den</strong> hides under a traveler's camp; a <strong>Silver Warren</strong> under a ruined toll-house, with a cistern that is really a spiral stair twenty blocks down. Each has a lookout up top: a disguised Plata, happy to chat until they aren't. Both come in six regional styles and keep well away from villages and homesteads.</p>
+    <div class="strip">{{HIDEOUT_SURFACES}}</div>
+    {{HIDEOUT_CUTAWAY}}
+    <p>Every Warren branches differently from the <strong>Molting Hall</strong>, where the clan's mark runs the length of the floor. Ribbed tunnels, built like the segments of a silverfish's back, lead to the Shell Gallery, the Sparring Pit, the Scale Forge, the Brood, the Shrine of the First Molt and the Storeroom. Behind the hall, the vault: an elder asleep over the Clan Coffer. The walls are stronghold brick, and some of it is infested.</p>
+    <div class="moves">{{HIDEOUT_ROOMS}}</div>
+  </section>
+
+  <section class="cols">
+    <div style="display:grid;gap:14px">
+      <div class="eyebrow">Tread softly</div>
+      <h2>Sleepers in silver husks</h2>
+      <p>Down below the clan sleeps standing up in silver husks, their own shed shells. Come within sight and a few blocks and a husk cracks open: a Plata springs out at your level, and the husks around it follow, one after another. Sneak and you can creep much closer. Never more than three are up at once; the rest wait their turn. Leave, and they crawl back into their shells, which seal behind them.</p>
+      <p class="quote">{{Q_WAKE}}<small>A sleeper, woken</small></p>
+      <p class="quote">{{Q_ELDER}}<small>The elder over the coffer</small></p>
+    </div>
+    <div style="display:grid;gap:14px">{{HIDEOUT_SLEEPERS}}</div>
+  </section>
+
+  <section>
     <div class="eyebrow">In the modpack</div>
     <h2>Gets along with everything</h2>
     <ul class="plain">
       <li><strong>Village Friends 2.26+</strong> is required and hooked from outside: no Village Friends file is changed. The disguise talk uses its conversation window, and the Molt plays through its animation system. Its guards treat a revealed Plata as a threat.</li>
       <li><strong>Village Friends RPG</strong> is optional: your character level sets theirs, and every Plata counts toward the Vermin family in the Bestiary.</li>
+      <li>Hideouts keep clear of Village Friends villages and homesteads, using their own placement that skips any structure set that isn't loaded.</li>
       <li><strong>Not-So-Vanilla Mobs</strong> and <strong>Turning Seasons</strong> share no ids and no mixin targets with this mod.</li>
     </ul>
   </section>
 
-  <footer>The Plata Clan 1.0.0 for Minecraft 26.3 (Fabric). {{LINE_COUNT}} lines of dialogue. Every image on this page is from the game or from the mod's own art tools.</footer>
+  <footer>The Plata Clan 1.1.0 for Minecraft 26.3 (Fabric). {{LINE_COUNT}} lines of dialogue. Every image on this page is from the game or from the mod's own art tools.</footer>
 </main>

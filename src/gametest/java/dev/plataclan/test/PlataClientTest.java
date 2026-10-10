@@ -106,6 +106,7 @@ public class PlataClientTest implements FabricClientGameTest {
 
     @Override
     public void runTest(ClientGameTestContext ctx) {
+        if (List.of("Encounter", "Talk", "Ranks", "Moves", "Fight", "Mask", "Rude", "Death", "Compat").stream().noneMatch(PlataClientTest::wanted)) return;
         ctx.getInput().resizeWindow(1280, 800);
         ctx.runOnClient(client -> { client.options.guiScale().set(2); client.resizeGui(); });
         try (TestSingleplayerContext w = ctx.worldBuilder().adjustSettings(ui -> {

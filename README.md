@@ -45,6 +45,40 @@ Wear the Plata Mask and disguised Plata take you for kin. They whisper clan goss
 
 The clan keeps count of every silverfish you kill, and the more you've crushed, the more often they come for you.
 
+## Hideouts
+
+The clan lives in the stone, under places nobody looks at twice. Each hideout has a lookout up top: a disguised Plata who's happy to chat, until they aren't.
+
+- **Scale Den.** A traveler's camp: a tent, a fire, someone sitting by it. Under the tent a ladder goes down to a single burrow room.
+- **Silver Warren.** A ruined toll-house with an old cistern in the floor. The cistern is a spiral stair that drops twenty blocks to the **Molting Hall**, with the clan's mark set the length of the floor. Every Warren branches out differently, through ribbed tunnels to some of these rooms:
+  - the Shell Gallery
+  - a Sparring Pit
+  - the Scale Forge
+  - the Brood, full of silverfish
+  - the Shrine of the First Molt
+  - the Storeroom
+
+  Behind the hall is the vault, where an elder sleeps over the **Clan Coffer**.
+
+Both kinds come in six regional styles: green country, snow and taiga, desert, badlands, savanna and windswept hills. They keep well away from villages and homesteads.
+
+Down below, the clan **sleeps standing up in silver husks**, their own shed shells:
+
+- **Waking them.** Come within sight and a few blocks of a husk and it cracks open, and a Plata springs out at your level. The husks around it follow. **Sneak** and you can creep much closer.
+- **Never a swarm.** No more than three are up at once. The rest wait their turn.
+- **Walking away.** Leave and they crawl back into their shells, which seal behind them.
+- **Building your own.** In creative, husks can be placed for ambushes of your own.
+
+The walls are stronghold brick, and some of it is infested. Dig through the clan's walls and the walls bite back.
+
+**What's in them:**
+- **Den chests:**
+  - food, Silver Scales, shards and emeralds;
+  - sometimes a Plata Fang or the **Plata Mark banner pattern**;
+  - sometimes a **Silver-Inked Map** to the nearest Warren.
+- **The forge:** iron and the clan's knives.
+- **The Clan Coffer:** the best of it, and always the banner pattern.
+
 ## Compatibility
 
 - **Village Friends 2.26+** is required. It is hooked from outside only; no Village Friends code is changed. Disguised travelers are ordinary residents that belong to no village. Village Friends guards treat a revealed Plata as a threat.
@@ -72,6 +106,7 @@ Commands:
 | `/plata encounter` | operators | Places a disguised traveler a few blocks ahead. |
 | `/plata reveal` | operators | Drops the nearest disguise. |
 | `/plata spawn <scuttler\|shardcaster\|warden> [level]` | operators | Spawns a revealed Plata. |
+| `/locate structure #plataclan:hideouts` | operators | The nearest hideout (`#plataclan:dens`, `#plataclan:warrens` for one kind). |
 
 The three ranks also have spawn eggs.
 

@@ -5,7 +5,7 @@
 	"name": "The Plata Clan game tests",
 	"environment": "*",
 	"entrypoints": {
-		"fabric-client-gametest": ["dev.plataclan.test.PlataClientTest"]
+		"fabric-client-gametest": ["dev.plataclan.test.PlataClientTest", "dev.plataclan.test.HideoutClientTest"]
 	},
 	"depends": {
 		"plataclan": "*"

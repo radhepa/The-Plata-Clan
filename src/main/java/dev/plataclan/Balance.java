@@ -120,6 +120,26 @@ public final class Balance {
     public static double fangChance(int level) { return .08 + .001 * level; }
     public static double maskChance(Rank rank, int level) { return (.025 + .0005 * level) * (rank == Rank.WARDEN ? 2 : 1); }
 
+    // -- hideouts ------------------------------------------------------------------------------------
+    /** How close a stranger in sight has to come to wake a sleeper (an elder sleeps lighter; sneaking halves it). */
+    public static final double WAKE_RANGE = 7, ELDER_WAKE_RANGE = 10;
+    /** Never more than this many sleepers up at once around a husk; the rest wait their turn. */
+    public static final int AWAKE_CAP = 3;
+
+    public static double wakeRange(boolean elder, boolean sneaking) {
+        double r = elder ? ELDER_WAKE_RANGE : WAKE_RANGE;
+        return sneaking ? r / 2 : r;
+    }
+
+    /** Sleepers wake groggy, on 70% of a member's health; the elder guarding a vault is its boss and wakes whole. */
+    public static float garrisonHealth(boolean elder) { return elder ? 1F : .7F; }
+
+    /** Sleepers are footsoldiers (two Scuttlers in three, else a Shardcaster); an elder is a Molt Warden from level 20. */
+    public static Rank sleeperRank(double roll, int playerLevel, boolean elder) {
+        if (elder) return playerLevel >= 20 ? Rank.WARDEN : Rank.SHARDCASTER;
+        return roll < .67 ? Rank.SCUTTLER : Rank.SHARDCASTER;
+    }
+
     // -- encounters ----------------------------------------------------------------------------------
     /** Chance per check (every {@code checkSeconds}) for an average gap of {@code minutes}. */
     public static double encounterChance(double minutes, double checkSeconds, double biome, int silverfishKilled) {

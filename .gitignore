@@ -12,3 +12,5 @@ hs_err_*.log
 __pycache__/
 tools/preview/out/
 libs/*.jar
+tools/hideouts/.cache/
+tools/hideouts/out/

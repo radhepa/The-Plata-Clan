@@ -11,6 +11,7 @@ import dev.plataclan.PlataLines;
 import dev.plataclan.PlataNet;
 import dev.plataclan.PlayerPower;
 import dev.plataclan.Rank;
+import dev.plataclan.hideout.Sleepers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -90,6 +91,8 @@ public class PlataMember extends Monster implements Enemy {
     private @Nullable UUID lastFoe;
     private final List<UUID> summoned = new ArrayList<>();
     private @Nullable ServerBossEvent bar;
+    /** A hideout sleeper's own husk, which it crawls back into when there's nobody left to fight. */
+    private @Nullable BlockPos home;
 
     public PlataMember(EntityType<? extends PlataMember> type, Level level) {
         super(type, level);
@@ -160,6 +163,19 @@ public class PlataMember extends Monster implements Enemy {
         }
         return out;
     }
+
+    /** A hideout sleeper: guards the husk at {@code husk}, and wakes on {@code healthScale} of its health. */
+    public void guard(BlockPos husk, float healthScale) {
+        this.home = husk.immutable();
+        this.setPersistenceRequired();
+        float hp = Math.max(Balance.MIN_HEALTH, this.getMaxHealth() * healthScale);
+        this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(hp);
+        this.setHealth(hp);
+    }
+
+    public boolean garrison() { return this.home != null; }
+    public @Nullable BlockPos home() { return this.home; }
+    public boolean fleeing() { return this.fleeing; }
 
     public int plataLevel() { return this.entityData.get(DATA_LEVEL); }
     public String disguise() { return this.disguise; }
@@ -488,7 +504,11 @@ public class PlataMember extends Monster implements Enemy {
 
     /** Underground: run just under the surface toward the goal, leaving a trail of cracking grit. */
     private void travel(ServerLevel level, @Nullable LivingEntity t) {
-        if (this.fleeing && this.moveTicks > 20) { this.discard(); return; }
+        if (this.fleeing && this.moveTicks > 20) {
+            if (this.home != null) Sleepers.reseal(level, this.home);
+            this.discard();
+            return;
+        }
         Vec3 goal = this.burrowAttack ? (t != null ? t.position() : null) : this.burrowGoal;
         if (goal == null || this.moveTicks > Move.UNDER.ticks) { this.surface(level, false); return; }
         double dx = goal.x - this.getX(), dz = goal.z - this.getZ(), flat = Math.sqrt(dx * dx + dz * dz);
@@ -743,7 +763,7 @@ public class PlataMember extends Monster implements Enemy {
     /** Nobody left to fight: a parting line and into the ground for good. */
     private void flee(ServerLevel level) {
         this.fleeing = true;
-        this.say(level, "fight.flee", 0);
+        this.say(level, this.home != null ? "hideout.reseal" : "fight.flee", 0);
         this.burrow(null, false);
     }
 
@@ -832,6 +852,7 @@ public class PlataMember extends Monster implements Enemy {
         out.putString("Disguise", this.disguise);
         out.putBoolean("Configured", this.configured);
         out.putBoolean("Molted", this.molted);
+        if (this.home != null) out.store("Home", BlockPos.CODEC, this.home);
     }
 
     @Override
@@ -842,6 +863,7 @@ public class PlataMember extends Monster implements Enemy {
         this.disguise = in.getStringOr("Disguise", "");
         this.configured = in.getBooleanOr("Configured", false);
         this.molted = in.getBooleanOr("Molted", false);
+        this.home = in.read("Home", BlockPos.CODEC).orElse(null);
         this.entityData.set(DATA_LEVEL, this.level);
         this.flurryLength = Balance.flurryLength(this.level);
         this.xpReward = Balance.experience(this.level);

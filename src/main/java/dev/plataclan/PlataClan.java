@@ -1,8 +1,10 @@
 package dev.plataclan;
 
+import dev.plataclan.block.PlataBlocks;
 import dev.plataclan.disguise.DisguiseEvents;
 import dev.plataclan.disguise.Disguises;
 import dev.plataclan.entity.PlataEntities;
+import dev.plataclan.hideout.Hideouts;
 import dev.plataclan.item.PlataItems;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
@@ -24,7 +26,9 @@ public final class PlataClan implements ModInitializer {
     public void onInitialize() {
         PlataConfig.load();
         PlataEntities.register();
+        PlataBlocks.register();
         PlataItems.register();
+        Hideouts.register();
         java.util.Objects.requireNonNull(Disguises.DISGUISE);
         PlataNet.register();
         DisguiseEvents.register();

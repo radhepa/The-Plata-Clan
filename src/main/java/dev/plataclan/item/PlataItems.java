@@ -4,9 +4,11 @@ import java.util.Map;
 import java.util.function.Function;
 
 import dev.plataclan.PlataClan;
+import dev.plataclan.block.PlataBlocks;
 import dev.plataclan.entity.PlataEntities;
 import net.fabricmc.fabric.api.creativetab.v1.CreativeModeTabEvents;
 import net.minecraft.core.Registry;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -23,6 +25,7 @@ import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.item.equipment.EquipmentAsset;
 import net.minecraft.world.item.equipment.EquipmentAssets;
+import net.minecraft.world.level.block.entity.BannerPattern;
 
 /** Silver Scales, the thrown shard, the Plata Fang knife, the Plata Mask and a spawn egg per rank. */
 public final class PlataItems {
@@ -43,6 +46,10 @@ public final class PlataItems {
     public static final Item SCUTTLER_EGG = register("plata_scuttler_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(PlataEntities.SCUTTLER));
     public static final Item SHARDCASTER_EGG = register("plata_shardcaster_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(PlataEntities.SHARDCASTER));
     public static final Item WARDEN_EGG = register("plata_warden_spawn_egg", SpawnEggItem::new, new Item.Properties().spawnEgg(PlataEntities.WARDEN));
+    public static final TagKey<BannerPattern> MARK_PATTERN = TagKey.create(Registries.BANNER_PATTERN, PlataClan.id("pattern_item/plata_mark"));
+    /** The clan's mark for a loom: found in hideouts. */
+    public static final Item PLATA_MARK_PATTERN = register("plata_mark_banner_pattern", Item::new,
+            new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).delayedComponent(DataComponents.PROVIDES_BANNER_PATTERNS, lookup -> lookup.getOrThrow(MARK_PATTERN)));
 
     private static Item register(String id, Function<Item.Properties, Item> factory, Item.Properties props) {
         ResourceKey<Item> key = ResourceKey.create(Registries.ITEM, PlataClan.id(id));
@@ -55,7 +62,10 @@ public final class PlataItems {
     }
 
     public static void register() {
-        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(out -> { out.accept(SILVER_SCALE); out.accept(SILVER_SHARD); });
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.INGREDIENTS).register(out -> {
+            out.accept(SILVER_SCALE); out.accept(SILVER_SHARD); out.accept(PLATA_MARK_PATTERN);
+        });
+        CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.FUNCTIONAL_BLOCKS).register(out -> out.accept(PlataBlocks.SILVER_HUSK_ITEM));
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.COMBAT).register(out -> { out.accept(PLATA_FANG); out.accept(PLATA_MASK); });
         CreativeModeTabEvents.modifyOutputEvent(CreativeModeTabs.SPAWN_EGGS).register(out -> {
             out.accept(SCUTTLER_EGG); out.accept(SHARDCASTER_EGG); out.accept(WARDEN_EGG);

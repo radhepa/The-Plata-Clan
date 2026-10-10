@@ -1,0 +1,51 @@
+# The Plata Clan at home: lines in their hideouts. Spoken as speech lines, so 90 characters at most.
+# Members sleep standing up in silver husks (shed shells) and burst out when a stranger comes near.
+# hideout.wake: a sleeper bursting out. Groggy, put out, territorial; the hideout is their stone and you broke in.
+# hideout.elder: the elder asleep over the vault's Clan Coffer wakes (a Molt Warden, or below level 20 a Shardcaster).
+#   Slow, heavy, proprietary about the coffer; the clan's hoard and its patience.
+# hideout.reseal: a sleeper with nobody left to fight crawls back into its husk. Smug, sleepy, unbothered.
+# A line may start with {scuttler}, {shardcaster} or {warden}. Placeholders: {player}, {rank}.
+
+[hideout.wake]
+Who let a stone-breaker in here?
+Mm? Visitors. Nobody told me there'd be visitors.
+I was having such a nice molt, too.
+You walked right past the lookout. Of course you did.
+Shells, everyone. Up. We have company.
+You're tracking dirt on the mark.
+Wrong burrow, {player}.
+Do you knock on every rock you find? Clearly.
+Every wall in here is listening. Every wall in here is one of us.
+Fresh out of the shell and already annoyed.
+Shh. You'll wake the others. Too late.
+This stone is spoken for.
+You came all the way down here to die in the dark? Bold.
+{scuttler}Up, up! Knives out, it's a guest!
+{scuttler}Ah, a sparring partner. You'll do.
+{shardcaster}Too close to my shell. Much too close.
+{shardcaster}I just polished these scales. Let's see them fly.
+{warden}A rude waking. I'll be rude back.
+
+[hideout.elder]
+The coffer stays shut, {player}. You don't.
+Generations of silver in that box. You thought it was unguarded?
+I have slept on this hoard since before you were born. I sleep lightly.
+Every scale in the coffer was shed by one of us. None of them were yours.
+You've come a long way down. It's further back up.
+The little ones told me you were coming. They tell me everything.
+So you found the bottom of the burrow. Look around. Remember it.
+Put down what you were reaching for.
+{warden}Come here and meet the Silvertail.
+{shardcaster}The elder is away. I'm what's left. Unlucky you.
+
+[hideout.reseal]
+Back to the shell, then.
+Nobody? Fine. Bed.
+Wake me if they come back.
+All quiet. Into the stone.
+Gone already? Pity.
+I'll keep the shell warm.
+They'll be back. They always come back.
+Shells shut, ears open.
+{scuttler}Knives away. Nap time.
+{shardcaster}Not even worth a shard. Goodnight.

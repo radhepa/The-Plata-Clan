@@ -1,0 +1,48 @@
+{
+  "structures": [
+    {
+      "structure": "plataclan:warren_green",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:warren_cold",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:warren_sand",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:warren_mesa",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:warren_dry",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:warren_stone",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "plataclan:away_from",
+    "spacing": 48,
+    "separation": 16,
+    "salt": 2104905671,
+    "avoid": [
+      {
+        "set": "minecraft:villages",
+        "chunks": 8
+      },
+      {
+        "set": "villagefriends:homesteads",
+        "chunks": 3
+      },
+      {
+        "set": "plataclan:dens",
+        "chunks": 4
+      }
+    ]
+  }
+}

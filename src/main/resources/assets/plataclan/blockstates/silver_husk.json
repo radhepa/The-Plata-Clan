@@ -1,0 +1,124 @@
+{
+  "variants": {
+    "facing=north,half=lower,kind=sleeper,split=false": {
+      "model": "plataclan:block/silver_husk_sleeper_lower"
+    },
+    "facing=east,half=lower,kind=sleeper,split=false": {
+      "model": "plataclan:block/silver_husk_sleeper_lower",
+      "y": 90
+    },
+    "facing=south,half=lower,kind=sleeper,split=false": {
+      "model": "plataclan:block/silver_husk_sleeper_lower",
+      "y": 180
+    },
+    "facing=west,half=lower,kind=sleeper,split=false": {
+      "model": "plataclan:block/silver_husk_sleeper_lower",
+      "y": 270
+    },
+    "facing=north,half=lower,kind=sleeper,split=true": {
+      "model": "plataclan:block/silver_husk_sleeper_lower_split"
+    },
+    "facing=east,half=lower,kind=sleeper,split=true": {
+      "model": "plataclan:block/silver_husk_sleeper_lower_split",
+      "y": 90
+    },
+    "facing=south,half=lower,kind=sleeper,split=true": {
+      "model": "plataclan:block/silver_husk_sleeper_lower_split",
+      "y": 180
+    },
+    "facing=west,half=lower,kind=sleeper,split=true": {
+      "model": "plataclan:block/silver_husk_sleeper_lower_split",
+      "y": 270
+    },
+    "facing=north,half=upper,kind=sleeper,split=false": {
+      "model": "plataclan:block/silver_husk_sleeper_upper"
+    },
+    "facing=east,half=upper,kind=sleeper,split=false": {
+      "model": "plataclan:block/silver_husk_sleeper_upper",
+      "y": 90
+    },
+    "facing=south,half=upper,kind=sleeper,split=false": {
+      "model": "plataclan:block/silver_husk_sleeper_upper",
+      "y": 180
+    },
+    "facing=west,half=upper,kind=sleeper,split=false": {
+      "model": "plataclan:block/silver_husk_sleeper_upper",
+      "y": 270
+    },
+    "facing=north,half=upper,kind=sleeper,split=true": {
+      "model": "plataclan:block/silver_husk_sleeper_upper_split"
+    },
+    "facing=east,half=upper,kind=sleeper,split=true": {
+      "model": "plataclan:block/silver_husk_sleeper_upper_split",
+      "y": 90
+    },
+    "facing=south,half=upper,kind=sleeper,split=true": {
+      "model": "plataclan:block/silver_husk_sleeper_upper_split",
+      "y": 180
+    },
+    "facing=west,half=upper,kind=sleeper,split=true": {
+      "model": "plataclan:block/silver_husk_sleeper_upper_split",
+      "y": 270
+    },
+    "facing=north,half=lower,kind=elder,split=false": {
+      "model": "plataclan:block/silver_husk_elder_lower"
+    },
+    "facing=east,half=lower,kind=elder,split=false": {
+      "model": "plataclan:block/silver_husk_elder_lower",
+      "y": 90
+    },
+    "facing=south,half=lower,kind=elder,split=false": {
+      "model": "plataclan:block/silver_husk_elder_lower",
+      "y": 180
+    },
+    "facing=west,half=lower,kind=elder,split=false": {
+      "model": "plataclan:block/silver_husk_elder_lower",
+      "y": 270
+    },
+    "facing=north,half=lower,kind=elder,split=true": {
+      "model": "plataclan:block/silver_husk_elder_lower_split"
+    },
+    "facing=east,half=lower,kind=elder,split=true": {
+      "model": "plataclan:block/silver_husk_elder_lower_split",
+      "y": 90
+    },
+    "facing=south,half=lower,kind=elder,split=true": {
+      "model": "plataclan:block/silver_husk_elder_lower_split",
+      "y": 180
+    },
+    "facing=west,half=lower,kind=elder,split=true": {
+      "model": "plataclan:block/silver_husk_elder_lower_split",
+      "y": 270
+    },
+    "facing=north,half=upper,kind=elder,split=false": {
+      "model": "plataclan:block/silver_husk_elder_upper"
+    },
+    "facing=east,half=upper,kind=elder,split=false": {
+      "model": "plataclan:block/silver_husk_elder_upper",
+      "y": 90
+    },
+    "facing=south,half=upper,kind=elder,split=false": {
+      "model": "plataclan:block/silver_husk_elder_upper",
+      "y": 180
+    },
+    "facing=west,half=upper,kind=elder,split=false": {
+      "model": "plataclan:block/silver_husk_elder_upper",
+      "y": 270
+    },
+    "facing=north,half=upper,kind=elder,split=true": {
+      "model": "plataclan:block/silver_husk_elder_upper_split"
+    },
+    "facing=east,half=upper,kind=elder,split=true": {
+      "model": "plataclan:block/silver_husk_elder_upper_split",
+      "y": 90
+    },
+    "facing=south,half=upper,kind=elder,split=true": {
+      "model": "plataclan:block/silver_husk_elder_upper_split",
+      "y": 180
+    },
+    "facing=west,half=upper,kind=elder,split=true": {
+      "model": "plataclan:block/silver_husk_elder_upper_split",
+      "y": 270
+    }
+  }
+}

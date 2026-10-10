@@ -24,7 +24,7 @@ Ranks:
 | **Shardcaster** | A skirmisher who keeps you at arm's length | Fans of sharpened silver *shards* (thrown scales); burrows away when you close in |
 | **Molt Warden** | An elder enforcer, rare | The *Silvertail*: a segmented whip-flail built like a giant silverfish, plus a ground slam that shakes silverfish out of the earth |
 
-The **Silver Mother**, the founder whom nobody has seen, and the clan's hideout are left for later.
+The **Silver Mother**, the founder whom nobody has seen, is left for later. The clan's hideouts are in §10.
 
 ## 2. The encounter
 
@@ -212,3 +212,96 @@ The part contract that `PlataModel` reads is in §9.
 - `fight.burrow`, `fight.hurt`, `fight.molt`
 - `fight.win` (the player fell), `fight.flee`, `defeat`
 - `kin.whisper` (the player wears a Plata Mask)
+
+## 10. Hideouts
+
+The clan lives the way the silverfish taught it: inside the stone, under something nobody looks at twice. Two kinds of hideout generate in the Overworld, each in six regional styles. Every one has a **lookout** on the surface and **sleepers** below.
+
+| | Scale Den | Silver Warren |
+|---|---|---|
+| On the surface | A traveler's camp: a canvas tent, a lit fire ringed in stone, a log bench, a pack, a woodpile. The lookout sits by the fire. | A ruined toll-house: broken walls, a fallen roof beam, an old cistern in the floor with a windlass over it. The lookout sits on the bench by the door. |
+| The way in | A hatch inside the tent, a ladder 12 blocks down, a crawl into the den. | The cistern is the top of a spiral stair, 20 steps down round a tuff post. |
+| Below | One room: two or three husks, the den's chest, a small shrine. | The Molting Hall, ribbed tunnels branching out to rooms, and the vault behind the hall. Every Warren is laid out differently. |
+| How often | About one per 28×28 chunks | About one per 48×48 chunks |
+
+**Styles by region** (surface only; underground the clan builds the same everywhere):
+
+| Style | Biomes | Den tent | Warren ruin |
+|---|---|---|---|
+| green | plains, meadows, forests, cherry and pale gardens, sparse jungle | white canvas, spruce | cobble, mossy stone bricks, oak |
+| cold | snowy plains and taiga, taiga, grove | grey canvas, snow on the ridge | stone bricks, spruce, snow |
+| sand | desert | white canvas with yellow trim, birch | sandstone, cut and chiseled |
+| mesa | badlands | orange canvas, dark oak | red sandstone, terracotta |
+| dry | savanna | brown canvas, acacia | mud bricks, packed mud |
+| stone | windswept hills | grey canvas, spruce | cobble, andesite, tuff |
+
+**Where they go.** Hideouts keep clear of villages (8 chunks for a Warren, 6 for a Den), Village Friends homesteads (3 and 2) and each other. They use their own placement, `plataclan:away_from`, which is vanilla's random spread with a list of sets to avoid; a set that isn't loaded is skipped. The structure type, `plataclan:hideout`, surveys the ground first: dry, level to within 4 (Den) or 6 (Warren) blocks, and the right country. Every room must keep at least 3 or 4 blocks of ground over it. An exposed room at the end of a branch is dropped, and a hideout whose shaft or hall would show isn't built.
+
+**The clan's stonework** underground:
+
+- **Walls:** stronghold stone bricks, cracked and mossy, about one in ten **infested**. Break the walls and silverfish pour out.
+- **Ribs:** tuff, like the segments of a silverfish's back.
+- **Floors:** polished andesite.
+- **Silver:** calcite, polished diorite and iron chains.
+- **The mark:** set in the floors, a silverfish seen from above, in calcite and diorite on deepslate tiles. It's also hung on light-grey banners and raised on the shrine wall.
+
+**Warren rooms** (randomly chosen, each appears 0 to several times):
+
+| Room | What's in it | Sleepers |
+|---|---|---|
+| Molting Hall (always) | the mark the length of the floor, four great pillars, banners | 4 |
+| Shell Gallery | rows of husks along both walls; split ones are members out on the road in disguise | 6 (of 8 husks) |
+| Sparring Pit | a sunken floor of packed mud, practice targets on posts | 2 |
+| Scale Forge | blast furnace in a deepslate chimney, anvil, grindstone, quench cauldron, cooling plates | 1 |
+| The Brood | infested rubble, cobwebs, a silverfish spawner on a tuff plinth | 1 |
+| Shrine of the First Molt | the mark upright on the back wall, a dais of candles | 2 |
+| Storeroom | barrels, sacks, hay, two chests of stores | 1 |
+| Coffer Vault (always, behind the hall) | an iron-barred antechamber, the mark in the floor, the elder's husk on a dais over the **Clan Coffer** | 2 + the elder |
+
+**Sleepers.** Members sleep standing up in **silver husks**: their own shed shells, two blocks tall.
+
+- **Waking.** A sealed husk wakes when a survival or adventure player in sight comes within 7 blocks. Sneaking halves that to 3.5, so you can creep past. An elder's husk wakes at 10.
+- **Bursting out.** The husk splits with a crack and a burst of calcite dust, and the sleeper springs out in the backflip from the Molt. It is sized to the player like any member, but wakes groggy on 70% of its health. The elder wakes whole.
+- **Two kinds of sleeper.**
+  - A footsoldier sleeper is a Scuttler (two in three) or a Shardcaster.
+  - The elder is a Molt Warden from level 20, or a Shardcaster below that.
+- **The stir.** Husks within 6 blocks stir and wake one after another.
+- **The cap.** Never more than **3** sleepers are up at once near a husk. The rest wait for a slot.
+- **Back to sleep.** A sleeper with nobody to fight for 10 seconds says so, burrows and crawls back into its own husk, which seals again. It wakes fresh next time.
+- **Breaking a husk.** Breaking a sealed husk, or blowing it up, wakes the sleeper inside.
+- **Drops and placing.** An empty husk drops a Silver Scale or two. In creative, husks can be placed to build your own ambushes.
+
+**The lookout** is a disguised Plata like any traveler: a real Village Friends resident with a name and a face. It turns up the first time a player comes within 72 blocks (the template holds only an invisible mark). Unlike a traveler on the road it never leaves its post. Talk to it and it molts.
+
+**Loot.**
+
+| Chest | Where | Highlights |
+|---|---|---|
+| `chests/den` | Den, Brood, Shrine | food, Silver Scales and Shards, emeralds; sometimes a Plata Fang, the Plata Mark banner pattern, or a **Silver-Inked Map** to the nearest Warren |
+| `chests/warren_stores` | Gallery, Storeroom | food, scales, shards, emeralds, leather, arrows; now and then a golden apple |
+| `chests/warren_forge` | Forge | iron, scales, shards; often a Plata Fang or an enchanted iron sword |
+| `chests/clan_coffer` | Vault | emeralds, scales, gold, diamonds, an enchanted book, experience; **always** the Plata Mark banner pattern; often an enchanted Plata Fang or a Plata Mask |
+
+The **Plata Mark banner pattern** puts the clan's mark on any banner or shield at a loom.
+
+**Code and tools:**
+
+- `dev.plataclan.hideout`:
+  - `HideoutStructure` (the survey and the cover check)
+  - `AwayFrom` (the placement)
+  - `Sleepers` (waking, the stir, the cap, resealing)
+  - `Lookouts`, `Hideouts` (registration and tags)
+- `dev.plataclan.block`: `SilverHuskBlock`, `LookoutBlock`, `PlataBlocks`.
+- `tools/hideouts/`:
+  - `pieces.py` (every piece's design)
+  - `build.py` (templates, pools, structures, sets, tags, loot, lang; run it after editing a piece)
+  - `art.py` (husk models and textures, the banner pattern)
+  - `preview.py` and `render.py` (isometric previews with vanilla textures)
+  - `cutaway.py` (a whole generated hideout from the game test's dump)
+- Jigsaw contract:
+  - `descent` joins the surface hatch to the shaft or stair.
+  - `den_hall`/`den_door` joins the shaft to the den.
+  - `stair_foot` joins the stair to the hall.
+  - `passage` is any 3-wide tunnel mouth.
+  - `vault_gate_hall`/`vault_gate` joins the hall's south door to the vault.
+

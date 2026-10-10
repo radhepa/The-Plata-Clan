@@ -1,0 +1,44 @@
+{
+  "structures": [
+    {
+      "structure": "plataclan:den_green",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:den_cold",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:den_sand",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:den_mesa",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:den_dry",
+      "weight": 1
+    },
+    {
+      "structure": "plataclan:den_stone",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "plataclan:away_from",
+    "spacing": 28,
+    "separation": 9,
+    "salt": 1803261447,
+    "avoid": [
+      {
+        "set": "minecraft:villages",
+        "chunks": 6
+      },
+      {
+        "set": "villagefriends:homesteads",
+        "chunks": 2
+      }
+    ]
+  }
+}

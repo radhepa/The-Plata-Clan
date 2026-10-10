@@ -68,16 +68,17 @@ public final class Disguises {
     private Disguises() {}
 
     public static final String ROLE = "plata";
-    private static final int CHECK_TICKS = 600, TETHER = 10, MIN_GAP_TICKS = 8 * 1200;
+    private static final int CHECK_TICKS = 600, TETHER = 10, POST_TETHER = 5, MIN_GAP_TICKS = 8 * 1200;
     private static final TagKey<Structure> HOMESTEADS = TagKey.create(Registries.STRUCTURE, Identifier.fromNamespaceAndPath("villagefriends", "homesteads"));
 
-    /** Where the disguise waits, and when it arrived. */
-    public record Disguise(BlockPos origin, long born, boolean met) {
+    /** Where the disguise waits, when it arrived, and whether it keeps watch over a hideout (a post never leaves). */
+    public record Disguise(BlockPos origin, long born, boolean met, boolean post) {
         public static final Codec<Disguise> CODEC = RecordCodecBuilder.create(i -> i.group(
                 BlockPos.CODEC.fieldOf("origin").forGetter(Disguise::origin),
                 Codec.LONG.fieldOf("born").forGetter(Disguise::born),
-                Codec.BOOL.optionalFieldOf("met", false).forGetter(Disguise::met)).apply(i, Disguise::new));
-        public Disguise meet() { return new Disguise(this.origin, this.born, true); }
+                Codec.BOOL.optionalFieldOf("met", false).forGetter(Disguise::met),
+                Codec.BOOL.optionalFieldOf("post", false).forGetter(Disguise::post)).apply(i, Disguise::new));
+        public Disguise meet() { return new Disguise(this.origin, this.born, true, this.post); }
     }
 
     /** What the clan remembers about a player: the last encounter, how many reveals, whether they've seen the title card. */
@@ -216,7 +217,10 @@ public final class Disguises {
     }
 
     /** A real Village Friends resident, standing in the wild, belonging nowhere. */
-    public static @Nullable Villager spawn(ServerLevel level, BlockPos spot) {
+    public static @Nullable Villager spawn(ServerLevel level, BlockPos spot) { return spawn(level, spot, false); }
+
+    /** The same, or with {@code post} a hideout's lookout: it stays by its hideout however long nobody comes. */
+    public static @Nullable Villager spawn(ServerLevel level, BlockPos spot, boolean post) {
         Villager v = EntityTypes.VILLAGER.create(level, EntitySpawnReason.EVENT);
         if (v == null) return null;
         v.snapTo(spot.getX() + .5, spot.getY(), spot.getZ() + .5, level.getRandom().nextFloat() * 360, 0);
@@ -224,8 +228,10 @@ public final class Disguises {
         v.setVillagerData(v.getVillagerData().withType(level.registryAccess(), VillagerType.byBiome(level.getBiome(spot))));
         VillageFriends.ensureIdentity(v);
         String name = VillageFriends.name(v);
-        target(v).setAttached(Homesteads.DWELLER, new Dwelling.Dweller(ROLE, name, "the road", "plata:" + v.getUUID(), spot.getX(), spot.getY(), spot.getZ()));
-        target(v).setAttached(DISGUISE, new Disguise(spot, level.getGameTime(), false));
+        target(v).setAttached(Homesteads.DWELLER, new Dwelling.Dweller(ROLE, name, post ? "the old camp" : "the road", "plata:" + v.getUUID(),
+                spot.getX(), spot.getY(), spot.getZ()));
+        target(v).setAttached(DISGUISE, new Disguise(spot, level.getGameTime(), false, post));
+        if (post) v.setPersistenceRequired();
         level.addFreshEntity(v);
         PlataClan.LOG.debug("A traveler waits at {} ({})", spot, name);
         return v;
@@ -242,8 +248,9 @@ public final class Disguises {
             Player near = level.getNearestPlayer(v.getX(), v.getY(), v.getZ(), 128, p -> !p.isSpectator());
             int alone = near == null ? unattended.merge(v.getUUID(), 1, Integer::sum) : 0;
             if (near != null) unattended.remove(v.getUUID());
-            if (alone > 60 || !d.met() && now - d.born() > 48000) { leave(v); continue; }
-            if (v.blockPosition().distSqr(d.origin()) > TETHER * TETHER) {
+            if (!d.post() && (alone > 60 || !d.met() && now - d.born() > 48000)) { leave(v); continue; }
+            int tether = d.post() ? POST_TETHER : TETHER;
+            if (v.blockPosition().distSqr(d.origin()) > tether * tether) {
                 v.getBrain().setMemory(MemoryModuleType.WALK_TARGET, new WalkTarget(d.origin(), .5F, 2));
             }
             if (level.getRandom().nextFloat() < .06F) tell(level, v);

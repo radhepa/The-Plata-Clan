@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "plataclan:blocks/silver_husk",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "plataclan:silver_husk",
+        "state": {
+          "half": "lower",
+          "split": "true"
+        }
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "plataclan:silver_scale",
+          "weight": 1,
+          "modifier": {
+            "type": "minecraft:set_count",
+            "count": {
+              "type": "minecraft:uniform",
+              "min": 1,
+              "max": 2
+            }
+          }
+        }
+      ],
+      "modifier": {
+        "type": "minecraft:explosion_decay"
+      }
+    }
+  ]
+}

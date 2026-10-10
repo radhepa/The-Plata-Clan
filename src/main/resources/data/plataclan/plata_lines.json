@@ -785,6 +785,164 @@
         "rank": null
       }
     ],
+    "hideout.elder": [
+      {
+        "text": "The coffer stays shut, {player}. You don't.",
+        "rank": null
+      },
+      {
+        "text": "Generations of silver in that box. You thought it was unguarded?",
+        "rank": null
+      },
+      {
+        "text": "I have slept on this hoard since before you were born. I sleep lightly.",
+        "rank": null
+      },
+      {
+        "text": "Every scale in the coffer was shed by one of us. None of them were yours.",
+        "rank": null
+      },
+      {
+        "text": "You've come a long way down. It's further back up.",
+        "rank": null
+      },
+      {
+        "text": "The little ones told me you were coming. They tell me everything.",
+        "rank": null
+      },
+      {
+        "text": "So you found the bottom of the burrow. Look around. Remember it.",
+        "rank": null
+      },
+      {
+        "text": "Put down what you were reaching for.",
+        "rank": null
+      },
+      {
+        "text": "Come here and meet the Silvertail.",
+        "rank": "warden"
+      },
+      {
+        "text": "The elder is away. I'm what's left. Unlucky you.",
+        "rank": "shardcaster"
+      }
+    ],
+    "hideout.reseal": [
+      {
+        "text": "Back to the shell, then.",
+        "rank": null
+      },
+      {
+        "text": "Nobody? Fine. Bed.",
+        "rank": null
+      },
+      {
+        "text": "Wake me if they come back.",
+        "rank": null
+      },
+      {
+        "text": "All quiet. Into the stone.",
+        "rank": null
+      },
+      {
+        "text": "Gone already? Pity.",
+        "rank": null
+      },
+      {
+        "text": "I'll keep the shell warm.",
+        "rank": null
+      },
+      {
+        "text": "They'll be back. They always come back.",
+        "rank": null
+      },
+      {
+        "text": "Shells shut, ears open.",
+        "rank": null
+      },
+      {
+        "text": "Knives away. Nap time.",
+        "rank": "scuttler"
+      },
+      {
+        "text": "Not even worth a shard. Goodnight.",
+        "rank": "shardcaster"
+      }
+    ],
+    "hideout.wake": [
+      {
+        "text": "Who let a stone-breaker in here?",
+        "rank": null
+      },
+      {
+        "text": "Mm? Visitors. Nobody told me there'd be visitors.",
+        "rank": null
+      },
+      {
+        "text": "I was having such a nice molt, too.",
+        "rank": null
+      },
+      {
+        "text": "You walked right past the lookout. Of course you did.",
+        "rank": null
+      },
+      {
+        "text": "Shells, everyone. Up. We have company.",
+        "rank": null
+      },
+      {
+        "text": "You're tracking dirt on the mark.",
+        "rank": null
+      },
+      {
+        "text": "Wrong burrow, {player}.",
+        "rank": null
+      },
+      {
+        "text": "Do you knock on every rock you find? Clearly.",
+        "rank": null
+      },
+      {
+        "text": "Every wall in here is listening. Every wall in here is one of us.",
+        "rank": null
+      },
+      {
+        "text": "Fresh out of the shell and already annoyed.",
+        "rank": null
+      },
+      {
+        "text": "Shh. You'll wake the others. Too late.",
+        "rank": null
+      },
+      {
+        "text": "This stone is spoken for.",
+        "rank": null
+      },
+      {
+        "text": "You came all the way down here to die in the dark? Bold.",
+        "rank": null
+      },
+      {
+        "text": "Up, up! Knives out, it's a guest!",
+        "rank": "scuttler"
+      },
+      {
+        "text": "Ah, a sparring partner. You'll do.",
+        "rank": "scuttler"
+      },
+      {
+        "text": "Too close to my shell. Much too close.",
+        "rank": "shardcaster"
+      },
+      {
+        "text": "I just polished these scales. Let's see them fly.",
+        "rank": "shardcaster"
+      },
+      {
+        "text": "A rude waking. I'll be rude back.",
+        "rank": "warden"
+      }
+    ],
     "kin.reply": [
       {
         "text": "We are in the stone.",
